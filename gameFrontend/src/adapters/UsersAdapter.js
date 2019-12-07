@@ -5,9 +5,14 @@ class UsersAdapter {
   }
 
   async getUsers() {
-    let res = await fetch(this.baseUrl);
-    let userJson = res.json();
-    // console.log(userJson);
-    return userJson;
+    try {
+      let res = await fetch(this.baseUrl);
+      let userJson = res.json();
+      // console.log(userJson);
+      return userJson;
+    } catch (error) {
+      document.getElementById("highscores-list").innerHTML += "<h2>Check to see if your server is running.<h2>";
+      console.log(error.message);
+    }
   }
 }

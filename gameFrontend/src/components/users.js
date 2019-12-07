@@ -2,8 +2,12 @@ class Users {
   constructor() {
     this.users = [];
     this.adapter = new UsersAdapter();
-    // this.bindEventListeners()
+    this.bindEventListeners();
     this.fetchAndLoadUsers();
+  }
+
+  bindEventListeners() {
+    this.highscoresContainer = document.getElementById("highscores-list");
   }
 
   async fetchAndLoadUsers() {
@@ -21,8 +25,9 @@ class Users {
   }
 
   render(user) {
-    const highscoresContainer = document.getElementById("highscores-list");
-    highscoresContainer.innerHTML += `
+    // pick up at 19 mins second vid
+    // const highscoresContainer = document.getElementById("highscores-list");
+    this.highscoresContainer.innerHTML += `
       <div class="score-for-user">
         <p>${user.name}</p>
         <p>${user.score}</p>
