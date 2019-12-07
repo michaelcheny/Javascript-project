@@ -7,18 +7,27 @@ class Users {
   }
 
   async fetchAndLoadUsers() {
-    let users = await this.adapter.getUsers();
-    // console.log(users);
-    users.forEach(user => {
-      this.users.push(new User(user));
-    });
-    this.render();
+    try {
+      let users = await this.adapter.getUsers();
+      users.forEach(user => {
+        this.users.push(new User(user));
+      });
+      this.users.forEach(user => {
+        this.render(user);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
-  render() {
+  render(user) {
     const highscoresContainer = document.getElementById("highscores-list");
-    highscoresContainer.innerHTML = "hjkwuiqeyrusfhasjkdfhasdkjfiakseruaklsudf";
-    console.log(this.users);
-    // this.users.
+    highscoresContainer.innerHTML += `
+      <div class="score-for-user">
+        <p>${user.name}</p>
+        <p>${user.score}</p>
+        <p>${user.date}</p>
+      </div>
+    `;
   }
 }
