@@ -1,3 +1,4 @@
+// Grabs the users from the API from our backend
 class UsersAdapter {
   constructor() {
     this.baseUrl = "http://localhost:3000//api/v1/users";
