@@ -1,5 +1,14 @@
 #game-container {
-  border: solid black 2px;
+  /* border: solid black 2px;
   height: 854px;
-  width: 1034px;
+  width: 1034px; */
+
+  margin: 0;
+  display: flex;
+
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+
+  /* This centers our sketch vertically. */
+  align-items: center;
 }
