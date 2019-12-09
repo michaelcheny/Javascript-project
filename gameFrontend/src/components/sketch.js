@@ -10,7 +10,8 @@
 // }
 
 function setup() {
-  createCanvas(1000, 1000);
+  let myCanvas = createCanvas(1000, 850);
+  myCanvas.parent("game-container");
 }
 
 function draw() {
