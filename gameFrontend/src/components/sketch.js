@@ -1,14 +1,10 @@
-// class Player {
-//   constructor() {
-//     this.x = 50;
-//     this.y = height - 50;
-//   }
-
-//   show() {
-//     rect(this.x, this.y, 50, 50);
-//   }
-// }
 let player;
+let backgroundImg;
+
+function preload() {
+  backgroundImg = loadImage("src/images/court-background.jpg");
+}
+
 function setup() {
   let myCanvas = createCanvas(1000, 900);
   myCanvas.parent("game-container");
@@ -16,7 +12,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(backgroundImg);
   player.show();
 }
 
