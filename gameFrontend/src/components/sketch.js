@@ -1,8 +1,10 @@
 let player;
 let backgroundImg;
+let playerImg;
 
 function preload() {
   backgroundImg = loadImage("src/images/court-background.jpg");
+  playerImg = loadImage("src/images/james-harden-face.gif");
 }
 
 function setup() {
