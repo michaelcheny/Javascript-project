@@ -25,7 +25,6 @@ class Users {
   }
 
   render(user) {
-    // pick up at 19 mins second vid
     // const highscoresContainer = document.getElementById("highscores-list");
     this.highscoresContainer.innerHTML += `
       <div class="score-for-user">
