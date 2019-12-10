@@ -15,13 +15,12 @@ function setup() {
 
 function keyPressed() {
   // if (key === "a") {
-  if (keyIsDown(65)) {
-    player.moveLeft();
+  if (keyCode === 65 || keyCode === 37) {
+    player.goLeft();
     // } else if (key === "d") {
-  } else if (keyIsDown(68)) {
-    player.moveRight();
+  } else if (keyCode === 68 || keyCode === 39) {
+    player.goRight();
   }
-  clear();
 }
 
 function draw() {
