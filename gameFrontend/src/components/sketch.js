@@ -13,9 +13,16 @@ function setup() {
   player = new Player();
 }
 
+function keyPressed() {
+  if (key == "a") {
+    player.moveLeft();
+  }
+}
+
 function draw() {
   background(backgroundImg);
   player.show();
+  player.move();
 }
 
 // let model;
