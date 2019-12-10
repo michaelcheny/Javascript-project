@@ -13,15 +13,18 @@ function setup() {
   player = new Player();
 }
 
+function keyReleased() {
+  // if (keyCode === 65 || keyCode === 37 || keyCode === 68 || keyCode === 39) {
+  player.setDirection(0);
+  // }
+}
+
 function keyPressed() {
-  // if (key === "a") {
   if (keyCode === 65 || keyCode === 37) {
     // player.goLeft();
     player.setDirection(-1);
-    // } else if (key === "d") {
   } else if (keyCode === 68 || keyCode === 39) {
     player.setDirection(+1);
-    // player.goRight();
   }
 }
 

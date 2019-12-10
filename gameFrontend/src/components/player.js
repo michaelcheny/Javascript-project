@@ -18,18 +18,9 @@ class Player {
     this.xdir = direction;
   }
 
-  // move(direction) {
-  //   this.x += this.vx;
-  // }
-
-  move(direction) {
-    this.x += this.xdir * 6;
+  move() {
+    this.x += this.xdir * 8;
   }
-
-  // stayStill() {
-  //   this.vx = 0;
-  //   this.x = 0;
-  // }
 
   show() {
     image(playerImg, this.x, this.y, 120, 120);
