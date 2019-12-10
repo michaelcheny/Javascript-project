@@ -14,9 +14,14 @@ function setup() {
 }
 
 function keyPressed() {
-  if (key == "a") {
+  // if (key === "a") {
+  if (keyIsDown(65)) {
     player.moveLeft();
+    // } else if (key === "d") {
+  } else if (keyIsDown(68)) {
+    player.moveRight();
   }
+  clear();
 }
 
 function draw() {
