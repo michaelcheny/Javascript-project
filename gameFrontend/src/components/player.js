@@ -2,20 +2,28 @@ class Player {
   constructor() {
     this.x = width / 2 - 60;
     this.y = height - 120;
-    this.vx = 0;
+    // this.vx = 0;
+    this.xdir = 0;
   }
 
-  goLeft() {
-    this.vx = -5;
-    // if (this.x < 0) this.x = 0;
+  // goLeft() {
+  //   this.vx = -5;
+  // }
+
+  // goRight() {
+  //   this.vx = +5;
+  // }
+
+  setDirection(direction) {
+    this.xdir = direction;
   }
 
-  goRight() {
-    this.vx = +5;
-  }
+  // move(direction) {
+  //   this.x += this.vx;
+  // }
 
-  move() {
-    this.x += this.vx;
+  move(direction) {
+    this.x += this.xdir * 6;
   }
 
   // stayStill() {
