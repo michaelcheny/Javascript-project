@@ -23,6 +23,12 @@ class Player {
   }
 
   show() {
-    image(playerImg, this.x, this.y, 120, 120);
+    let leftWall = 0;
+    let rightWall = 900;
+
+    let xc = constrain(this.x, leftWall, rightWall);
+
+    // image(playerImg, this.x, this.y, 120, 120);
+    image(playerImg, xc, this.y, 120, 120);
   }
 }
