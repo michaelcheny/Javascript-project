@@ -19,12 +19,12 @@ class Player {
   }
 
   move() {
-    this.x += this.xdir * 8;
+    this.x += this.xdir * 10;
   }
 
   show() {
-    let leftWall = 0;
-    let rightWall = 900;
+    let leftWall = -10;
+    let rightWall = 890;
 
     let xc = constrain(this.x, leftWall, rightWall);
 
