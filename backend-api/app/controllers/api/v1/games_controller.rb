@@ -3,7 +3,14 @@ class Api::V1::GamesController < ApplicationController
   def index
     @games = Game.all
 
-    render json: @games, status: 200
+    render json: @games, include: [:player], status: 200
+  end
+
+  def show 
+    @game = Game.find(params[:id])
+
+    render json: @game, include: [:player], status: 200
+
   end
 
   private
