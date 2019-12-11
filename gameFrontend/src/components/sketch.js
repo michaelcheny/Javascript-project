@@ -14,8 +14,8 @@ let rightWall = 900;
 // right arrow = 39
 
 function preload() {
-  backgroundImg = loadImage("src/images/court-background.jpg");
-  playerImg = loadImage("src/images/james-harden-face.gif");
+  // backgroundImg = loadImage("src/images/court-background.jpg");
+  // playerImg = loadImage("src/images/james-harden-face.gif");
 }
 
 function setup() {
@@ -40,7 +40,7 @@ function keyPressed() {
 }
 
 function draw() {
-  background(backgroundImg);
+  // background(backgroundImg);
 
   player.show();
   player.move();

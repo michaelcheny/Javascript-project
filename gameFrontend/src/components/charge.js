@@ -10,6 +10,6 @@ class Charge {
   }
 
   show() {
-    ellipse(240, 240, 80, 80);
+    ellipse(this.x, this.y, 520, 400);
   }
 }
