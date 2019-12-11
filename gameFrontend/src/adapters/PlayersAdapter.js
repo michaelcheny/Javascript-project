@@ -1,15 +1,15 @@
 // Grabs the users from the API from our backend
-class UsersAdapter {
+class PlayersAdapter {
   constructor() {
-    this.baseUrl = "http://localhost:3000//api/v1/users";
+    this.baseUrl = "http://localhost:3000//api/v1/players";
   }
 
-  async getUsers() {
+  async getPlayers() {
     try {
       let res = await fetch(this.baseUrl);
-      let userJson = res.json();
+      let playerJson = res.json();
       // console.log(userJson);
-      return userJson;
+      return playerJson;
     } catch (error) {
       document.getElementById("highscores-list").innerHTML += "<h2>Check to see if your server is running.<h2>";
       console.log(error.message);

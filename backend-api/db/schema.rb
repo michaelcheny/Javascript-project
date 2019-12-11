@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_230733) do
+ActiveRecord::Schema.define(version: 2019_12_11_221206) do
+
+  create_table "games", force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "score", default: 0
+    t.integer "rating", default: 3
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_games_on_player_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer "name"
+    t.integer "highscore", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -19,4 +35,5 @@ ActiveRecord::Schema.define(version: 2019_12_06_230733) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "games", "players"
 end

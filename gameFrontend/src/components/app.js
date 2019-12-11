@@ -1,6 +1,6 @@
 class App {
   constructor() {
-    this.users = new Users();
+    this.players = new Player();
     this.initBindingsAndEventListeners();
     this.gameloop();
   }
@@ -11,12 +11,12 @@ class App {
 
     this.canvas = document.getElementById("game-container");
     this.ctx = this.canvas.getContext("2d");
-    console.log(this);
+    // console.log(this);
 
-    // ctx.clearRect(0, 0, 700, 388);
+    // ctx.clearRect(0, 0, 1000, 900);
 
-    let player = new Player(gameWidth, gameHeight);
-    player.draw(this.ctx);
+    let head = new Harden(gameWidth, gameHeight);
+    head.draw(this.ctx);
   }
 
   // gameloop(timestamp) {
