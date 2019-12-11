@@ -4,14 +4,7 @@
   margin-left: auto;
   margin-right: auto;
   display: block;
-
-  /* margin: 0;
-  display: flex; */
-
-  background: url("../src/images/court-background.jpg");
-
-  /* This centers our sketch horizontally. */
-  /* justify-content: center;
-
-  align-items: center; */
+  width: 1000;
+  height: 900;
+  background: url("../assets/court-background.jpg");
 }
