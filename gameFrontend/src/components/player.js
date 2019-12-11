@@ -3,8 +3,8 @@ class Player {
     // this.x = width / 2 - 60;
     // this.y = height - 120;
     // this.xdir = 0;
-    this.width = 150;
-    this.height = 30;
+    this.width = 130;
+    this.height = 188;
 
     this.position = {
       x: gameWidth / 2 - this.width / 2,
@@ -39,6 +39,9 @@ class Player {
   // }
 
   draw(ctx) {
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+    let img = document.getElementById("harden-face");
+    console.log(img);
+    ctx.drawImage(img, this.position.x, this.position.y, this.width, this.height);
+    // ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 }
