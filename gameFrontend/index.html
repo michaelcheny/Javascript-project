@@ -22,6 +22,16 @@
   <body>
     <div class="container-fluid">
       <canvas id="game-container" width="1000" height="900"></canvas>
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+      <script type="text/javascript">
+        $(function() {
+          let move = 0;
+          setInterval(() => {
+            move += 1;
+            $("canvas").css("background-position-y", move + "px");
+          });
+        });
+      </script>
       <!-- <div id="game-container" width="1000" height="900"></div> -->
 
       <div class="row">
