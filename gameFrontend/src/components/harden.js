@@ -1,16 +1,14 @@
 class Harden {
   constructor(gameWidth, gameHeight) {
-    // this.x = width / 2 - 60;
-    // this.y = height - 120;
-    // this.xdir = 0;
-
-    // for canvas
+    this.gameWidth = gameWidth;
     // this.width = 130;
     this.width = gameWidth / 7.68;
     // console.log(gameWidth / 7.68);
     // this.height = 188;
     this.height = gameHeight / 4.78;
     // console.log(gameHeight / 4.78);
+    this.maxSpeed = 10;
+    this.speed = 0;
 
     this.position = {
       x: gameWidth / 2 - this.width / 2,
@@ -22,6 +20,13 @@ class Harden {
   //   this.xdir = direction;
   // }
 
+  dashLeft() {
+    this.speed = -this.maxSpeed;
+  }
+
+  dashRight() {
+    this.speed = +this.maxSpeed;
+  }
   // move() {
   //   this.x += this.xdir * 10;
   // }
@@ -44,6 +49,11 @@ class Harden {
 
   update(changeInTime) {
     if (!changeInTime) return;
-    // this.position.x += 5 / changeInTime;
+    this.position.x += this.speed;
+    if (this.position.x < 0) {
+      this.position.x = 0;
+    } else if (this.position.x + this.width > this.gameWidth) {
+      this.position.x = this.gameWidth - this.width;
+    }
   }
 }
