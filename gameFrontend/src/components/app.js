@@ -1,6 +1,7 @@
 class App {
   constructor() {
-    this.players = new Player();
+    this.playerScores = new Player();
+    // this.players = new Player(this.playerScoresAdapter);
     this.initBindingsAndEventListeners();
     // this.gameloop();
   }
