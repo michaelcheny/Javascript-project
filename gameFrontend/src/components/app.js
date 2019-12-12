@@ -17,14 +17,14 @@ class App {
   }
 
   gameloop(timestamp) {
+    this.changeInTime = timestamp - this.lastTime;
     this.lastTime = timestamp;
-    let changeInTime = timestamp - this.lastTime;
     this.ctx.clearRect(0, 0, this.gameWidth, this.gameHeight);
 
-    this.head.update();
+    this.head.update(this.changeInTime);
     this.head.draw(this.ctx);
     // console.log(this.ctx);
     // this.ctx.clearRect(0, 0, 1000, 900);
-    // console.log(this.player);
+    requestAnimationFrame(this.gameloop.bind(this));
   }
 }

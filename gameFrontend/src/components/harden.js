@@ -41,6 +41,6 @@ class Harden {
 
   update(changeInTime) {
     if (!changeInTime) return;
-    this.position.x += 5 / changeInTime;
+    // this.position.x += 5 / changeInTime;
   }
 }
