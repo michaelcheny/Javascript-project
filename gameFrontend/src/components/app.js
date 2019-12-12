@@ -14,6 +14,8 @@ class App {
     // console.log(this.gameHeight);
     this.head = new Harden(this.gameWidth, this.gameHeight);
     this.head.draw(this.ctx);
+
+    this.inputHandler = new InputHandler(this.head);
   }
 
   gameloop(timestamp) {
