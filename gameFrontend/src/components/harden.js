@@ -5,8 +5,12 @@ class Harden {
     // this.xdir = 0;
 
     // for canvas
-    this.width = 130;
-    this.height = 188;
+    // this.width = 130;
+    this.width = gameWidth / 7.68;
+    // console.log(gameWidth / 7.68);
+    // this.height = 188;
+    this.height = gameHeight / 4.78;
+    // console.log(gameHeight / 4.78);
 
     this.position = {
       x: gameWidth / 2 - this.width / 2,
@@ -32,7 +36,6 @@ class Harden {
   //   image(playerImg, xc, this.y, 120, 120);
   // }
 
-  // for canvas
   draw(ctx) {
     let img = document.getElementById("harden-face");
     ctx.drawImage(img, this.position.x, this.position.y, this.width, this.height);
