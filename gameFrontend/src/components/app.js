@@ -3,7 +3,7 @@ class App {
     this.playerScores = new Player();
     // this.players = new Player(this.playerScoresAdapter);
     this.initBindingsAndEventListeners();
-    // this.gameloop();
+    this.gameloop();
   }
 
   initBindingsAndEventListeners() {
@@ -19,11 +19,12 @@ class App {
   gameloop(timestamp) {
     this.lastTime = timestamp;
     let changeInTime = timestamp - this.lastTime;
-    ctx.clearRect(0, 0, this.gameWidth, this.gameHeight);
+    this.ctx.clearRect(0, 0, this.gameWidth, this.gameHeight);
 
-    head.upda;
-    console.log(this.ctx);
-    this.ctx.clearRect(0, 0, 1000, 900);
-    console.log(this.player);
+    this.head.update();
+    this.head.draw(this.ctx);
+    // console.log(this.ctx);
+    // this.ctx.clearRect(0, 0, 1000, 900);
+    // console.log(this.player);
   }
 }
