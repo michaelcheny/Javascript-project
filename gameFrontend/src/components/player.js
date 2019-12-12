@@ -1,12 +1,12 @@
 class Player {
   constructor() {
     // console.log(playerJson);
-    this.players = [];
+    // this.players = [];
     this.bindEventListeners();
     this.adapter = new PlayersAdapter();
     // console.log(this.adapter.getPlayers());
     this.fetchAndLoadPlayers();
-    console.log(this.players);
+    // console.log(this.players);
 
     // this.id = playerJson.id;
     // this.name = playerJson.name;
@@ -35,14 +35,14 @@ class Player {
       console.log(error.message);
     }
   }
-  getInfoFromPlayer(player) {
-    // console.log(player.id);
-    this.id = player.id;
-    // console.log(this.id);
-    this.name = player.name;
-    this.highscore = player.highscore;
-    this.date = player.created_at;
-  }
+  // getInfoFromPlayer(player) {
+  //   // console.log(player.id);
+  //   this.id = player.id;
+  //   // console.log(this.id);
+  //   this.name = player.name;
+  //   this.highscore = player.highscore;
+  //   this.date = player.created_at;
+  // }
 
   render(player) {
     // const highscoresContainer = document.getElementById("highscores-list");
