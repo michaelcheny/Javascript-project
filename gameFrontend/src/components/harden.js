@@ -1,4 +1,4 @@
-class Player {
+class Harden {
   constructor(gameWidth, gameHeight) {
     // this.x = width / 2 - 60;
     // this.y = height - 120;

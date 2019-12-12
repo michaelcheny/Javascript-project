@@ -2,7 +2,7 @@ class App {
   constructor() {
     this.players = new Player();
     this.initBindingsAndEventListeners();
-    this.gameloop();
+    // this.gameloop();
   }
 
   initBindingsAndEventListeners() {

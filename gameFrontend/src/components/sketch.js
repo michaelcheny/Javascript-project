@@ -32,7 +32,7 @@ function setup() {
   // let player = new Player(gameWidth, gameHeight);
   // player.draw(ctx);
 
-  player = new Player();
+  // player = new Player();
   // let constrainedPlayer = constrain(player, leftWall, rightWall);
 }
 

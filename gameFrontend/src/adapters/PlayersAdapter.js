@@ -8,7 +8,7 @@ class PlayersAdapter {
     try {
       let res = await fetch(this.baseUrl);
       let playerJson = res.json();
-      // console.log(userJson);
+      console.log(userJson);
       return playerJson;
     } catch (error) {
       document.getElementById("highscores-list").innerHTML += "<h2>Check to see if your server is running.<h2>";
