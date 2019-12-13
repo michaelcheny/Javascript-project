@@ -1,0 +1,1 @@
+class Charge extends Defence {}
