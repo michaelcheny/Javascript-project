@@ -25,23 +25,20 @@ class App {
     this.head = new Harden(this.gameWidth, this.gameHeight);
     this.head.draw(this.ctx);
 
-    // if (Math.random() < 0.01) {
-    //   this.defenders.push(new Harden(this.gameWidth, this.gameHeight));
-    // }
-    console.log(this.defenders);
+    // console.log(this.defenders);
 
     this.interval = setInterval(() => {
-      const rand = Math.floor(Math.random() * 10);
+      const rand = Math.floor(Math.random() * 6);
       if (rand === 4) {
-        this.defenders.push(new Defence(this.gameWidth, this.gameHeight));
+        this.defence = new Defence(this.gameWidth, this.gameHeight);
+        this.defenders.push(this.defence);
+        this.defence.draw(this.ctx);
       }
     }, 500);
 
     // this.inputHandler = new InputHandler(this.head);
 
     // working
-    this.defence = new Defence(this.gameWidth, this.gameHeight);
-    this.defence.draw(this.ctx);
   }
 
   gameloop(timestamp) {
@@ -53,9 +50,16 @@ class App {
     this.head.draw(this.ctx);
 
     for (let d of this.defenders) {
-      console.log(d);
+      // console.log(this.defender);
       d.update(this.changeInTime);
       d.draw(this.ctx);
+      // console.log(d.position.y);
+      // if (d.position.y > 900) {
+      //   d.delete();
+      // }
+      const outOfBound = this.defenders.filter(d => {
+        if (d.location !== undefined) d.location.y > 900;
+      });
     }
 
     // this.defence.update(this.changeInTime);

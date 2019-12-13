@@ -5,13 +5,16 @@ class Defence {
     // this.location = startingLoc;
     // this.velocity = velocity;
     // this.img = image;
+
+    const randomSpawnPosition = Math.floor(Math.random() * (gameWidth - 65 - 0 + 1));
+
     this.gameWidth = gameWidth;
     this.gameWidth = gameWidth / 10;
     this.gameHeight = gameHeight / 10;
     this.speed = 100;
     this.position = {
       // x: gameWidth / 2 - this.width / 2,
-      x: 400,
+      x: randomSpawnPosition,
       // y: gameHeight - this.height - 5
       y: this.gameHeight - 200
     };
