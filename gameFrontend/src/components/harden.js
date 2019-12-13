@@ -31,7 +31,7 @@ class Harden {
 
   draw(ctx) {
     let img = document.getElementById("harden-face");
-    ctx.drawImage(img, this.position.x, this.position.y, this.width, this.height);
+    ctx.drawImage(img, this.position.x, this.position.y, 86.4, 164);
     // ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
