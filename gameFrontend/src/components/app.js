@@ -3,7 +3,6 @@ class App {
     this.playerScores = new Player();
     this.initBindingsAndEventListeners();
     this.gameloop();
-    this.allDrawCharge = [];
   }
   // make array to hold
   // this.allPlayer = []
@@ -21,11 +20,10 @@ class App {
     this.gameHeight = this.canvas.height;
     this.gameWidth = this.canvas.width;
     this.defenders = [];
+    this.allCharge = [];
 
     this.head = new Harden(this.gameWidth, this.gameHeight);
     this.head.draw(this.ctx);
-
-    // console.log(this.defenders);
 
     this.interval = setInterval(() => {
       const rand = Math.floor(Math.random() * 5);
@@ -33,12 +31,12 @@ class App {
         this.defence = new Defence(this.gameWidth, this.gameHeight);
         this.defenders.push(this.defence);
         this.defence.draw(this.ctx);
+
+        this.avoidCharge = new Charge(this.gameWidth, this.gameHeight);
+        this.allCharge.push(this.avoidCharge);
+        this.avoidCharge.draw(this.ctx);
       }
     }, 500);
-
-    // this.inputHandler = new InputHandler(this.head);
-
-    // working
   }
 
   gameloop(timestamp) {
@@ -50,15 +48,17 @@ class App {
     this.head.draw(this.ctx);
 
     for (let d of this.defenders) {
-      // console.log(this.defender);
       d.update(this.changeInTime);
       d.draw(this.ctx);
-      // console.log(d.position.y);
-      // if (d.position.y > 900) {
-      //   d.delete();
-      // }
       const outOfBound = this.defenders.filter(d => {
         if (d.location !== undefined) d.location.y > 900;
+      });
+    }
+    for (let charge of this.allCharge) {
+      charge.update(this.changeInTime);
+      charge.draw(this.ctx);
+      const out = this.allCharge.filter(c => {
+        if (c.location !== undefined) c.location.y > 900;
       });
     }
 
