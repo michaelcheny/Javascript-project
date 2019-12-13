@@ -39,16 +39,6 @@ class Harden {
     if (!changeInTime) return;
     this.position.x += this.speed;
     if (this.position.x < 0) this.position.x = 0;
-
     if (this.position.x + this.width > this.gameWidth) this.position.x = this.gameWidth - this.width;
-
-    // if (this.position.x < this.gameWidth / 7) {
-    // this.position.x = this.gameWidth / 7;
-    // } else if (this.position.x + this.width > this.gameWidth * 0.85) {
-    // this.position.x = this.gameWidth - this.width;
-    // this.position.x = this.gameWidth * 0.85 - this.width;
-    // } else if (this.position.x === this.gameWidth / 2 - this.width / 2 && this.speed > 0) {
-    // alert("middle");
-    // this.stop();
   }
 }
