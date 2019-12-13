@@ -31,7 +31,8 @@ class App {
         this.defence = new Defence(this.gameWidth, this.gameHeight);
         this.defenders.push(this.defence);
         this.defence.draw(this.ctx);
-
+      }
+      if (rand < 1) {
         this.avoidCharge = new Charge(this.gameWidth, this.gameHeight);
         this.allCharge.push(this.avoidCharge);
         this.avoidCharge.draw(this.ctx);
