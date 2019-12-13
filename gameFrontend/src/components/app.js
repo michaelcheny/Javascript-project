@@ -3,6 +3,7 @@ class App {
     this.playerScores = new Player();
     this.initBindingsAndEventListeners();
     this.gameloop();
+    this.allDrawCharge = [];
   }
   // make array to hold
   // this.allPlayer = []
@@ -19,13 +20,27 @@ class App {
     this.ctx = this.canvas.getContext("2d");
     this.gameHeight = this.canvas.height;
     this.gameWidth = this.canvas.width;
+    this.defenders = [];
 
     this.head = new Harden(this.gameWidth, this.gameHeight);
     this.head.draw(this.ctx);
 
-    this.inputHandler = new InputHandler(this.head);
+    // if (Math.random() < 0.01) {
+    //   this.defenders.push(new Harden(this.gameWidth, this.gameHeight));
+    // }
+    console.log(this.defenders);
+
+    this.interval = setInterval(() => {
+      const rand = Math.floor(Math.random() * 10);
+      if (rand === 4) {
+        this.defenders.push(new Defence(this.gameWidth, this.gameHeight));
+      }
+    }, 500);
+
+    // this.inputHandler = new InputHandler(this.head);
+
+    // working
     this.defence = new Defence(this.gameWidth, this.gameHeight);
-    console.log(this.defence);
     this.defence.draw(this.ctx);
   }
 
@@ -37,8 +52,14 @@ class App {
     this.head.update(this.changeInTime);
     this.head.draw(this.ctx);
 
-    this.defence.update(this.changeInTime);
-    this.defence.draw(this.ctx);
+    for (let d of this.defenders) {
+      console.log(d);
+      d.update(this.changeInTime);
+      d.draw(this.ctx);
+    }
+
+    // this.defence.update(this.changeInTime);
+    // this.defence.draw(this.ctx);
 
     requestAnimationFrame(this.gameloop.bind(this));
   }
