@@ -5,7 +5,7 @@ class Charge {
 
     this.gameHeight = gameHeight / 10;
     // this.speed = 100;
-    this.speed = Math.random() * (130 - 90) + 90;
+    this.speed = Math.random() * (170 - 110) + 110;
     this.position = {
       x: randomSpawnPosition,
       y: this.gameHeight - 200
