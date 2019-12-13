@@ -28,8 +28,8 @@ class App {
     // console.log(this.defenders);
 
     this.interval = setInterval(() => {
-      const rand = Math.floor(Math.random() * 6);
-      if (rand === 4) {
+      const rand = Math.floor(Math.random() * 5);
+      if (rand < 3) {
         this.defence = new Defence(this.gameWidth, this.gameHeight);
         this.defenders.push(this.defence);
         this.defence.draw(this.ctx);

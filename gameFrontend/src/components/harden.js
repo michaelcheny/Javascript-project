@@ -7,7 +7,7 @@ class Harden {
     // this.height = 188;
     this.height = gameHeight / 4.78;
     // console.log(gameHeight / 4.78);
-    this.maxSpeed = 18;
+    this.maxSpeed = 15;
     this.speed = 0;
 
     this.position = {
