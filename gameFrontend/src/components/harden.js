@@ -14,6 +14,7 @@ class Harden {
       x: gameWidth / 2 - this.width / 2,
       y: gameHeight - this.height - 5
     };
+    this.inputHandler = new InputHandler(this);
   }
 
   dashLeft() {
