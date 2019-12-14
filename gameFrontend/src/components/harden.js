@@ -1,5 +1,4 @@
 class Harden {
-  // constructor(gameWidth, gameHeight) {
   constructor(game) {
     this.gameWidth = game.gameWidth;
     this.maxSpeed = 15;
@@ -28,8 +27,6 @@ class Harden {
   stop() {
     this.speed = 0;
   }
-
-  // checkCollision()
 
   draw(ctx) {
     let img = document.getElementById("harden-face");

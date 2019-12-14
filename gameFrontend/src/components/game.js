@@ -22,12 +22,10 @@ class Game {
     }, 500);
 
     this.gameObjects = [this.defenders, this.allCharge];
-    // console.log(this.gameObjects);
   }
 
   update(changeInTime) {
     this.head.update(changeInTime);
-
     this.gameObjects.forEach(opponents => {
       for (let opponent of opponents) {
         opponent.update(changeInTime);
@@ -36,41 +34,14 @@ class Game {
         });
       }
     });
-
-    //   for (let d of this.defenders) {
-    //     d.update(changeInTime);
-    //     const outOfBound = this.defenders.filter(d => {
-    //       if (d.location !== undefined) d.location.y > 900;
-    //     });
-    //   }
-    //   for (let charge of this.allCharge) {
-    //     charge.update(changeInTime);
-    //     const out = this.allCharge.filter(c => {
-    //       if (c.location !== undefined) c.location.y > 900;
-    //     });
-    //   }
   }
 
   draw(ctx) {
     this.head.draw(ctx);
-
     this.gameObjects.forEach(opponents => {
       for (let d of this.defenders) {
         d.draw(ctx);
       }
     });
-
-    // for (let d of this.defenders) {
-    //   d.draw(ctx);
-    //   // const outOfBound = this.defenders.filter(d => {
-    //   //   if (d.location !== undefined) d.location.y > 900;
-    //   // });
-    // }
-    // for (let charge of this.allCharge) {
-    //   charge.draw(ctx);
-    //   // const out = this.allCharge.filter(c => {
-    //   //   if (c.location !== undefined) c.location.y > 900;
-    //   // });
-    // }
   }
 }
