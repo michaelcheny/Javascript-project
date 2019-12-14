@@ -6,15 +6,25 @@ class Collision {
     this.firstRectYBottom = harden.position.y + 164;
 
     this.secondRectXLeft = opponent.position.x;
-    this.secondRectXTop = opponent.position.y;
+    this.secondRectYTop = opponent.position.y;
     this.secondRectXRight = opponent.position.x + 130;
-    this.secondRectXBottom = opponent.position.y + 130;
+    this.secondRectYBottom = opponent.position.y + 130;
 
-    console.log("x left: " + head.position.x);
-    console.log("y top: " + head.position.y);
-    console.log("x right: " + (head.position.x + 86.4));
-    console.log("y bottom: " + (head.position.y + 164));
-    if (harden.position.x > opponent.position.x) {
+    // console.log(opponent.position.x);
+
+    this.checkOverlap();
+  }
+
+  checkOverlap() {
+    if (this.firstRectXLeft > this.secondRectXRight || this.secondRectXLeft > this.firstRectXRight) {
+      // console.log("huh");
+      return false;
     }
+    if (this.firstRectYTop < this.secondRectYBottom || this.secondRectYTop < this.firstRectYBottom) {
+      // console.log("whaaaa");
+      return false;
+    }
+    console.log("overlapped");
+    return true;
   }
 }

@@ -23,6 +23,7 @@ class App {
     this.allCharge = [];
 
     this.head = new Harden(this.gameWidth, this.gameHeight);
+
     this.head.draw(this.ctx);
 
     this.interval = setInterval(() => {
@@ -30,12 +31,13 @@ class App {
       if (rand < 3) {
         this.defence = new Defence(this.gameWidth, this.gameHeight);
         this.defenders.push(this.defence);
-        this.defence.draw(this.ctx);
+        // this.defence.draw(this.ctx);
+        // this.collision = new Collision(this.head, this.defence);
       }
       if (rand < 1) {
         this.avoidCharge = new Charge(this.gameWidth, this.gameHeight);
         this.allCharge.push(this.avoidCharge);
-        this.avoidCharge.draw(this.ctx);
+        // this.avoidCharge.draw(this.ctx);
       }
     }, 500);
   }
@@ -51,6 +53,12 @@ class App {
     for (let d of this.defenders) {
       d.update(this.changeInTime);
       d.draw(this.ctx);
+
+      // const harden = this.head;
+      // console.log(this.head);
+      // const newCollision = new Collision(this.head, d);
+      // console.log(newCollision);
+
       const outOfBound = this.defenders.filter(d => {
         if (d.location !== undefined) d.location.y > 900;
       });

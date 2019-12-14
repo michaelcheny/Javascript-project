@@ -4,7 +4,10 @@ class Charge {
     const randomSpawnPosition = Math.floor(Math.random() * (gameWidth - 130));
 
     this.gameHeight = gameHeight / 10;
-    // this.speed = 100;
+    this.size = {
+      x: 100,
+      y: 150
+    };
     this.speed = Math.random() * (170 - 110) + 110;
     this.position = {
       x: randomSpawnPosition,
@@ -14,8 +17,7 @@ class Charge {
 
   draw(ctx) {
     this.img = document.getElementById("steven-adams-charge");
-    // console.log(this.img);
-    ctx.drawImage(this.img, this.position.x, this.position.y, 100, 150);
+    ctx.drawImage(this.img, this.position.x, this.position.y, this.size.x, this.size.y);
   }
 
   update(changeInTime) {
