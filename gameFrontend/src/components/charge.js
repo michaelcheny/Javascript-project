@@ -15,7 +15,7 @@ class Charge {
   draw(ctx) {
     this.img = document.getElementById("steven-adams-charge");
     // console.log(this.img);
-    ctx.drawImage(this.img, this.position.x, this.position.y, 101, 151);
+    ctx.drawImage(this.img, this.position.x, this.position.y, 100, 150);
   }
 
   update(changeInTime) {
