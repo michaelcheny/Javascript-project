@@ -1,9 +1,10 @@
 class Defence {
   // constructor(image, startingLoc = { x: 400, y: 400 }, velocity = { x: 10, y: 10 }, size = { x: 100, y: 100 }) {
-  constructor(gameWidth, gameHeight) {
-    const randomSpawnPosition = Math.floor(Math.random() * (gameWidth - 130));
+  constructor(game) {
+    // constructor(gameWidth, gameHeight) {
+    const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - 130));
     this.size = 130;
-    this.gameHeight = gameHeight / 10;
+    this.gameHeight = game.gameHeight / 10;
     this.speed = Math.random() * (130 - 90) + 90;
     this.position = {
       x: randomSpawnPosition,

@@ -1,6 +1,7 @@
 class Harden {
-  constructor(gameWidth, gameHeight) {
-    this.gameWidth = gameWidth;
+  // constructor(gameWidth, gameHeight) {
+  constructor(game) {
+    this.gameWidth = game.gameWidth;
     this.maxSpeed = 15;
     this.speed = 0;
 
@@ -10,8 +11,8 @@ class Harden {
     };
 
     this.position = {
-      x: gameWidth / 2 - this.size.x / 2,
-      y: gameHeight - this.size.y - 5
+      x: game.gameWidth / 2 - this.size.x / 2,
+      y: game.gameHeight - this.size.y - 5
     };
     this.inputHandler = new InputHandler(this);
   }
