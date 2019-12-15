@@ -3,8 +3,8 @@ class Charge {
   constructor(game) {
     // constructor(gameWidth, gameHeight) {
     const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - 130));
-
-    this.gameHeight = game.gameHeight / 10;
+    // console.log(game.gameHeight);
+    // this.gameHeight = game.gameHeight / 10;
     this.size = {
       x: 100,
       y: 150
@@ -12,7 +12,7 @@ class Charge {
     this.speed = Math.random() * (170 - 110) + 110;
     this.position = {
       x: randomSpawnPosition,
-      y: this.gameHeight - 200
+      y: -200
     };
   }
 

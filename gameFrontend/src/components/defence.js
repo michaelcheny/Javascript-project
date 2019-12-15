@@ -5,11 +5,11 @@ class Defence {
     this.game = game;
     const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - 130));
     this.size = 130;
-    this.gameHeight = game.gameHeight / 10;
+    // this.gameHeight = game.gameHeight / 10;
     this.speed = Math.random() * (130 - 90) + 90;
     this.position = {
       x: randomSpawnPosition,
-      y: this.gameHeight - 200
+      y: -200
     };
   }
 
@@ -22,5 +22,22 @@ class Defence {
     // console.log(this.game.head.position.x);
     if (!changeInTime) return;
     this.position.y += this.speed / changeInTime;
+    // console.log(this.game.defenders); i should filter the array if they past game height over here
+    // const col = new Collision(this.game.head, this);
+    // console.log(col);
+
+    let bottomOfDefence = this.position.y + this.size;
+    let topOfHarden = this.game.head.position.y;
+    let leftOfHarden = this.game.head.position.x;
+    let rightOfHarden = this.game.head.position.x + this.game.head.size.x;
+    let bottomOfHarden = this.game.head.position.y + this.game.head.size.y;
+
+    if (
+      bottomOfDefence >= topOfHarden &&
+      this.position.x >= leftOfHarden &&
+      this.position.x + this.size <= rightOfHarden &&
+      this.position.y + this.size <= bottomOfHarden
+    )
+      console.log("boomed");
   }
 }

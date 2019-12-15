@@ -1,3 +1,10 @@
+const GAMESTATE = {
+  PAUSED: 0,
+  RUNNING: 1,
+  MENU: 2,
+  GAMEOVER: 3
+};
+
 class Game {
   constructor(gameWidth, gameHeight) {
     this.gameWidth = gameWidth;
@@ -5,11 +12,20 @@ class Game {
 
     this.defenders = [];
     this.allCharge = [];
+
+    // this.gameStates = {
+    //   paused: 0,
+    //   running: 1,
+    //   menu: 2,
+    //   gameOver: 3
+    // };
   }
 
   start() {
+    this.gameState = GAMESTATE.RUNNING;
+
     this.head = new Harden(this);
-    this.interval = setInterval(() => {
+    setInterval(() => {
       const rand = Math.floor(Math.random() * 5);
       if (rand < 3) {
         this.defence = new Defence(this);
@@ -22,9 +38,12 @@ class Game {
     }, 500);
 
     this.gameObjects = [this.defenders, this.allCharge];
+    this.inputHandler = new InputHandler(this.head, this);
   }
 
   update(changeInTime) {
+    if (this.gameState == GAMESTATE.PAUSED) return;
+
     this.head.update(changeInTime);
     this.gameObjects.forEach(opponents => {
       for (let opponent of opponents) {
@@ -32,6 +51,9 @@ class Game {
         const outOfBound = opponents.filter(o => {
           if (o.location !== undefined) o.location.y > 900;
         });
+        // const lostOpponents = opponents.length - outOfBound.length;
+        // this.opponents = lostOpponents;
+        // delete outOfBound
       }
     });
   }
@@ -39,9 +61,17 @@ class Game {
   draw(ctx) {
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
-      for (let d of this.defenders) {
+      for (let d of opponents) {
         d.draw(ctx);
       }
     });
+  }
+
+  togglePause() {
+    if (this.gameState == GAMESTATE.PAUSED) {
+      this.gameState = GAMESTATE.RUNNING;
+    } else {
+      this.gameState = GAMESTATE.PAUSED;
+    }
   }
 }

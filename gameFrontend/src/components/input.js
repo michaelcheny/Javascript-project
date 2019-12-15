@@ -1,5 +1,5 @@
 class InputHandler {
-  constructor(head) {
+  constructor(head, game) {
     document.addEventListener("keydown", e => {
       if (e.keyCode === 37 || e.keyCode === 65) {
         head.dashLeft();
@@ -10,6 +10,9 @@ class InputHandler {
         console.log("y top: " + head.position.y);
         console.log("x right: " + (head.position.x + 86.4));
         console.log("y bottom: " + (head.position.y + 164));
+      } else if (e.keyCode === 83) {
+        console.log("game");
+        game.togglePause();
       }
     });
 
