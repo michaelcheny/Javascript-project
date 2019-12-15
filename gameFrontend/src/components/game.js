@@ -22,28 +22,30 @@ class Game {
   }
 
   start() {
-    this.gameState = GAMESTATE.RUNNING;
+    this.gameState = GAMESTATE.MENU;
 
-    this.head = new Harden(this);
-    setInterval(() => {
-      const rand = Math.floor(Math.random() * 5);
-      if (rand < 3) {
-        this.defence = new Defence(this);
-        this.defenders.push(this.defence);
-      }
-      if (rand < 1) {
-        this.avoidCharge = new Charge(this);
-        this.allCharge.push(this.avoidCharge);
-      }
-    }, 500);
+    if (this.gameState !== GAMESTATE.PAUSED) {
+      this.head = new Harden(this);
+      setInterval(() => {
+        const rand = Math.floor(Math.random() * 5);
+        if (rand < 3) {
+          this.defence = new Defence(this);
+          this.defenders.push(this.defence);
+        }
+        if (rand < 1) {
+          this.avoidCharge = new Charge(this);
+          this.allCharge.push(this.avoidCharge);
+        }
+      }, 500);
+    }
 
     this.gameObjects = [this.defenders, this.allCharge];
     this.inputHandler = new InputHandler(this.head, this);
   }
 
   update(changeInTime) {
-    if (this.gameState == GAMESTATE.PAUSED) return;
-
+    // if (this.gameState == GAMESTATE.PAUSED) return;
+    if (this.gameState === GAMESTATE.PAUSED || this.gameState === GAMESTATE.MENU) return;
     this.head.update(changeInTime);
     this.gameObjects.forEach(opponents => {
       for (let opponent of opponents) {
@@ -65,6 +67,15 @@ class Game {
         d.draw(ctx);
       }
     });
+    if (this.gameState === GAMESTATE.PAUSED) {
+      ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+      ctx.fillStyle = "rgba(0,0,0,0.5)";
+      ctx.fill();
+      ctx.font = "100px Arial";
+      ctx.fillStyle = "yellow";
+      ctx.textAlign = "center";
+      ctx.fillText("Time Out", this.gameWidth / 2, this.gameHeight / 2);
+    }
   }
 
   togglePause() {

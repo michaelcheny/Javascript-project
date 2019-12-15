@@ -17,10 +17,10 @@ class Collision {
   checkOverlap() {
     // if (this.bBottom >= this.aTop && this.bLeft >= this.aLeft && this.bRight <= this.aRight) {
     if (this.aLeft > this.bRight || this.bLeft > this.aRight) return false;
-    if (this.aTop < this.bBottom || this.bTop < this.aBottom) return false;
+    if (this.aTop > this.bBottom || this.bTop > this.aBottom) return false;
     // this.o.speed = -this.o.speed;
     // this.o.position.y - +this.o.speed;
-    // console.log("overlapped");
+    console.log("overlapped");
     return true;
     // }
   }

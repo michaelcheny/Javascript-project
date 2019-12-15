@@ -3,6 +3,7 @@ class App {
     this.playerScores = new Player();
     this.initBindingsAndEventListeners();
     this.gameloop();
+    // this.thing();
   }
 
   initBindingsAndEventListeners() {
@@ -25,4 +26,8 @@ class App {
 
     requestAnimationFrame(this.gameloop.bind(this));
   }
+
+  // thing() {
+  //   requestAnimationFrame(this.gameloop.bind(this));
+  // }
 }

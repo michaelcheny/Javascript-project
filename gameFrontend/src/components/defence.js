@@ -23,7 +23,7 @@ class Defence {
     if (!changeInTime) return;
     this.position.y += this.speed / changeInTime;
     // console.log(this.game.defenders); i should filter the array if they past game height over here
-    // const col = new Collision(this.game.head, this);
+    const col = new Collision(this.game.head, this);
     // console.log(col);
 
     let bottomOfDefence = this.position.y + this.size;
