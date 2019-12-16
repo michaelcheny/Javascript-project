@@ -1,15 +1,15 @@
 class Collision {
-  constructor(harden, opponent) {
-    this.o = opponent;
-    this.aLeft = harden.position.x;
-    this.aTop = harden.position.y;
-    this.aRight = harden.position.x + harden.size;
-    this.aBottom = harden.position.y + harden.size;
+  constructor(rect1, rect2) {
+    this.o = rect2;
+    this.aLeft = rect1.position.x;
+    this.aTop = rect1.position.y;
+    this.aRight = rect1.position.x + rect1.size;
+    this.aBottom = rect1.position.y + rect1.size;
 
-    this.bLeft = opponent.position.x;
-    this.bTop = opponent.position.y;
-    this.bRight = opponent.position.x + opponent.size.x;
-    this.bBottom = opponent.position.y + opponent.size.y;
+    this.bLeft = rect2.position.x;
+    this.bTop = rect2.position.y;
+    this.bRight = rect2.position.x + rect2.size.x;
+    this.bBottom = rect2.position.y + rect2.size.y;
 
     this.checkOverlap();
   }

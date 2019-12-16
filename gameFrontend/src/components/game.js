@@ -74,7 +74,7 @@ class Game {
       for (let opponent of opponents) {
         opponent.update(changeInTime);
         // const col = new Collision(opponent, this.head);
-
+        // console.log(opponent);
         const outOfBound = opponents.filter(o => {
           if (o.location !== undefined) o.location.y > 900;
         });
@@ -82,14 +82,16 @@ class Game {
     });
 
     this.defenders.forEach(defender => {
-      const col = new Collision(defender, this.head);
-      if (col) {
-        // add point
+      if (defender.position.y < 900) {
+        const col = new Collision(defender, this.head);
       }
+      // if (col) {
+      // add point
+      // }
     });
-    this.allCharge.forEach(defender => {
-      const col = new Collision(defender, this.head);
-    });
+    // this.allCharge.forEach(defender => {
+    //   const col = new Collision(this.head, defender);
+    // });
   }
 
   draw(ctx) {
