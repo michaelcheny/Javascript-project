@@ -3,10 +3,15 @@ class Defence {
   constructor(game) {
     // constructor(gameWidth, gameHeight) {
     this.game = game;
-    const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - 130));
-    this.size = 130;
+    this.size = {
+      x: 130,
+      y: 130
+    };
+    const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - this.size.x));
+    // console.log(game.gameWidth);
+    // console.log(randomSpawnPosition);
     // this.gameHeight = game.gameHeight / 10;
-    this.speed = Math.random() * (130 - 90) + 90;
+    this.speed = Math.random() * 40 + 90;
     this.position = {
       x: randomSpawnPosition,
       y: -200
@@ -15,10 +20,11 @@ class Defence {
 
   draw(ctx) {
     this.img = document.getElementById("draymond-defence");
-    ctx.drawImage(this.img, this.position.x, this.position.y, this.size, this.size);
+    ctx.drawImage(this.img, this.position.x, this.position.y, this.size.x, this.size.y);
   }
 
   update(changeInTime) {
+    // console.log(this.speed);
     if (!changeInTime) return;
     this.position.y += this.speed / changeInTime;
   }

@@ -12,87 +12,68 @@ class Game {
     this.defenders = [];
     this.allCharge = [];
     this.gameObjects = [];
+    this.fouls = 6;
 
     this.gameState = GAMESTATE.MENU;
 
-    // if (this.gameState !== GAMESTATE.PAUSED) {
     this.head = new Harden(this);
-    if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.PAUSED) {
-      setInterval(() => {
+    // if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.PAUSED) {
+    setInterval(() => {
+      if (this.gameState == GAMESTATE.RUNNING) {
         const rand = Math.floor(Math.random() * 5);
         if (rand < 3) {
-          this.defence = new Defence(this);
-          this.defenders.push(this.defence);
+          const defence = new Defence(this);
+          this.defenders.push(defence);
         }
         if (rand < 1) {
-          this.avoidCharge = new Charge(this);
-          this.allCharge.push(this.avoidCharge);
+          const avoidCharge = new Charge(this);
+          this.allCharge.push(avoidCharge);
         }
-      }, 500);
-    }
+        // console.log(this.defenders);
+      }
+    }, 500);
     // }
     this.inputHandler = new InputHandler(this.head, this);
   }
 
   start() {
-    // this.gameState = GAMESTATE.MENU;
-
-    // if (this.gameState !== GAMESTATE.PAUSED) {
-    //   this.head = new Harden(this);
-    //   setInterval(() => {
-    //     const rand = Math.floor(Math.random() * 5);
-    //     if (rand < 3) {
-    //       this.defence = new Defence(this);
-    //       this.defenders.push(this.defence);
-    //     }
-    //     if (rand < 1) {
-    //       this.avoidCharge = new Charge(this);
-    //       this.allCharge.push(this.avoidCharge);
-    //     }
-    //   }, 500);
-    // }
-
-    console.log(this.gameState);
+    // console.log(this.gameState);
     this.gameObjects = [this.defenders, this.allCharge];
-
     this.gameState = GAMESTATE.RUNNING;
-
-    // this.defenders.forEach(defender => {
-    //   const col = new Collision(defender, this.head);
-    // });
-
-    // const col = new Collision(this.game.head, this.head);
-
-    // this.inputHandler = new InputHandler(this.head, this);
   }
 
   update(changeInTime) {
-    // if (this.gameState == GAMESTATE.PAUSED) return;
-    if (this.gameState === GAMESTATE.PAUSED || this.gameState === GAMESTATE.MENU) return;
+    this.defenders = this.defenders.filter(o => {
+      // console.log(o);
+      return o.position.y < 900;
+    });
+
+    this.allCharge = this.allCharge.filter(o => {
+      return o.position.y < 900;
+    });
+    this.gameObjects = [this.defenders, this.allCharge];
+
+    if (this.fouls === 0) this.gameState = GAMESTATE.GAMEOVER;
+    if (this.gameState === GAMESTATE.PAUSED || this.gameState === GAMESTATE.MENU || this.gameState === GAMESTATE.GAMEOVER)
+      return;
     this.head.update(changeInTime);
     this.gameObjects.forEach(opponents => {
       for (let opponent of opponents) {
         opponent.update(changeInTime);
 
         const col = new Collision(opponent, this.head);
-        // console.log(opponent);
-        const outOfBound = opponents.filter(o => {
-          if (o.location !== undefined) o.location.y > 900;
-        });
+
+        // if (col) console.log(opponent);
+        if (col.checkOverlap()) {
+          this.fouls--;
+          console.log(this.fouls);
+        }
+
+        // const outOfBound = opponents.filter(o => {
+        //   if (o.location !== undefined) o.location.y > 900;
+        // });
       }
     });
-
-    // this.defenders.forEach(defender => {
-    //   if (defender.position.y < 900) {
-    //     const col = new Collision(defender, this.head);
-    //   }
-    //   // if (col) {
-    //   // add point
-    //   // }
-    // });
-    // this.allCharge.forEach(defender => {
-    //   const col = new Collision(defender, this.head);
-    // });
   }
 
   draw(ctx) {
@@ -119,6 +100,15 @@ class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("Click Screen to Start", this.gameWidth / 2, this.gameHeight / 2);
+    }
+    if (this.gameState === GAMESTATE.GAMEOVER) {
+      ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+      ctx.fillStyle = "rgba(0,0,0,1)";
+      ctx.fill();
+      ctx.font = "100px Arial";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
     }
   }
 

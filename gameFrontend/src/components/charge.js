@@ -1,11 +1,11 @@
 class Charge {
   constructor(game) {
-    const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - 130));
     this.size = {
       x: 100,
       y: 150
     };
-    this.speed = Math.random() * (170 - 110) + 110;
+    const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - this.size.x));
+    this.speed = Math.random() * 60 + 110;
     this.position = {
       x: randomSpawnPosition,
       y: -200
