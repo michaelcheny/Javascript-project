@@ -13,6 +13,7 @@ class Game {
     this.allCharge = [];
     this.gameObjects = [];
     this.fouls = 6;
+    this.score = 0;
 
     this.gameState = GAMESTATE.MENU;
 
@@ -39,30 +40,33 @@ class Game {
   }
 
   update(changeInTime) {
-    this.defenders = this.defenders.filter(o => {
-      return o.position.y < 900;
-    });
-    this.allCharge = this.allCharge.filter(o => {
-      return o.position.y < 900;
-    });
+    this.defenders = this.defenders.filter(o => o.position.y < 900);
+    this.allCharge = this.allCharge.filter(o => o.position.y < 900);
     this.gameObjects = [this.defenders, this.allCharge];
 
     if (this.fouls === 0) this.gameState = GAMESTATE.GAMEOVER;
     if (this.gameState === GAMESTATE.PAUSED || this.gameState === GAMESTATE.MENU || this.gameState === GAMESTATE.GAMEOVER)
       return;
+
     this.head.update(changeInTime);
-    this.gameObjects.forEach(opponents => {
-      for (let opponent of opponents) {
-        opponent.update(changeInTime);
 
-        const col = new Collision(opponent, this.head);
-
-        if (col.checkOverlap()) {
-          this.fouls--;
-          console.log(this.fouls);
-        }
+    for (let defender of this.defenders) {
+      defender.update(changeInTime);
+      const collision = new Collision(defender, this.head);
+      if (collision.checkOverlap()) {
+        this.score += 100;
+        // console.log(this.score);
       }
-    });
+    }
+
+    for (let charge of this.allCharge) {
+      charge.update(changeInTime);
+      const collision = new Collision(charge, this.head);
+      if (collision.checkOverlap()) {
+        this.fouls--;
+        // console.log(this.fouls);
+      }
+    }
   }
 
   draw(ctx) {
@@ -95,7 +99,7 @@ class Game {
       ctx.fillStyle = "rgba(0,0,0,1)";
       ctx.fill();
       ctx.font = "100px Arial";
-      ctx.fillStyle = "white";
+      ctx.fillStyle = "red";
       ctx.textAlign = "center";
       ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
     }
