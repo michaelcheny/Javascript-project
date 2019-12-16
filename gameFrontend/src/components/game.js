@@ -15,8 +15,9 @@ class Game {
 
     this.gameState = GAMESTATE.MENU;
 
-    if (this.gameState !== GAMESTATE.PAUSED) {
-      this.head = new Harden(this);
+    // if (this.gameState !== GAMESTATE.PAUSED) {
+    this.head = new Harden(this);
+    if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.PAUSED) {
       setInterval(() => {
         const rand = Math.floor(Math.random() * 5);
         if (rand < 3) {
@@ -29,6 +30,7 @@ class Game {
         }
       }, 500);
     }
+    // }
     this.inputHandler = new InputHandler(this.head, this);
   }
 
@@ -50,9 +52,16 @@ class Game {
     //   }, 500);
     // }
 
+    console.log(this.gameState);
     this.gameObjects = [this.defenders, this.allCharge];
 
     this.gameState = GAMESTATE.RUNNING;
+
+    // this.defenders.forEach(defender => {
+    //   const col = new Collision(defender, this.head);
+    // });
+
+    // const col = new Collision(this.game.head, this.head);
 
     // this.inputHandler = new InputHandler(this.head, this);
   }
@@ -64,10 +73,22 @@ class Game {
     this.gameObjects.forEach(opponents => {
       for (let opponent of opponents) {
         opponent.update(changeInTime);
+        // const col = new Collision(opponent, this.head);
+
         const outOfBound = opponents.filter(o => {
           if (o.location !== undefined) o.location.y > 900;
         });
       }
+    });
+
+    this.defenders.forEach(defender => {
+      const col = new Collision(defender, this.head);
+      if (col) {
+        // add point
+      }
+    });
+    this.allCharge.forEach(defender => {
+      const col = new Collision(defender, this.head);
     });
   }
 
