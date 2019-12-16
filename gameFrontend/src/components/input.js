@@ -23,5 +23,9 @@ class InputHandler {
         if (head.speed > 0) head.stop();
       }
     });
+
+    document.addEventListener("click", e => {
+      game.start();
+    });
   }
 }

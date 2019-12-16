@@ -13,7 +13,7 @@ class App {
     this.gameWidth = this.canvas.width;
 
     this.game = new Game(this.gameWidth, this.gameHeight);
-    this.game.start();
+    // this.game.start();
   }
 
   gameloop(timestamp) {
