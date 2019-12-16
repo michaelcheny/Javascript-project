@@ -10,15 +10,13 @@ class Collision {
     this.bTop = rect2.position.y;
     this.bRight = rect2.position.x + rect2.size.x;
     this.bBottom = rect2.position.y + rect2.size.y;
-    // console.log(rect1);
     this.checkOverlap();
   }
 
   checkOverlap() {
     if (this.aLeft > this.bRight || this.bLeft > this.aRight) return false;
     if (this.aTop > this.bBottom || this.bTop > this.aBottom) return false;
-    // console.log(this.aLeft, this.aTop, this.aBottom);
-    // console.log(this.bLeft, this.bTop, this.bBottom);
+
     console.log("boom");
     return true;
   }

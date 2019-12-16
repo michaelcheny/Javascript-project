@@ -17,9 +17,8 @@ class Game {
     this.gameState = GAMESTATE.MENU;
 
     this.head = new Harden(this);
-    // if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.PAUSED) {
     setInterval(() => {
-      if (this.gameState == GAMESTATE.RUNNING) {
+      if (this.gameState === GAMESTATE.RUNNING) {
         const rand = Math.floor(Math.random() * 5);
         if (rand < 3) {
           const defence = new Defence(this);
@@ -29,25 +28,20 @@ class Game {
           const avoidCharge = new Charge(this);
           this.allCharge.push(avoidCharge);
         }
-        // console.log(this.defenders);
       }
     }, 500);
-    // }
     this.inputHandler = new InputHandler(this.head, this);
   }
 
   start() {
-    // console.log(this.gameState);
     this.gameObjects = [this.defenders, this.allCharge];
     this.gameState = GAMESTATE.RUNNING;
   }
 
   update(changeInTime) {
     this.defenders = this.defenders.filter(o => {
-      // console.log(o);
       return o.position.y < 900;
     });
-
     this.allCharge = this.allCharge.filter(o => {
       return o.position.y < 900;
     });
@@ -63,15 +57,10 @@ class Game {
 
         const col = new Collision(opponent, this.head);
 
-        // if (col) console.log(opponent);
         if (col.checkOverlap()) {
           this.fouls--;
           console.log(this.fouls);
         }
-
-        // const outOfBound = opponents.filter(o => {
-        //   if (o.location !== undefined) o.location.y > 900;
-        // });
       }
     });
   }

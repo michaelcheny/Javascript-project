@@ -11,7 +11,6 @@ class InputHandler {
         console.log("x right: " + (head.position.x + 86.4));
         console.log("y bottom: " + (head.position.y + 164));
       } else if (e.keyCode === 83) {
-        // console.log("game");
         game.togglePause();
       }
     });
