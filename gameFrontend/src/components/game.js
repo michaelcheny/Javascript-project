@@ -12,11 +12,16 @@ class Game {
     this.defenders = [];
     this.allCharge = [];
     this.gameObjects = [];
+    this.refs = [];
     this.fouls = 6;
     this.score = 0;
 
     this.gameState = GAMESTATE.MENU;
+    // let lives = new Lives(this);
+    // this.lives = [];
 
+    // this.lives = new Lives(this);
+    // console.log(this.lives);
     this.head = new Harden(this);
     setInterval(() => {
       if (this.gameState === GAMESTATE.RUNNING) {
@@ -28,6 +33,10 @@ class Game {
         if (rand < 1) {
           const avoidCharge = new Charge(this);
           this.allCharge.push(avoidCharge);
+        }
+        if (rand < 1) {
+          const ref = new Referee(this);
+          this.refs.push(ref);
         }
       }
     }, 500);
@@ -42,13 +51,15 @@ class Game {
   update(changeInTime) {
     this.defenders = this.defenders.filter(o => o.position.y < 900);
     this.allCharge = this.allCharge.filter(o => o.position.y < 900);
-    this.gameObjects = [this.defenders, this.allCharge];
+    this.refs = this.refs.filter(o => o.position.y < 900);
+    this.gameObjects = [this.defenders, this.allCharge, this.refs];
 
     if (this.fouls === 0) this.gameState = GAMESTATE.GAMEOVER;
     if (this.gameState === GAMESTATE.PAUSED || this.gameState === GAMESTATE.MENU || this.gameState === GAMESTATE.GAMEOVER)
       return;
 
     this.head.update(changeInTime);
+    // this.lives.update(changeInTime);
 
     for (let defender of this.defenders) {
       defender.update(changeInTime);
@@ -67,9 +78,20 @@ class Game {
         // console.log(this.fouls);
       }
     }
+
+    for (let ref of this.refs) {
+      ref.update(changeInTime);
+      const collision = new Collision(ref, this.head);
+      if (collision.checkOverlap()) {
+        this.fouls++;
+        if (this.fouls > 6) this.fouls = 6;
+        console.log(this.fouls);
+      }
+    }
   }
 
   draw(ctx) {
+    // this.lives.draw(ctx);
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
       for (let d of opponents) {
@@ -104,7 +126,7 @@ class Game {
       ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
     }
     if (this.gameState !== GAMESTATE.MENU) {
-      this.showScore(ctx);
+      this.showScoreAndFouls(ctx);
     }
   }
 
@@ -116,9 +138,23 @@ class Game {
     }
   }
 
-  showScore(ctx) {
+  showScoreAndFouls(ctx) {
     ctx.font = "20px Arial";
+    ctx.textAlign = "center";
     // ctx.fillStyle = "yellow";
-    ctx.fillText("Score: " + this.score, 75, 40);
+    ctx.fillText("Score: " + this.score, 100, 40);
+    ctx.fillText("Fouls Remaining: " + this.fouls, this.gameWidth - 140, 40);
+    // const lives = document.getElementById("lives");
+    // let live1 = ctx.drawImage(lives, this.gameWidth - 50, 30, 30, 57);
+    // let live2 = ctx.drawImage(lives, this.gameWidth - 80, 30, 30, 57);
+    // let live3 = ctx.drawImage(lives, this.gameWidth - 110, 30, 30, 57);
+    // let live4 = ctx.drawImage(lives, this.gameWidth - 140, 30, 30, 57);
+    // let live5 = ctx.drawImage(lives, this.gameWidth - 170, 30, 30, 57);
+    // let live6 = ctx.drawImage(lives, this.gameWidth - 200, 30, 30, 57);
+    // this.lives.push(live1, live2, live3, live4, live5, live6);
+    // console.log(this.lives);
+    // console.log(this.lives);
   }
 }
+
+// add falling down refs for more lives
