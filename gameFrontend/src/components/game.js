@@ -25,16 +25,16 @@ class Game {
     this.head = new Harden(this);
     setInterval(() => {
       if (this.gameState === GAMESTATE.RUNNING) {
-        const rand = Math.floor(Math.random() * 5);
-        if (rand < 3) {
+        const rand = Math.floor(Math.random() * 100);
+        if (rand < 70) {
           const defence = new Defence(this);
           this.defenders.push(defence);
         }
-        if (rand < 1) {
+        if (rand < 20) {
           const avoidCharge = new Charge(this);
           this.allCharge.push(avoidCharge);
         }
-        if (rand < 1) {
+        if (rand < 2) {
           const ref = new Referee(this);
           this.refs.push(ref);
         }
@@ -66,7 +66,7 @@ class Game {
       const collision = new Collision(defender, this.head);
       if (collision.checkOverlap()) {
         this.score += 100;
-        // console.log(this.score);
+        console.log(this.score);
       }
     }
 

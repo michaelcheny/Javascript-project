@@ -17,7 +17,7 @@ class Collision {
     if (this.aLeft > this.bRight || this.bLeft > this.aRight) return false;
     if (this.aTop > this.bBottom || this.bTop > this.aBottom) return false;
 
-    console.log("boom");
+    // console.log("boom");
     return true;
   }
 }

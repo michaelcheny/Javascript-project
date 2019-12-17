@@ -2,8 +2,8 @@ class Defence {
   constructor(game) {
     this.game = game;
     this.size = {
-      x: 130,
-      y: 130
+      x: 120,
+      y: 120
     };
     const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - this.size.x));
     this.speed = Math.random() * 40 + 90;
