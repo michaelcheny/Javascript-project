@@ -103,6 +103,9 @@ class Game {
       ctx.textAlign = "center";
       ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
     }
+    if (this.gameState !== GAMESTATE.MENU) {
+      this.showScore(ctx);
+    }
   }
 
   togglePause() {
@@ -111,5 +114,11 @@ class Game {
     } else {
       this.gameState = GAMESTATE.PAUSED;
     }
+  }
+
+  showScore(ctx) {
+    ctx.font = "20px Arial";
+    // ctx.fillStyle = "yellow";
+    ctx.fillText("Score: " + this.score, 75, 40);
   }
 }
