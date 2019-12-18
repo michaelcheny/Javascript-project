@@ -8,6 +8,7 @@ class GamesAdapter {
       const res = await fetch(this.baseUrl);
       const data = await res.json();
       console.log(data);
+      return data;
     } catch (error) {
       console.log(error.message);
       return "Check if your is running.";
