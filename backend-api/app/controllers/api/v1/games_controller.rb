@@ -2,8 +2,12 @@ class Api::V1::GamesController < ApplicationController
 
   def index
     @games = Game.all
+    @top_5 = Game.top_5_highest_scores
 
-    render json: @games, include: [:player], status: 200
+    render json: {
+      games: @games,
+      top_5: @top_5
+      }, include: [:player], status: 200
   end
 
   def show 
