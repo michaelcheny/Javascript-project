@@ -7,47 +7,45 @@
     <link rel="stylesheet" href="style/style.css" />
 
     <!-- Bootstrap Stuff -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
     <!-- Bootstrap Stuff ends -->
     <title>Come up with a better title</title>
   </head>
 
   <body>
-    <div class="container-fluid">
-      <canvas id="game-container" width="1000" height="900"></canvas>
-      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-      <script type="text/javascript">
-        $(function() {
-          let move = 0;
-          setInterval(() => {
-            move += 1;
-            $("canvas").css("background-position-y", move + "px");
-          });
+    <header>
+      <h1>Floppy Drop</h1>
+    </header>
+
+    <canvas id="game-container" width="1000" height="900"></canvas>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        let move = 0;
+        setInterval(() => {
+          move += 1;
+          $("canvas").css("background-position-y", move + "px");
         });
-      </script>
+      });
+    </script>
 
-      <div class="row">
-        <div class="col-2"></div>
+    <!-- henlo -->
 
-        <div class="col-8">
-          henlo
-          <h1>Placeholder</h1>
-          <div id="name-input-container">
-            <form id="new-name-form">
-              <input type="text" name="" id="" />
-              <input type="submit" value="Submit" />
-            </form>
-          </div>
-          <div id="highscores-list">
-            <h2>Highscores List</h2>
-          </div>
-        </div>
+    <div id="initial-input">
+      <h1>Placeholder</h1>
+      <div id="name-input-container">
+        <form id="new-name-form">
+          <input type="text" name="" id="" />
+          <input type="submit" value="Submit" />
+        </form>
       </div>
+    </div>
 
-      <div class="col-2"></div>
+    <div id="highscores-list">
+      <h2>Highscores List</h2>
     </div>
 
     <img class="img" id="harden-face" src="assets/james-harden-face-cropped.gif" height="314" width="216" />

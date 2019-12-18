@@ -124,6 +124,10 @@ class Game {
       ctx.fillStyle = "red";
       ctx.textAlign = "center";
       ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
+
+      let input = document.getElementById("initial-input");
+
+      // do stuff after gameover with z index pop up form input
     }
     if (this.gameState !== GAMESTATE.MENU) {
       this.showScoreAndFouls(ctx);
