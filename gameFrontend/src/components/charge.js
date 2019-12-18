@@ -5,7 +5,7 @@ class Charge {
       y: 150
     };
     const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - this.size.x));
-    this.speed = Math.random() * 60 + 110;
+    this.speed = Math.random() * 80 + 130;
     this.position = {
       x: randomSpawnPosition,
       y: -200

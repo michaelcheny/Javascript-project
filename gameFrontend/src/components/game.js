@@ -26,11 +26,11 @@ class Game {
     setInterval(() => {
       if (this.gameState === GAMESTATE.RUNNING) {
         const rand = Math.floor(Math.random() * 100);
-        if (rand < 70) {
+        if (rand < 77) {
           const defence = new Defence(this);
           this.defenders.push(defence);
         }
-        if (rand < 20) {
+        if (rand < 30) {
           const avoidCharge = new Charge(this);
           this.allCharge.push(avoidCharge);
         }

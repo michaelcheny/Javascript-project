@@ -1,18 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #242424;
+  background-color: #282a36;
 }
 
 header {
-  background-color: #242424;
+  background-color: white;
   margin: auto;
   /* width: 50%; */
   text-align: center;
-  padding: 1px;
-  color: wheat;
+  padding: 15px;
+  /* color: wheat; */
 }
 
 #game-container {
-  margin-top: 5px;
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
