@@ -20,20 +20,6 @@
       <h1>Floppy Drop</h1>
     </header>
 
-    <canvas id="game-container" width="1000" height="900"></canvas>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script type="text/javascript">
-      $(function() {
-        let move = 0;
-        setInterval(() => {
-          move += 1;
-          $("canvas").css("background-position-y", move + "px");
-        });
-      });
-    </script>
-
-    <!-- henlo -->
-
     <div id="initial-input">
       <h1>Placeholder</h1>
       <div id="name-input-container">
@@ -43,6 +29,10 @@
         </form>
       </div>
     </div>
+    <canvas id="game-container" width="1000" height="900"></canvas>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <!-- henlo -->
 
     <div id="highscores-list">
       <h2>Highscores List</h2>
@@ -54,6 +44,15 @@
     <img class="img" id="ref" src="assets/scottfoster.png" />
     <img class="img" id="lives" src="assets/harden-head.png" />
 
+    <script type="text/javascript">
+      $(function() {
+        let move = 0;
+        setInterval(() => {
+          move += 1;
+          $("canvas").css("background-position-y", move + "px");
+        });
+      });
+    </script>
     <script src="src/components/lives.js"></script>
     <script src="src/components/game.js"></script>
     <script src="src/components/collision.js"></script>

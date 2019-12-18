@@ -9,12 +9,12 @@ body {
 }
 
 header {
-  background-color: white;
+  background-color: #282a36;
   margin: auto;
   /* width: 50%; */
   text-align: center;
   padding: 15px;
-  /* color: wheat; */
+  color: antiquewhite;
 }
 
 #game-container {
@@ -43,11 +43,17 @@ header {
 }
 
 #initial-input {
-  /* display: none; */
+  display: none;
   /* float: left; */
   /* display: inline-block; */
-  /* z-index: 1;
-  position: absolute; */
+  color: antiquewhite;
+  z-index: 1;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  /* text-align: left; */
 }
 
 /* ADD NAV BAR, add hidden high score list to show after game is over add event listeners to swap between game and highscores list */
+/* html is data */
+/* event.target.data-set.id and use to fetch individual shit */

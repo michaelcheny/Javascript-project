@@ -22,6 +22,15 @@ class App {
 
     this.game.update(this.changeInTime);
     this.game.draw(this.ctx);
+    // if (this.game.gameState === GAMESTATE.GAMEOVER) return;
+    if (this.game.gameState === GAMESTATE.GAMEOVER) {
+      let input = document.getElementById("initial-input");
+      // console.log(input);
+      input.style.display = "inline";
+    }
+    // let input = document.getElementById("initial-input");
+    // console.log(input);
+    // input.style.display = "inline";
 
     requestAnimationFrame(this.gameloop.bind(this));
   }
