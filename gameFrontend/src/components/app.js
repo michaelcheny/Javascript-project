@@ -1,6 +1,7 @@
 class App {
   constructor() {
     this.playerScores = new Player();
+    this.gameStats = new GameStats();
     this.initBindingsAndEventListeners();
     this.gameloop();
   }

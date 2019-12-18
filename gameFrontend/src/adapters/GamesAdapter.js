@@ -6,7 +6,7 @@ class GamesAdapter {
   async getGames() {
     try {
       const res = await fetch(this.baseUrl);
-      const data = await res.Json();
+      const data = await res.json();
       console.log(data);
     } catch (error) {
       console.log(error.message);

@@ -6,7 +6,7 @@ class Player {
   }
 
   bindEventListeners() {
-    this.highscoresContainer = document.getElementById("highscores-list");
+    this.highscores_div = document.getElementById("highscores-list");
   }
 
   async fetchAndLoadPlayers() {
@@ -21,7 +21,7 @@ class Player {
   }
 
   render(player) {
-    this.highscoresContainer.innerHTML += `
+    this.highscores_div.innerHTML += `
         <div class="score-for-user">
           <p>${player.name}</p>
           <p>${player.highscore}</p>
