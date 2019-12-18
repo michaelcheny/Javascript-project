@@ -14,7 +14,7 @@ header {
   /* width: 50%; */
   text-align: center;
   padding: 15px;
-  color: antiquewhite;
+  color: #767676;
 }
 
 #game-container {
@@ -52,6 +52,25 @@ header {
   top: 60%;
   left: 50%;
   /* text-align: left; */
+}
+
+#top-5-all-time {
+  color: #767676;
+  margin-bottom: 18px;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 290px;
+}
+
+.score-for-user {
+}
+
+.hug-left {
+  float: left;
+  max-width: 180px;
+}
+.hug-right {
+  float: right;
 }
 
 /* ADD NAV BAR, add hidden high score list to show after game is over add event listeners to swap between game and highscores list */

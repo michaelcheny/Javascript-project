@@ -1,9 +1,8 @@
 class GameStats {
   constructor() {
-    this.bindingsAndEventListeners();
     this.adapter = new GamesAdapter();
+    this.bindingsAndEventListeners();
     this.fetchAndLoadGameStats();
-    // this.renderTop5();
   }
 
   bindingsAndEventListeners() {
@@ -14,10 +13,13 @@ class GameStats {
   async fetchAndLoadGameStats() {
     try {
       let games = await this.adapter.getGames();
-      for (let game of games.games) {
+      for (let game of games.top_5) {
         this.renderTop5(game);
       }
-      console.log(games.games);
+      // console.log(game.top_5_today);
+      for (let game of games.top_5_today) {
+        this.renderTop5Today(game);
+      }
     } catch (error) {
       console.log(error.message);
       return "there was an issue";
@@ -25,15 +27,19 @@ class GameStats {
   }
 
   renderTop5(game) {
-    // try {
-    console.log(this.top5AllTime_div);
-    console.log(this.top5Today_div);
     this.top5AllTime_div.innerHTML += `
-      <div>
-        <p>${game.player.name}</p>
-      </div>`;
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      <ul class="score-for-user">
+        <li><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></li>
+
+      </ul>
+      `;
+  }
+
+  renderTop5Today(game) {
+    this.top5Today_div.innerHTML += `
+    <ul class="score-for-user">
+    <li><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></li>
+  </ul>
+    `;
   }
 }
