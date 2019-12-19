@@ -74,6 +74,7 @@ class Game {
       const collision = new Collision(charge, this.head);
       if (collision.checkOverlap()) {
         this.fouls--;
+        charge.collided = true;
       }
     }
 
@@ -82,11 +83,14 @@ class Game {
       const collision = new Collision(ref, this.head);
       if (collision.checkOverlap()) {
         this.fouls++;
+        ref.collided = true;
         if (this.fouls > 6) this.fouls = 6;
       }
     }
 
     this.defenders = this.defenders.filter(d => !d.collided);
+    this.allCharge = this.allCharge.filter(d => !d.collided);
+    this.refs = this.refs.filter(d => !d.collided);
   }
 
   draw(ctx) {

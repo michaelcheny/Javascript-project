@@ -10,6 +10,7 @@ class Charge {
       x: randomSpawnPosition,
       y: -200
     };
+    this.collided = false;
   }
 
   draw(ctx) {

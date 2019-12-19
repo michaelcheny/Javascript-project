@@ -20,13 +20,12 @@ class GameStats {
       for (let game of games.top_5) {
         this.renderTop5(game);
       }
-      // console.log(game.top_5_today);
       for (let game of games.top_5_today) {
         this.renderTop5Today(game);
       }
     } catch (error) {
       console.log(error.message);
-      return "there was an issue";
+      return "Check to see if your server is up and running.";
     }
   }
 
