@@ -11,15 +11,16 @@ class Defence {
       x: randomSpawnPosition,
       y: -200
     };
-  }
-
-  draw(ctx) {
-    this.img = document.getElementById("draymond-defence");
-    ctx.drawImage(this.img, this.position.x, this.position.y, this.size.x, this.size.y);
+    this.collided = false;
   }
 
   update(changeInTime) {
     if (!changeInTime) return;
     this.position.y += this.speed / changeInTime;
+  }
+
+  draw(ctx) {
+    this.img = document.getElementById("draymond-defence");
+    ctx.drawImage(this.img, this.position.x, this.position.y, this.size.x, this.size.y);
   }
 }

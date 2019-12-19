@@ -66,6 +66,8 @@ class Game {
       const collision = new Collision(defender, this.head);
       if (collision.checkOverlap()) {
         this.score += 100;
+        defender.collided = true;
+
         console.log(this.score);
       }
     }
@@ -85,9 +87,11 @@ class Game {
       if (collision.checkOverlap()) {
         this.fouls++;
         if (this.fouls > 6) this.fouls = 6;
-        console.log(this.fouls);
+        // console.log(this.fouls);
       }
     }
+
+    this.defenders = this.defenders.filter(d => !d.collided);
   }
 
   draw(ctx) {
