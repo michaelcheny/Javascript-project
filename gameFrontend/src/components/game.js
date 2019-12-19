@@ -59,7 +59,6 @@ class Game {
       return;
 
     this.head.update(changeInTime);
-    // this.lives.update(changeInTime);
 
     for (let defender of this.defenders) {
       defender.update(changeInTime);
@@ -67,8 +66,6 @@ class Game {
       if (collision.checkOverlap()) {
         this.score += 100;
         defender.collided = true;
-
-        console.log(this.score);
       }
     }
 
@@ -77,7 +74,6 @@ class Game {
       const collision = new Collision(charge, this.head);
       if (collision.checkOverlap()) {
         this.fouls--;
-        // console.log(this.fouls);
       }
     }
 
@@ -87,7 +83,6 @@ class Game {
       if (collision.checkOverlap()) {
         this.fouls++;
         if (this.fouls > 6) this.fouls = 6;
-        // console.log(this.fouls);
       }
     }
 

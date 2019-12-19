@@ -54,15 +54,17 @@ header {
   /* text-align: left; */
 }
 
-#top-5-all-time {
+.score-for-user {
+  /* list-style: none; */
+}
+
+.scores-list {
   color: #767676;
   margin-bottom: 18px;
   display: inline-block;
   vertical-align: top;
   max-width: 290px;
-}
-
-.score-for-user {
+  padding: 30px;
 }
 
 .hug-left {
