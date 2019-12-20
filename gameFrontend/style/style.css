@@ -55,7 +55,7 @@ header {
 }
 
 .score-for-user {
-  /* list-style: none; */
+  list-style: none;
 }
 
 .scores-list {
@@ -63,16 +63,20 @@ header {
   margin-bottom: 18px;
   display: inline-block;
   vertical-align: top;
-  max-width: 290px;
+  max-width: 400px;
   padding: 30px;
 }
 
 .hug-left {
   float: left;
-  max-width: 180px;
+  max-width: 400px;
+  /* padding: 15px; */
+  padding: 5px 15px 5px 15px;
 }
 .hug-right {
   float: right;
+  /* padding: 15px; */
+  padding: 5px 15px 5px 15px;
 }
 
 /* ADD NAV BAR, add hidden high score list to show after game is over add event listeners to swap between game and highscores list */

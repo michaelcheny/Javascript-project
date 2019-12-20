@@ -43,18 +43,17 @@ class GameStats {
 
   renderTop5(game) {
     this.top5AllTime_div.innerHTML += `
-      <ul class="score-for-user">
-        <li><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></li>
-
-      </ul>
-      `;
+    <div class="score-for-user">
+      <p><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></p>
+    </div>
+    `;
   }
 
   renderTop5Today(game) {
     this.top5Today_div.innerHTML += `
-    <ul class="score-for-user">
-    <li><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></li>
-  </ul>
+    <div class="score-for-user">
+      <p><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></p>
+    </div>
     `;
   }
 
