@@ -9,22 +9,20 @@
 
 
 Player.create([
-  { name: 'Michael', highscore: 3000 },
-  { name: 'Donald Duck', highscore: 2019 },
-  { name: 'Rick Sanchez', highscore: 7000 },
-  { name: 'Toby the Yellow Labrador', highscore: 48 }
+  { name: 'Michael' },
+  { name: 'Donald Duck' },
+  { name: 'Rick Sanchez' },
+  { name: 'Toby the Yellow Labrador' },
+  { name: 'Balthromaw' },
+  { name: 'Slippy the Snake' }
 ])
 
 Game.create([
   {player_id: 1, score: 3000, rating: 4},
   {player_id: 2, score: 2019, rating: 3},
   {player_id: 3, score: 7000, rating: 5},
-  {player_id: 4, score: 7000, rating: 5}
+  {player_id: 4, score: 7000, rating: 5},
+  {player_id: 5, score: 12000, rating: 4},
+  {player_id: 6, score: 22000, rating: 5}
 ])
 
-User.create([
-  { name: 'Michael', score: 3000 },
-  { name: 'Donald Duck', score: 2019 },
-  { name: 'Rick Sanchez', score: 7000 },
-  { name: 'Toby the Yellow Labrador', score: 48 }
-])

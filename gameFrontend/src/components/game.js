@@ -52,6 +52,11 @@ class Game {
     this.defenders = this.defenders.filter(o => o.position.y < 900);
     this.allCharge = this.allCharge.filter(o => o.position.y < 900);
     this.refs = this.refs.filter(o => o.position.y < 900);
+
+    this.defenders = this.defenders.filter(d => !d.collided);
+    this.allCharge = this.allCharge.filter(d => !d.collided);
+    this.refs = this.refs.filter(d => !d.collided);
+
     this.gameObjects = [this.defenders, this.allCharge, this.refs];
 
     if (this.fouls === 0) this.gameState = GAMESTATE.GAMEOVER;
@@ -87,10 +92,6 @@ class Game {
         if (this.fouls > 6) this.fouls = 6;
       }
     }
-
-    this.defenders = this.defenders.filter(d => !d.collided);
-    this.allCharge = this.allCharge.filter(d => !d.collided);
-    this.refs = this.refs.filter(d => !d.collided);
   }
 
   draw(ctx) {
@@ -127,8 +128,6 @@ class Game {
       ctx.fillStyle = "red";
       ctx.textAlign = "center";
       ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
-
-      // do stuff after gameover with z index pop up form input
     }
     if (this.gameState !== GAMESTATE.MENU) {
       this.showScoreAndFouls(ctx);
@@ -161,5 +160,3 @@ class Game {
     // console.log(this.lives);
   }
 }
-
-// add falling down refs for more lives

@@ -23,14 +23,6 @@ ActiveRecord::Schema.define(version: 2019_12_11_221206) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.integer "highscore", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.integer "score", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
