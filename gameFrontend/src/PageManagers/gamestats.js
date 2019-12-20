@@ -9,6 +9,7 @@ class GameStats {
     this.recentScores_div = document.getElementById("recent-scores");
     this.top5AllTime_div = document.getElementById("top-5-all-time");
     this.top5Today_div = document.getElementById("top-5-today");
+    this.averageRating_div = document.getElementById("average-rating");
   }
 
   async fetchAndLoadGameStats() {
@@ -23,6 +24,8 @@ class GameStats {
       for (let game of games.top_5_today) {
         this.renderTop5Today(game);
       }
+      console.log(games.average_rating);
+      this.renderAverageRating(games.average_rating);
     } catch (error) {
       console.log(error.message);
       return "Check to see if your server is up and running.";
@@ -52,6 +55,14 @@ class GameStats {
     <ul class="score-for-user">
     <li><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></li>
   </ul>
+    `;
+  }
+
+  renderAverageRating(gameRating) {
+    this.averageRating_div.innerHTML += `
+      <div class="score-for-user">
+        <p>${gameRating} / 5</p>
+      </div>
     `;
   }
 }
