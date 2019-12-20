@@ -10,5 +10,9 @@ class Game < ApplicationRecord
     where(updated_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).order(score: :desc).limit(5)
   end
 
+  def self.average_rating
+    average(:rating)
+  end
+
   
 end
