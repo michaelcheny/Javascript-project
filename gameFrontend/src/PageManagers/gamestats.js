@@ -24,7 +24,7 @@ class GameStats {
       for (let game of games.top_5_today) {
         this.renderTop5Today(game);
       }
-      console.log(games.average_rating);
+      // console.log(games.average_rating);
       this.renderAverageRating(games.average_rating);
     } catch (error) {
       console.log(error.message);
@@ -60,7 +60,7 @@ class GameStats {
   renderAverageRating(gameRating) {
     this.averageRating_div.innerHTML += `
       <div class="score-for-user">
-        <p>${gameRating} / 5</p>
+        <p>${parseFloat(gameRating).toFixed(2)} / 5</p>
       </div>
     `;
   }
