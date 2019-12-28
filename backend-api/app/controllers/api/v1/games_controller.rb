@@ -1,7 +1,7 @@
 class Api::V1::GamesController < ApplicationController
 
   def index
-    @games = Game.all
+    @games = Game.all.order(created_at: :desc)
     @top_5 = Game.top_5_highest_scores
     @top_5_today = Game.top_5_scores_today
     @average = Game.average_rating

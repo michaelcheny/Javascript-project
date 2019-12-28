@@ -36,7 +36,6 @@ class GameStats {
     this.recentScores_div.innerHTML += `
       <ul class="score-for-user">
         <li><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></li>
-
       </ul>
       `;
   }
