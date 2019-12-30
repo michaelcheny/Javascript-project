@@ -23,6 +23,18 @@ class Game {
     this.nameInput = document.getElementById("player-name");
     this.ratingInput = document.getElementById("game-rating");
 
+    // move this somewhereeeeee elseeeee
+    this.inputForm_div.addEventListener("submit", e => {
+      e.preventDefault();
+      // console.log(e);
+      const name = this.nameInput.value;
+      const score = this.score;
+      const rating = this.ratingInput.value;
+      // debugger;
+      this.gameStats.adapter.saveGame(name, score, rating);
+      //
+    });
+
     this.head = new Harden(this);
     setInterval(() => {
       if (this.gameState === GAMESTATE.RUNNING) {
@@ -111,16 +123,6 @@ class Game {
     if (this.gameState === GAMESTATE.GAMEOVER) {
       this.inputForm_div.style.display = "inline";
 
-      this.inputForm_div.addEventListener("submit", e => {
-        e.preventDefault();
-        // console.log(e);
-        const name = this.nameInput.value;
-        const score = this.score;
-        const rating = this.ratingInput.value;
-        this.gameStats.adapter.saveGame(name, score, rating);
-        // move th?is shit to the game class
-      });
-
       this.showGameOver(ctx);
     }
     if (this.gameState !== GAMESTATE.MENU) {
@@ -145,7 +147,6 @@ class Game {
     ctx.textAlign = "center";
     ctx.fillText("Click Screen to Start", this.gameWidth / 2, this.gameHeight / 2);
   }
-  aaaa;
 
   showPausedMenu(ctx) {
     ctx.rect(0, 0, this.gameWidth, this.gameHeight);

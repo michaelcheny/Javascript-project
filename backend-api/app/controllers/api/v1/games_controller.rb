@@ -24,17 +24,18 @@ class Api::V1::GamesController < ApplicationController
   def create
     player = Player.find_or_create_by(name: params[:name])
     game = Game.new(player: player, score: params[:score], rating: params[:rating])
+    # byebug
     if game.save
       render json: game, include: [:player], status: 200
     else
-      render json: {message: "There was an error saving your information, make sure your server is running."}
+      render json: {message: "There was an error saving your information, make sure your server is running."}, status: 400
     end
   end
 
-  private
+  # private
 
-  def game_params
-    params.require(:games).permit(:score, :rating, :player_id)
-  end
+  # def game_params
+  #   params.require(:games).permit(:score, :rating, :player_id)
+  # end
   
 end

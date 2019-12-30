@@ -17,7 +17,8 @@ class Defence {
 
   update(changeInTime) {
     if (!changeInTime) return;
-    this.position.y += this.speed / changeInTime;
+    this.position.y += (this.speed * changeInTime) / 1000;
+    console.log(changeInTime);
   }
 
   draw(ctx) {

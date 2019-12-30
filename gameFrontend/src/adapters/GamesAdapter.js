@@ -20,6 +20,7 @@ class GamesAdapter {
       score: score,
       rating: rating
     };
+    // debugger;
     let res = await fetch(this.baseUrl, {
       method: "POST",
       headers: {

@@ -35,14 +35,14 @@ class GameStats {
     }
   }
 
-  saveGame() {
-    this.inputForm_div.addEventListener("submit", e => {
-      e.preventDefault();
-      // console.log(e);
-      this.adapter.saveGame(game);
-      // ("addfunctiontoallowposttobackend");
-    });
-  }
+  // saveGame() {
+  //   this.inputForm_div.addEventListener("submit", e => {
+  //     e.preventDefault();
+  //     // console.log(e);
+  //     this.adapter.saveGame(game);
+  //     // ("addfunctiontoallowposttobackend");
+  //   });
+  // }
 
   renderRecentScores(game) {
     this.recentScores_div.innerHTML += `
