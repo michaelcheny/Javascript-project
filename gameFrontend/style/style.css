@@ -47,11 +47,13 @@ header {
   display: none;
   /* float: left; */
   /* display: inline-block; */
+  border: 2px solid white;
+  background-color: burlywood;
   color: antiquewhite;
   z-index: 1;
   position: absolute;
-  top: 50%;
-  left: 45%;
+  top: 52%;
+  left: 44%;
   /* text-align: left; */
 }
 

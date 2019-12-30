@@ -32,6 +32,7 @@ class App {
       this.inputForm_div.style.display = "inline";
       this.inputForm_div.addEventListener("submit", e => {
         e.preventDefault();
+        // console.log(e);
         // ("addfunctiontoallowposttobackend");
       });
     }

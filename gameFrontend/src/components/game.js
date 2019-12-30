@@ -17,11 +17,7 @@ class Game {
     this.score = 0;
 
     this.gameState = GAMESTATE.MENU;
-    // let lives = new Lives(this);
-    // this.lives = [];
 
-    // this.lives = new Lives(this);
-    // console.log(this.lives);
     this.head = new Harden(this);
     setInterval(() => {
       if (this.gameState === GAMESTATE.RUNNING) {
@@ -148,15 +144,5 @@ class Game {
     // ctx.fillStyle = "yellow";
     ctx.fillText("Score: " + this.score, 100, 40);
     ctx.fillText("Fouls Remaining: " + this.fouls, this.gameWidth - 140, 40);
-    // const lives = document.getElementById("lives");
-    // let live1 = ctx.drawImage(lives, this.gameWidth - 50, 30, 30, 57);
-    // let live2 = ctx.drawImage(lives, this.gameWidth - 80, 30, 30, 57);
-    // let live3 = ctx.drawImage(lives, this.gameWidth - 110, 30, 30, 57);
-    // let live4 = ctx.drawImage(lives, this.gameWidth - 140, 30, 30, 57);
-    // let live5 = ctx.drawImage(lives, this.gameWidth - 170, 30, 30, 57);
-    // let live6 = ctx.drawImage(lives, this.gameWidth - 200, 30, 30, 57);
-    // this.lives.push(live1, live2, live3, live4, live5, live6);
-    // console.log(this.lives);
-    // console.log(this.lives);
   }
 }
