@@ -90,7 +90,6 @@ class Game {
   }
 
   draw(ctx) {
-    // this.lives.draw(ctx);
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
       for (let d of opponents) {
@@ -98,31 +97,13 @@ class Game {
       }
     });
     if (this.gameState === GAMESTATE.PAUSED) {
-      ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-      ctx.fillStyle = "rgba(0,0,0,0.5)";
-      ctx.fill();
-      ctx.font = "100px Arial";
-      ctx.fillStyle = "yellow";
-      ctx.textAlign = "center";
-      ctx.fillText("Time Out", this.gameWidth / 2, this.gameHeight / 2);
+      this.showPausedMenu(ctx);
     }
     if (this.gameState === GAMESTATE.MENU) {
-      ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-      ctx.fillStyle = "rgba(0,0,0,1)";
-      ctx.fill();
-      ctx.font = "60px Arial";
-      ctx.fillStyle = "white";
-      ctx.textAlign = "center";
-      ctx.fillText("Click Screen to Start", this.gameWidth / 2, this.gameHeight / 2);
+      this.showMainMenu(ctx);
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
-      ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-      ctx.fillStyle = "rgba(0,0,0,1)";
-      ctx.fill();
-      ctx.font = "100px Arial";
-      ctx.fillStyle = "red";
-      ctx.textAlign = "center";
-      ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
+      this.showGameOver(ctx);
     }
     if (this.gameState !== GAMESTATE.MENU) {
       this.showScoreAndFouls(ctx);
@@ -135,6 +116,36 @@ class Game {
     } else {
       this.gameState = GAMESTATE.PAUSED;
     }
+  }
+
+  showMainMenu(ctx) {
+    ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+    ctx.fillStyle = "rgba(0,0,0,1)";
+    ctx.fill();
+    ctx.font = "60px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText("Click Screen to Start", this.gameWidth / 2, this.gameHeight / 2);
+  }
+
+  showPausedMenu(ctx) {
+    ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+    ctx.fillStyle = "rgba(0,0,0,0.5)";
+    ctx.fill();
+    ctx.font = "100px Arial";
+    ctx.fillStyle = "yellow";
+    ctx.textAlign = "center";
+    ctx.fillText("Time Out", this.gameWidth / 2, this.gameHeight / 2);
+  }
+
+  showGameOver(ctx) {
+    ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+    ctx.fillStyle = "rgba(0,0,0,1)";
+    ctx.fill();
+    ctx.font = "100px Arial";
+    ctx.fillStyle = "red";
+    ctx.textAlign = "center";
+    ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
   }
 
   showScoreAndFouls(ctx) {

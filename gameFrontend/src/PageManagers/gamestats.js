@@ -10,6 +10,9 @@ class GameStats {
     this.top5AllTime_div = document.getElementById("top-5-all-time");
     this.top5Today_div = document.getElementById("top-5-today");
     this.averageRating_div = document.getElementById("average-rating");
+
+    this.inputForm_div = document.getElementById("new-name-form");
+    this.nameInput = document.getElementById("player-name");
   }
 
   async fetchAndLoadGameStats() {
@@ -30,6 +33,15 @@ class GameStats {
       console.log(error.message);
       return "Check to see if your server is up and running.";
     }
+  }
+
+  saveGame() {
+    this.inputForm_div.addEventListener("submit", e => {
+      e.preventDefault();
+      // console.log(e);
+      this.adapter.saveGame(game);
+      // ("addfunctiontoallowposttobackend");
+    });
   }
 
   renderRecentScores(game) {

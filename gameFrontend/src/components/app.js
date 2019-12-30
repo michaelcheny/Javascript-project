@@ -2,6 +2,7 @@ class App {
   constructor() {
     // this.playerScores = new Player();
     this.gameStats = new GameStats();
+    // this.gameStats = new GameStats();
     this.initBindingsAndEventListeners();
     this.gameloop();
   }
@@ -12,11 +13,11 @@ class App {
     this.gameHeight = this.canvas.height;
     this.gameWidth = this.canvas.width;
 
-    // this.nameInput_div = document.getElementById("initial-input");
     this.inputForm_div = document.getElementById("new-name-form");
+    this.nameInput = document.getElementById("player-name");
+    this.ratingInput = document.getElementById("game-rating");
 
     this.game = new Game(this.gameWidth, this.gameHeight);
-    // this.game.start();
   }
 
   gameloop(timestamp) {
@@ -30,9 +31,14 @@ class App {
     if (this.game.gameState === GAMESTATE.GAMEOVER) {
       // this.nameInput_div.style.display = "inline";
       this.inputForm_div.style.display = "inline";
+
       this.inputForm_div.addEventListener("submit", e => {
         e.preventDefault();
         // console.log(e);
+        const name = this.nameInput.value;
+        const score = this.game.score;
+        const rating = this.ratingInput.value;
+        this.gameStats.adapter.saveGame(name, score, rating);
         // ("addfunctiontoallowposttobackend");
       });
     }
