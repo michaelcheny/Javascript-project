@@ -7,16 +7,15 @@ const GAMESTATE = {
 
 class Game {
   constructor(gameWidth, gameHeight) {
+    this.gameState = GAMESTATE.MENU;
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.defenders = [];
     this.allCharge = [];
     this.gameObjects = [];
     this.refs = [];
-    this.fouls = 6;
+    this.fouls = 2;
     this.score = 0;
-
-    this.gameState = GAMESTATE.MENU;
 
     this.head = new Harden(this);
     setInterval(() => {
@@ -85,7 +84,7 @@ class Game {
       if (collision.checkOverlap()) {
         this.fouls++;
         ref.collided = true;
-        if (this.fouls > 6) this.fouls = 6;
+        if (this.fouls > 2) this.fouls = 2;
       }
     }
   }

@@ -21,6 +21,16 @@ class Api::V1::GamesController < ApplicationController
 
   end
 
+  def create
+    player = Player.find_or_create_by(name: params[:name])
+    game = Game.new(player: player, score: params[:score], rating: params[:rating])
+    if game.save
+      render json: game, include: [:player], status: 200
+    else
+      render json: {message: "There was an error saving your information, make sure your server is running."}
+    end
+  end
+
   private
 
   def game_params

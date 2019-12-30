@@ -6,6 +6,7 @@ class Defence {
       y: 120
     };
     const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - this.size.x));
+    // this.speed = Math.random() * 40 + 90;
     this.speed = Math.random() * 40 + 90;
     this.position = {
       x: randomSpawnPosition,

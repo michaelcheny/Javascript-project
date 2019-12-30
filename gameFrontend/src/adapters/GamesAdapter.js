@@ -7,11 +7,28 @@ class GamesAdapter {
     try {
       const res = await fetch(this.baseUrl);
       const data = await res.json();
-      // console.log(data);
       return data;
     } catch (error) {
       console.log(error.message);
       return "Check if your is running.";
     }
+  }
+
+  async saveGame(name, score, rating) {
+    const game = {
+      name: name,
+      score: score,
+      rating: rating
+    };
+    let res = await fetch(this.baseUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(game)
+    });
+    let data = await res.json();
+    console.log(data);
+    return data;
   }
 }
