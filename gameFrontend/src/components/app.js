@@ -12,6 +12,9 @@ class App {
     this.gameHeight = this.canvas.height;
     this.gameWidth = this.canvas.width;
 
+    // this.nameInput_div = document.getElementById("initial-input");
+    this.inputForm_div = document.getElementById("new-name-form");
+
     this.game = new Game(this.gameWidth, this.gameHeight);
     // this.game.start();
   }
@@ -25,9 +28,12 @@ class App {
     this.game.draw(this.ctx);
     // if (this.game.gameState === GAMESTATE.GAMEOVER) return;
     if (this.game.gameState === GAMESTATE.GAMEOVER) {
-      let input = document.getElementById("initial-input");
-      // console.log(input);
-      input.style.display = "inline";
+      // this.nameInput_div.style.display = "inline";
+      this.inputForm_div.style.display = "inline";
+      this.inputForm_div.addEventListener("submit", e => {
+        e.preventDefault();
+        // ("addfunctiontoallowposttobackend");
+      });
     }
     // let input = document.getElementById("initial-input");
     // console.log(input);

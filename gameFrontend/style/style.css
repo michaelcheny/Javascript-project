@@ -23,11 +23,11 @@ header {
   margin-left: auto;
   margin-right: auto;
   display: block;
+  z-index: 2;
+  background: url("../assets/court-background.jpg");
   /* width: 1000;
   height: 900; */
-  background: url("../assets/court-background.jpg");
   /* position: absolute; */
-  z-index: 2;
 }
 
 .img {
@@ -42,15 +42,16 @@ header {
   /* bottom: -200px; */
 }
 
-#initial-input {
+/* #initial-input { */
+#new-name-form {
   display: none;
   /* float: left; */
   /* display: inline-block; */
   color: antiquewhite;
   z-index: 1;
   position: absolute;
-  top: 60%;
-  left: 50%;
+  top: 50%;
+  left: 45%;
   /* text-align: left; */
 }
 
