@@ -1,7 +1,7 @@
 class Harden {
   constructor(game) {
     this.gameWidth = game.gameWidth;
-    this.maxSpeed = 8;
+    this.maxSpeed = 5;
     this.speed = 0;
 
     this.size = {

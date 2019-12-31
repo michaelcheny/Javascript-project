@@ -8,7 +8,6 @@ const GAMESTATE = {
 class Game {
   constructor(gameWidth, gameHeight) {
     this.gameStats = new GameStats();
-
     this.gameState = GAMESTATE.MENU;
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
@@ -18,42 +17,21 @@ class Game {
     this.refs = [];
     this.fouls = 2;
     this.score = 0;
+    this.head = new Harden(this);
+    this.inputHandler = new InputHandler(this.head, this);
+    this.bindingsAndEventListener();
+    this.spawnFallingObjects();
+  }
 
+  bindingsAndEventListener() {
     this.inputForm_div = document.getElementById("new-name-form");
     this.nameInput = document.getElementById("player-name");
     this.ratingInput = document.getElementById("game-rating");
 
-    // move this somewhereeeeee elseeeee
     this.inputForm_div.addEventListener("submit", e => {
       e.preventDefault();
-      // console.log(e);
-      const name = this.nameInput.value;
-      const score = this.score;
-      const rating = this.ratingInput.value;
-      // debugger;
-      this.gameStats.adapter.saveGame(name, score, rating);
-      //
+      this.saveAndResetGame();
     });
-
-    this.head = new Harden(this);
-    setInterval(() => {
-      if (this.gameState === GAMESTATE.RUNNING) {
-        const rand = Math.floor(Math.random() * 100);
-        if (rand < 80) {
-          const defence = new Defence(this);
-          this.defenders.push(defence);
-        }
-        if (rand < 40) {
-          const avoidCharge = new Charge(this);
-          this.allCharge.push(avoidCharge);
-        }
-        if (rand < 2) {
-          const ref = new Referee(this);
-          this.refs.push(ref);
-        }
-      }
-    }, 500);
-    this.inputHandler = new InputHandler(this.head, this);
   }
 
   start() {
@@ -73,7 +51,11 @@ class Game {
     this.gameObjects = [this.defenders, this.allCharge, this.refs];
 
     if (this.fouls === 0) this.gameState = GAMESTATE.GAMEOVER;
-    if (this.gameState === GAMESTATE.PAUSED || this.gameState === GAMESTATE.MENU || this.gameState === GAMESTATE.GAMEOVER)
+    if (
+      this.gameState === GAMESTATE.PAUSED ||
+      this.gameState === GAMESTATE.MENU ||
+      this.gameState === GAMESTATE.GAMEOVER
+    )
       return;
 
     this.head.update(changeInTime);
@@ -174,5 +156,32 @@ class Game {
     // ctx.fillStyle = "yellow";
     ctx.fillText("Score: " + this.score, 100, 40);
     ctx.fillText("Fouls Remaining: " + this.fouls, this.gameWidth - 140, 40);
+  }
+
+  saveAndResetGame() {
+    const name = this.nameInput.value;
+    const score = this.score;
+    const rating = this.ratingInput.value;
+    this.gameStats.adapter.saveGame(name, score, rating);
+  }
+
+  spawnFallingObjects() {
+    setInterval(() => {
+      if (this.gameState === GAMESTATE.RUNNING) {
+        const rand = Math.floor(Math.random() * 100);
+        if (rand < 80) {
+          const defence = new Defence(this);
+          this.defenders.push(defence);
+        }
+        if (rand < 40) {
+          const avoidCharge = new Charge(this);
+          this.allCharge.push(avoidCharge);
+        }
+        if (rand < 2) {
+          const ref = new Referee(this);
+          this.refs.push(ref);
+        }
+      }
+    }, 500);
   }
 }
