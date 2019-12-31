@@ -5,7 +5,7 @@ class Referee {
       y: 144
     };
     const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - this.size.x));
-    this.speed = Math.random() * 60 + 110;
+    this.speed = Math.random() * (600 - 500) + 500;
     this.position = {
       x: randomSpawnPosition,
       y: -200
@@ -20,6 +20,6 @@ class Referee {
 
   update(changeInTime) {
     if (!changeInTime) return;
-    this.position.y += this.speed / changeInTime;
+    this.position.y += this.speed * changeInTime / 1000;
   }
 }

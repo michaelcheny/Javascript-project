@@ -5,7 +5,7 @@ class Charge {
       y: 150
     };
     const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - this.size.x));
-    this.speed = Math.random() * 80 + 130;
+    this.speed = Math.random() * (900 - 700) + 700;
     this.position = {
       x: randomSpawnPosition,
       y: -200
@@ -20,6 +20,6 @@ class Charge {
 
   update(changeInTime) {
     if (!changeInTime) return;
-    this.position.y += this.speed / changeInTime;
+    this.position.y += this.speed * changeInTime / 1000;
   }
 }
