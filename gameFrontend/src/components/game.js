@@ -30,7 +30,7 @@ class Game {
 
     this.inputForm_div.addEventListener("submit", e => {
       e.preventDefault();
-      this.saveAndResetGame();
+      this.saveGame();
     });
   }
 
@@ -104,7 +104,6 @@ class Game {
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
       this.inputForm_div.style.display = "inline";
-
       this.showGameOver(ctx);
     }
     if (this.gameState !== GAMESTATE.MENU) {
@@ -158,11 +157,14 @@ class Game {
     ctx.fillText("Fouls Remaining: " + this.fouls, this.gameWidth - 140, 40);
   }
 
-  saveAndResetGame() {
+  saveGame() {
     const name = this.nameInput.value;
     const score = this.score;
     const rating = this.ratingInput.value;
     this.gameStats.adapter.saveGame(name, score, rating);
+    this.fouls = 2;
+    this.inputForm_div.style.display = "none";
+    this.gameState = GAMESTATE.MENU;
   }
 
   spawnFallingObjects() {
