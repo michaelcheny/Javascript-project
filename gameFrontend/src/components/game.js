@@ -33,6 +33,7 @@ class Game {
       e.preventDefault();
       this.saveGame();
     });
+    this.resetBtn.addEventListener("click", this.resetGame.bind(this));
   }
 
   start() {
@@ -107,6 +108,9 @@ class Game {
       this.inputForm_div.style.display = "inline";
       this.resetBtn.style.display = "inline";
       this.showGameOver(ctx);
+    } else {
+      this.inputForm_div.style.display = "none";
+      this.resetBtn.style.display = "none";
     }
     if (this.gameState !== GAMESTATE.MENU) {
       this.showScoreAndFouls(ctx);
@@ -164,8 +168,12 @@ class Game {
     const score = this.score;
     const rating = this.ratingInput.value;
     this.gameStats.adapter.saveGame(name, score, rating);
+  }
+
+  resetGame() {
+    this.head.position.x = this.gameWidth / 2 - this.head.size.x / 2;
+    this.score = 0;
     this.fouls = 2;
-    this.inputForm_div.style.display = "none";
     this.gameState = GAMESTATE.MENU;
   }
 
