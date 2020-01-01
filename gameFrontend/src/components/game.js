@@ -27,6 +27,7 @@ class Game {
     this.inputForm_div = document.getElementById("new-name-form");
     this.nameInput = document.getElementById("player-name");
     this.ratingInput = document.getElementById("game-rating");
+    this.resetBtn = document.getElementById("reset-button");
 
     this.inputForm_div.addEventListener("submit", e => {
       e.preventDefault();
@@ -104,6 +105,7 @@ class Game {
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
       this.inputForm_div.style.display = "inline";
+      this.resetBtn.style.display = "inline";
       this.showGameOver(ctx);
     }
     if (this.gameState !== GAMESTATE.MENU) {

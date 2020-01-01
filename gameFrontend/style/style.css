@@ -34,12 +34,14 @@ header {
   display: none;
 }
 
-.col-8 {
-  /* display: table-cell; */
-  /* vertical-align: bottom; */
-  /* position: absolute; */
-  /* text-align: center; */
-  /* bottom: -200px; */
+#reset-button {
+  display: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  z-index: 1;
+  position: absolute;
+  top: 63%;
+  left: 46%;
 }
 
 /* #initial-input { */
