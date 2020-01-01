@@ -20,16 +20,18 @@ class GamesAdapter {
       score: score,
       rating: rating
     };
-    // debugger;
-    let res = await fetch(this.baseUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(game)
-    });
-    let data = await res.json();
-    console.log(data);
-    return data;
+    try {
+      let res = await fetch(this.baseUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(game)
+      });
+      let data = await res.json();
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 }

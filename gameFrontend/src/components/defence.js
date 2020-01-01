@@ -5,7 +5,9 @@ class Defence {
       x: 120,
       y: 120
     };
-    const randomSpawnPosition = Math.floor(Math.random() * (game.gameWidth - this.size.x));
+    const randomSpawnPosition = Math.floor(
+      Math.random() * (game.gameWidth - this.size.x)
+    );
     // this.speed = Math.random() * 40 + 90;
     this.speed = Math.random() * (700 - 500) + 500;
     this.position = {
@@ -18,7 +20,6 @@ class Defence {
   update(changeInTime) {
     if (!changeInTime) return;
     this.position.y += (this.speed * changeInTime) / 1000;
-    console.log(changeInTime);
   }
 
   draw(ctx) {
