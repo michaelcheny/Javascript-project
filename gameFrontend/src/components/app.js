@@ -10,10 +10,6 @@ class App {
     this.gameHeight = this.canvas.height;
     this.gameWidth = this.canvas.width;
 
-    this.inputForm_div = document.getElementById("new-name-form");
-    this.nameInput = document.getElementById("player-name");
-    this.ratingInput = document.getElementById("game-rating");
-
     this.game = new Game(this.gameWidth, this.gameHeight);
   }
 

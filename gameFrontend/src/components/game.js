@@ -167,7 +167,9 @@ class Game {
     const name = this.nameInput.value;
     const score = this.score;
     const rating = this.ratingInput.value;
-    this.gameStats.adapter.saveGame(name, score, rating);
+    const thing = this.gameStats.adapter.saveGame(name, score, rating);
+    console.log(thing);
+    // this.gameStats.fetchAndLoadGameStats();
   }
 
   resetGame() {
@@ -196,4 +198,15 @@ class Game {
       }
     }, 500);
   }
+
+  // gameloop(timestamp) {
+  //   this.changeInTime = timestamp - this.lastTime;
+  //   this.lastTime = timestamp;
+  //   this.ctx.clearRect(0, 0, this.gameWidth, this.gameHeight);
+
+  //   this.update(this.changeInTime);
+  //   this.draw(this.ctx);
+
+  //   requestAnimationFrame(this.gameloop.bind(this));
+  // }
 }
