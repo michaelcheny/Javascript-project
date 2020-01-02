@@ -171,9 +171,7 @@ class Game {
     const name = this.nameInput.value;
     const score = this.score;
     const rating = this.ratingInput.value;
-    const thing = await this.gameStats.adapter.saveGame(name, score, rating);
-    // console.log(thing);
-    // this.gameStats.renderRecentScores(thing);
+    await this.gameStats.adapter.saveGame(name, score, rating);
     this.gameStats.clearAllDivs();
     this.gameStats.fetchAndLoadGameStats();
   }
@@ -183,8 +181,9 @@ class Game {
     this.score = 0;
     this.fouls = 2;
     this.gameState = GAMESTATE.MENU;
-    // this.update(this.changeInTime);
-    // this.draw(this.ctx);
+    this.update(this.changeInTime);
+    this.draw(this.ctx);
+    this.showMainMenu(this.ctx);
   }
 
   spawnFallingObjects() {
