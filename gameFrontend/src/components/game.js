@@ -6,24 +6,28 @@ const GAMESTATE = {
 };
 
 class Game {
-  constructor(gameWidth, gameHeight) {
-    this.gameStats = new GameStats();
+  constructor() {
     this.gameState = GAMESTATE.MENU;
-    this.gameWidth = gameWidth;
-    this.gameHeight = gameHeight;
+    this.gameStats = new GameStats();
+    this.bindingsAndEventListener();
+
+    this.gameWidth = this.canvas.width;
+    this.gameHeight = this.canvas.height;
     this.defenders = [];
     this.allCharge = [];
     this.gameObjects = [];
     this.refs = [];
     this.fouls = 2;
     this.score = 0;
-    this.head = new Harden(this);
+    this.head = new Harden(this.gameWidth, this.gameHeight);
     this.inputHandler = new InputHandler(this.head, this);
-    this.bindingsAndEventListener();
     this.spawnFallingObjects();
+    this.draw(this.ctx);
   }
 
   bindingsAndEventListener() {
+    this.canvas = document.getElementById("game-container");
+    this.ctx = this.canvas.getContext("2d");
     this.inputForm_div = document.getElementById("new-name-form");
     this.nameInput = document.getElementById("player-name");
     this.ratingInput = document.getElementById("game-rating");
@@ -37,8 +41,9 @@ class Game {
   }
 
   start() {
-    this.gameObjects = [this.defenders, this.allCharge];
+    this.gameObjects = [this.defenders, this.allCharge, this.ref];
     this.gameState = GAMESTATE.RUNNING;
+    this.gameloop();
   }
 
   update(changeInTime) {
@@ -199,14 +204,14 @@ class Game {
     }, 500);
   }
 
-  // gameloop(timestamp) {
-  //   this.changeInTime = timestamp - this.lastTime;
-  //   this.lastTime = timestamp;
-  //   this.ctx.clearRect(0, 0, this.gameWidth, this.gameHeight);
+  gameloop(timestamp) {
+    this.changeInTime = timestamp - this.lastTime;
+    this.lastTime = timestamp;
+    this.ctx.clearRect(0, 0, this.gameWidth, this.gameHeight);
 
-  //   this.update(this.changeInTime);
-  //   this.draw(this.ctx);
+    this.update(this.changeInTime);
+    this.draw(this.ctx);
 
-  //   requestAnimationFrame(this.gameloop.bind(this));
-  // }
+    requestAnimationFrame(this.gameloop.bind(this));
+  }
 }
