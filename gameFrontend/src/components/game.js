@@ -10,7 +10,6 @@ class Game {
     this.gameState = GAMESTATE.MENU;
     this.gameStats = new GameStats();
     this.bindingsAndEventListener();
-
     this.gameWidth = this.canvas.width;
     this.gameHeight = this.canvas.height;
     this.defenders = [];
@@ -168,13 +167,15 @@ class Game {
     ctx.fillText("Fouls Remaining: " + this.fouls, this.gameWidth - 140, 40);
   }
 
-  saveGame() {
+  async saveGame() {
     const name = this.nameInput.value;
     const score = this.score;
     const rating = this.ratingInput.value;
-    const thing = this.gameStats.adapter.saveGame(name, score, rating);
-    console.log(thing);
-    // this.gameStats.fetchAndLoadGameStats();
+    const thing = await this.gameStats.adapter.saveGame(name, score, rating);
+    // console.log(thing);
+    // this.gameStats.renderRecentScores(thing);
+    this.gameStats.clearAllDivs();
+    this.gameStats.fetchAndLoadGameStats();
   }
 
   resetGame() {
@@ -182,6 +183,8 @@ class Game {
     this.score = 0;
     this.fouls = 2;
     this.gameState = GAMESTATE.MENU;
+    // this.update(this.changeInTime);
+    // this.draw(this.ctx);
   }
 
   spawnFallingObjects() {

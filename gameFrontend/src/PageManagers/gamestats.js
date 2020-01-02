@@ -31,6 +31,13 @@ class GameStats {
     }
   }
 
+  clearAllDivs() {
+    this.recentScores_div.innerHTML = `<h2>Highscores List</h2>`;
+    this.top5AllTime_div.innerHTML = `<h2>Top 5 Scores All Time</h2>`;
+    this.top5Today_div.innerHTML = `<h2>Top 5 Scores Today</h2>`;
+    this.averageRating_div.innerHTML = `<h2>Average Rating</h2>`;
+  }
+
   renderRecentScores(game) {
     this.recentScores_div.innerHTML += `
       <ul class="score-for-user">
