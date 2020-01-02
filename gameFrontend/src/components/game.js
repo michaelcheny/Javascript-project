@@ -96,6 +96,7 @@ class Game {
   }
 
   draw(ctx) {
+    console.log(this.gameState);
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
       for (let d of opponents) {
@@ -181,9 +182,12 @@ class Game {
     this.score = 0;
     this.fouls = 2;
     this.gameState = GAMESTATE.MENU;
-    this.update(this.changeInTime);
     this.draw(this.ctx);
-    this.showMainMenu(this.ctx);
+    this.defenders = [];
+    this.allCharge = [];
+    this.gameObjects = [];
+    this.refs = [];
+    // this.ctx.fillStyle = "white";
   }
 
   spawnFallingObjects() {

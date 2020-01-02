@@ -23,7 +23,7 @@ class InputHandler {
       }
     });
 
-    document.addEventListener("click", e => {
+    document.getElementById("game-container").addEventListener("click", e => {
       game.start();
     });
   }
