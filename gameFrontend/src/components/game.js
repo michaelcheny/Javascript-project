@@ -10,6 +10,7 @@ class Game {
     this.gameState = GAMESTATE.MENU;
     this.gameStats = new GameStats();
     this.bindingsAndEventListener();
+    this.text = new ScreenMessages();
     this.gameWidth = this.canvas.width;
     this.gameHeight = this.canvas.height;
     this.defenders = [];
@@ -96,7 +97,6 @@ class Game {
   }
 
   draw(ctx) {
-    console.log(this.gameState);
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
       for (let d of opponents) {
@@ -104,68 +104,30 @@ class Game {
       }
     });
     if (this.gameState === GAMESTATE.PAUSED) {
-      this.showPausedMenu(ctx);
+      this.text.showPausedMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.MENU) {
-      this.showMainMenu(ctx);
+      this.text.showMainMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
       this.inputForm_div.style.display = "inline";
       this.resetBtn.style.display = "inline";
-      this.showGameOver(ctx);
+      this.text.showGameOver(ctx, this);
     } else {
       this.inputForm_div.style.display = "none";
       this.resetBtn.style.display = "none";
     }
     if (this.gameState !== GAMESTATE.MENU) {
-      this.showScoreAndFouls(ctx);
+      this.text.showScoreAndFouls(ctx, this, this.score, this.fouls);
     }
   }
 
   togglePause() {
-    if (this.gameState == GAMESTATE.PAUSED) {
+    if (this.gameState === GAMESTATE.PAUSED) {
       this.gameState = GAMESTATE.RUNNING;
     } else {
       this.gameState = GAMESTATE.PAUSED;
     }
-  }
-
-  showMainMenu(ctx) {
-    ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-    ctx.fillStyle = "rgba(0,0,0,1)";
-    ctx.fill();
-    ctx.font = "60px Arial";
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.fillText("Click Screen to Start", this.gameWidth / 2, this.gameHeight / 2);
-  }
-
-  showPausedMenu(ctx) {
-    ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-    ctx.fillStyle = "rgba(0,0,0,0.5)";
-    ctx.fill();
-    ctx.font = "100px Arial";
-    ctx.fillStyle = "yellow";
-    ctx.textAlign = "center";
-    ctx.fillText("Time Out", this.gameWidth / 2, this.gameHeight / 2);
-  }
-
-  showGameOver(ctx) {
-    ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-    ctx.fillStyle = "rgba(0,0,0,1)";
-    ctx.fill();
-    ctx.font = "100px Arial";
-    ctx.fillStyle = "red";
-    ctx.textAlign = "center";
-    ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
-  }
-
-  showScoreAndFouls(ctx) {
-    ctx.font = "20px Arial";
-    ctx.textAlign = "center";
-    // ctx.fillStyle = "yellow";
-    ctx.fillText("Score: " + this.score, 100, 40);
-    ctx.fillText("Fouls Remaining: " + this.fouls, this.gameWidth - 140, 40);
   }
 
   async saveGame() {
@@ -182,12 +144,9 @@ class Game {
     this.score = 0;
     this.fouls = 2;
     this.gameState = GAMESTATE.MENU;
-    this.draw(this.ctx);
     this.defenders = [];
     this.allCharge = [];
-    this.gameObjects = [];
     this.refs = [];
-    // this.ctx.fillStyle = "white";
   }
 
   spawnFallingObjects() {
