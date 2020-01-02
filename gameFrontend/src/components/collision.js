@@ -10,10 +10,10 @@ class Collision {
     this.bTop = rect2.position.y;
     this.bRight = rect2.position.x + rect2.size.x;
     this.bBottom = rect2.position.y + rect2.size.y;
-    this.checkOverlap();
+    this.overlapped();
   }
 
-  checkOverlap() {
+  overlapped() {
     if (this.aLeft > this.bRight || this.bLeft > this.aRight) return false;
     if (this.aTop > this.bBottom || this.bTop > this.aBottom) return false;
     return true;

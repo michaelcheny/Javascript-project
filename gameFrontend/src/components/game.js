@@ -11,8 +11,6 @@ class Game {
     this.gameStats = new GameStats();
     this.bindingsAndEventListener();
     this.text = new ScreenMessages();
-    this.gameWidth = this.canvas.width;
-    this.gameHeight = this.canvas.height;
     this.defenders = [];
     this.allCharge = [];
     this.gameObjects = [];
@@ -28,6 +26,8 @@ class Game {
   bindingsAndEventListener() {
     this.canvas = document.getElementById("game-container");
     this.ctx = this.canvas.getContext("2d");
+    this.gameWidth = this.canvas.width;
+    this.gameHeight = this.canvas.height;
     this.inputForm_div = document.getElementById("new-name-form");
     this.nameInput = document.getElementById("player-name");
     this.ratingInput = document.getElementById("game-rating");
@@ -47,13 +47,13 @@ class Game {
   }
 
   update(changeInTime) {
-    this.defenders = this.defenders.filter(o => o.position.y < 900);
-    this.allCharge = this.allCharge.filter(o => o.position.y < 900);
-    this.refs = this.refs.filter(o => o.position.y < 900);
-
     this.defenders = this.defenders.filter(d => !d.collided);
     this.allCharge = this.allCharge.filter(d => !d.collided);
     this.refs = this.refs.filter(d => !d.collided);
+
+    this.defenders = this.defenders.filter(o => o.position.y < 900);
+    this.allCharge = this.allCharge.filter(o => o.position.y < 900);
+    this.refs = this.refs.filter(o => o.position.y < 900);
 
     this.gameObjects = [this.defenders, this.allCharge, this.refs];
 
@@ -70,7 +70,7 @@ class Game {
     for (let defender of this.defenders) {
       defender.update(changeInTime);
       const collision = new Collision(defender, this.head);
-      if (collision.checkOverlap()) {
+      if (collision.overlapped()) {
         this.score += 100;
         defender.collided = true;
       }
@@ -79,7 +79,7 @@ class Game {
     for (let charge of this.allCharge) {
       charge.update(changeInTime);
       const collision = new Collision(charge, this.head);
-      if (collision.checkOverlap()) {
+      if (collision.overlapped()) {
         this.fouls--;
         charge.collided = true;
       }
@@ -88,7 +88,7 @@ class Game {
     for (let ref of this.refs) {
       ref.update(changeInTime);
       const collision = new Collision(ref, this.head);
-      if (collision.checkOverlap()) {
+      if (collision.overlapped()) {
         this.fouls++;
         ref.collided = true;
         if (this.fouls > 2) this.fouls = 2;
