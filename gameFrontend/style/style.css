@@ -83,7 +83,3 @@ header {
   /* padding: 15px; */
   padding: 5px 15px 5px 15px;
 }
-
-/* ADD NAV BAR, add hidden high score list to show after game is over add event listeners to swap between game and highscores list */
-/* html is data */
-/* event.target.data-set.id and use to fetch individual shit */

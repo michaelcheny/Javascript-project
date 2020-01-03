@@ -13,6 +13,7 @@ class Collision {
     this.overlapped();
   }
 
+  // determines if the outer rectangle of the falling object overlaps with player's rectangle
   overlapped() {
     if (this.aLeft > this.bRight || this.bLeft > this.aRight) return false;
     if (this.aTop > this.bBottom || this.bTop > this.aBottom) return false;

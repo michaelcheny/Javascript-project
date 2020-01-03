@@ -1,8 +1,5 @@
 class ScreenMessages {
-  constructor() {
-    //   // this.initBindingsAndEventListeners();
-    //   // this.gameloop();
-  }
+  constructor() {}
 
   showMainMenu(ctx, game) {
     ctx.rect(0, 0, game.gameWidth, game.gameHeight);

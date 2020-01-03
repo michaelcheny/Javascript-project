@@ -40,17 +40,21 @@ class Game {
     this.resetBtn.addEventListener("click", this.resetGame.bind(this));
   }
 
+  // for use in input class, called by clicking with the game screen event listener
   start() {
     this.gameObjects = [this.defenders, this.allCharge, this.ref];
     this.gameState = GAMESTATE.RUNNING;
     this.gameloop();
   }
 
+  // used in gameloop to update each object
   update(changeInTime) {
+    // filters out the objects that collides with player
     this.defenders = this.defenders.filter(d => !d.collided);
     this.allCharge = this.allCharge.filter(d => !d.collided);
     this.refs = this.refs.filter(d => !d.collided);
 
+    // updates the falling objects, filters out the
     this.defenders = this.defenders.filter(o => o.position.y < 900);
     this.allCharge = this.allCharge.filter(o => o.position.y < 900);
     this.refs = this.refs.filter(o => o.position.y < 900);
@@ -100,6 +104,7 @@ class Game {
     }
   }
 
+  // draws each object on the game canvas
   draw(ctx) {
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
@@ -134,6 +139,7 @@ class Game {
     }
   }
 
+  // saves the game when user hits submit button
   async saveGame(event) {
     event.preventDefault();
     const name = this.nameInput.value;
@@ -144,6 +150,7 @@ class Game {
     this.gameStats.fetchAndLoadGameStats();
   }
 
+  // resets the score and fouls and clears object off game canvas when player clicks "Play Again button"
   resetGame() {
     this.head.position.x = this.gameWidth / 2 - this.head.size.x / 2;
     this.score = 0;
@@ -154,6 +161,7 @@ class Game {
     this.refs = [];
   }
 
+  // chance of spawning object falling down every 500 Millisecond
   spawnFallingObjects() {
     setInterval(() => {
       if (this.gameState === GAMESTATE.RUNNING) {
@@ -174,6 +182,7 @@ class Game {
     }, 500);
   }
 
+  // uses requestAnimationFrame to get changeInTime
   gameloop(timestamp) {
     this.changeInTime = timestamp - this.lastTime;
     this.lastTime = timestamp;
