@@ -16,13 +16,13 @@ class GameStats {
     try {
       let games = await this.adapter.getGames();
       for (let game of games.games) {
-        this.renderRecentScores(game);
+        this.renderScores(game, this.recentScores_div);
       }
       for (let game of games.top_5) {
-        this.renderTop5(game);
+        this.renderScores(game, this.top5AllTime_div);
       }
       for (let game of games.top_5_today) {
-        this.renderTop5Today(game);
+        this.renderScores(game, this.top5Today_div);
       }
       this.renderAverageRating(games.average_rating);
     } catch (error) {
@@ -38,24 +38,8 @@ class GameStats {
     this.averageRating_div.innerHTML = `<h2>Average Rating</h2>`;
   }
 
-  renderRecentScores(game) {
-    this.recentScores_div.innerHTML += `
-      <ul class="score-for-user">
-        <li><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></li>
-      </ul>
-      `;
-  }
-
-  renderTop5(game) {
-    this.top5AllTime_div.innerHTML += `
-    <div class="score-for-user">
-      <p><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></p>
-    </div>
-    `;
-  }
-
-  renderTop5Today(game) {
-    this.top5Today_div.innerHTML += `
+  renderScores(game, container) {
+    container.innerHTML += `
     <div class="score-for-user">
       <p><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></p>
     </div>
