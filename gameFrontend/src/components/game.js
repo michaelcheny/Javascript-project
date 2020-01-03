@@ -32,11 +32,9 @@ class Game {
     this.nameInput = document.getElementById("player-name");
     this.ratingInput = document.getElementById("game-rating");
     this.resetBtn = document.getElementById("reset-button");
+    this.gainPoints = new Sound("./assets/sounds/350876__cabled-mess__coin-c-09.wav");
 
-    this.inputForm_div.addEventListener("submit", e => {
-      e.preventDefault();
-      this.saveGame();
-    });
+    this.inputForm_div.addEventListener("submit", event => this.saveGame(event));
     this.resetBtn.addEventListener("click", this.resetGame.bind(this));
   }
 
@@ -72,6 +70,7 @@ class Game {
       const collision = new Collision(defender, this.head);
       if (collision.overlapped()) {
         this.score += 100;
+        this.gainPoints.play();
         defender.collided = true;
       }
     }
@@ -90,6 +89,7 @@ class Game {
       const collision = new Collision(ref, this.head);
       if (collision.overlapped()) {
         this.fouls++;
+        this.score += 500;
         ref.collided = true;
         if (this.fouls > 2) this.fouls = 2;
       }
@@ -130,7 +130,8 @@ class Game {
     }
   }
 
-  async saveGame() {
+  async saveGame(event) {
+    event.preventDefault();
     const name = this.nameInput.value;
     const score = this.score;
     const rating = this.ratingInput.value;
