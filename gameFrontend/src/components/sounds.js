@@ -8,6 +8,7 @@ class Sound {
   }
   play() {
     this.sound.play();
+    // to allow the same sound to play multiple times in quick succession
     this.sound.currentTime = 0;
   }
 }

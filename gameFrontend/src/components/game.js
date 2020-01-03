@@ -32,7 +32,8 @@ class Game {
     this.nameInput = document.getElementById("player-name");
     this.ratingInput = document.getElementById("game-rating");
     this.resetBtn = document.getElementById("reset-button");
-    this.gainPoints = new Sound("./assets/sounds/350876__cabled-mess__coin-c-09.wav");
+    this.gainPoints = new Sound("./assets/sounds/points-gained-sound.wav");
+    this.refWhistle = new Sound("./assets/sounds/referee-whistle.wav");
 
     this.inputForm_div.addEventListener("submit", event => this.saveGame(event));
     this.resetBtn.addEventListener("click", this.resetGame.bind(this));
@@ -90,6 +91,7 @@ class Game {
       if (collision.overlapped()) {
         this.fouls++;
         this.score += 500;
+        this.refWhistle.play();
         ref.collided = true;
         if (this.fouls > 2) this.fouls = 2;
       }
