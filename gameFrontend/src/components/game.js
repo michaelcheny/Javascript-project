@@ -34,6 +34,7 @@ class Game {
     this.resetBtn = document.getElementById("reset-button");
     this.gainPoints = new Sound("./assets/sounds/points-gained-sound.wav");
     this.refWhistle = new Sound("./assets/sounds/referee-whistle.wav");
+    this.impactGrunt = new Sound("./assets/sounds/impact-grunt.wav");
 
     this.inputForm_div.addEventListener("submit", event => this.saveGame(event));
     this.resetBtn.addEventListener("click", this.resetGame.bind(this));
@@ -81,6 +82,7 @@ class Game {
       const collision = new Collision(charge, this.head);
       if (collision.overlapped()) {
         this.fouls--;
+        this.impactGrunt.play();
         charge.collided = true;
       }
     }
