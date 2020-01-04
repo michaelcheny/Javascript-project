@@ -24,7 +24,7 @@ class InputHandler {
     });
 
     document.getElementById("game-container").addEventListener("click", e => {
-      game.start();
+      if (game.gameState == GAMESTATE.MENU) game.start();
     });
   }
 }

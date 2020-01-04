@@ -25,13 +25,13 @@ class ScreenMessages {
     ctx.fillText("+100 points", game.gameWidth / 2, game.gameHeight / 2 - 20);
 
     const charge = document.getElementById("steven-adams-charge");
-    ctx.drawImage(charge, game.gameWidth * 0.25 - 75, game.gameHeight / 2, 150, 150);
-    ctx.fillText("-1 foul", game.gameWidth * 0.25, game.gameHeight / 2 - 20);
+    ctx.drawImage(charge, game.gameWidth * 0.23 - 75, game.gameHeight / 2, 150, 150);
+    ctx.fillText("-1 foul", game.gameWidth * 0.23, game.gameHeight / 2 - 20);
 
     const ref = document.getElementById("ref");
     ctx.drawImage(ref, game.gameWidth / 1.3 - 75, game.gameHeight / 2, 150, 150);
     ctx.fillText("+1 foul", game.gameWidth / 1.3, game.gameHeight / 2 - 50);
-    ctx.fillText("+300 points", game.gameWidth / 1.3, game.gameHeight / 2 - 20);
+    ctx.fillText("+500 points", game.gameWidth / 1.3, game.gameHeight / 2 - 20);
   }
 
   showPausedMenu(ctx, game) {
