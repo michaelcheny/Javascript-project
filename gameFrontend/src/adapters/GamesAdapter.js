@@ -34,4 +34,23 @@ class GamesAdapter {
       console.log(error.message);
     }
   }
+
+  async saveRating(stars) {
+    const ratings = {
+      rating: stars
+    };
+    try {
+      let res = await fetch(this.baseUrl, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(ratings)
+      });
+      let data = await res.json();
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 }

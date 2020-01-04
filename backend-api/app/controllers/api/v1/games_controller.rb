@@ -32,6 +32,7 @@ class Api::V1::GamesController < ApplicationController
     end
   end
 
+
   # private
 
   # def game_params

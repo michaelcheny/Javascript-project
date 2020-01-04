@@ -3,7 +3,7 @@ class CreateGames < ActiveRecord::Migration[6.0]
     create_table :games do |t|
       t.references :player, null: false, foreign_key: true
       t.integer :score, default: 0
-      t.integer :rating, default: 3
+      t.integer :rating
 
       t.timestamps
     end

@@ -31,19 +31,26 @@ class Game {
     this.gameWidth = this.canvas.width;
     this.gameHeight = this.canvas.height;
     this.inputForm_div = document.getElementById("new-name-form");
-    // this.nameInput = document.getElementById("player-name");
     this.ratingInput = document.getElementById("game-rating");
     this.resetBtn = document.getElementById("reset-button");
     this.nameForm = document.getElementById("greeting-form");
     this.nameInput = document.getElementById("player-name");
-    this.startButton = document.getElementById("start-button");
+    this.ratings = document.getElementById("ratings");
     this.gainPoints = new Sound("./assets/sounds/points-gained-sound.wav");
     this.refWhistle = new Sound("./assets/sounds/referee-whistle.wav");
     this.impactGrunt = new Sound("./assets/sounds/impact-grunt.wav");
 
-    this.inputForm_div.addEventListener("submit", event => this.saveGame(event));
+    // this.inputForm_div.addEventListener("submit", event => this.saveGame(event));
+    let ratings = document.getElementsByClassName("stars");
+    for (let rating of ratings) {
+      rating.addEventListener("click", e => this.saveGame(e));
+    }
+    // this.ratings.addEventListener("click", e => this.saveGame(e));
+
+    // if (this.gameState == GAMESTATE.GAMEOVER) {
+    // }
+
     this.resetBtn.addEventListener("click", this.resetGame.bind(this));
-    this.startButton.addEventListener("click", this.saveName.bind(this));
   }
 
   // for use in input class, called by clicking with the game screen event listener
@@ -60,7 +67,7 @@ class Game {
     this.allCharge = this.allCharge.filter(d => !d.collided);
     this.refs = this.refs.filter(d => !d.collided);
 
-    // updates the falling objects, filters out the
+    // updates the falling objects, filters out of screen objects
     this.defenders = this.defenders.filter(o => o.position.y < 900);
     this.allCharge = this.allCharge.filter(o => o.position.y < 900);
     this.refs = this.refs.filter(o => o.position.y < 900);
@@ -113,7 +120,7 @@ class Game {
 
   // draws each object on the game canvas
   draw(ctx) {
-    console.log(this.gameState);
+    // console.log(this.gameState);
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
       for (let d of opponents) {
@@ -124,22 +131,20 @@ class Game {
       this.text.showPausedMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.MENU) {
-      console.log(this.player);
       this.text.showMainMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
-      this.inputForm_div.style.display = "inline";
       this.resetBtn.style.display = "inline";
+      this.ratings.style.display = "inline";
       this.text.showGameOver(ctx, this);
     } else {
       this.resetBtn.style.display = "none";
-      this.inputForm_div.style.display = "none";
+      this.ratings.style.display = "none";
     }
     if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.INTRO) {
       this.text.showScoreAndFouls(ctx, this, this.score, this.fouls);
     }
     if (this.gameState === GAMESTATE.INTRO) {
-      // this.startButton.style.display = "inline";
       this.nameForm.style.display = "inline";
       this.text.showIntro(ctx, this);
     } else {
@@ -156,11 +161,11 @@ class Game {
   }
 
   // saves the game when user hits submit button
-  async saveGame(event) {
-    event.preventDefault();
+  async saveGame(e) {
+    // event.preventDefault();
     const name = this.nameInput.value;
     const score = this.score;
-    const rating = this.ratingInput.value;
+    const rating = e.target.dataset.id;
     await this.gameStats.adapter.saveGame(name, score, rating);
     this.gameStats.clearAllDivs();
     this.gameStats.fetchAndLoadGameStats();
@@ -172,6 +177,11 @@ class Game {
     await this.playerAdapter.savePlayer(this.player);
     this.gameState = GAMESTATE.MENU;
     this.draw(this.ctx);
+  }
+
+  async saveRating(event) {
+    const rating = event.target.dataset.id;
+    await this.gameStats.adapter.saveRating(rating);
   }
 
   // resets the score and fouls and clears object off game canvas when player clicks "Play Again button"

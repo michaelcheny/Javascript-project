@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_221206) do
   create_table "games", force: :cascade do |t|
     t.integer "player_id", null: false
     t.integer "score", default: 0
-    t.integer "rating", default: 3
+    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["player_id"], name: "index_games_on_player_id"
