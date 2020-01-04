@@ -26,5 +26,10 @@ class InputHandler {
     document.getElementById("game-container").addEventListener("click", e => {
       if (game.gameState == GAMESTATE.MENU) game.start();
     });
+
+    // press enter while in intro state to save name
+    document.addEventListener("keydown", e => {
+      if (game.gameState == GAMESTATE.INTRO && e.keyCode === 13) game.saveName();
+    });
   }
 }
