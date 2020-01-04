@@ -2,13 +2,15 @@ const GAMESTATE = {
   PAUSED: 0,
   RUNNING: 1,
   MENU: 2,
-  GAMEOVER: 3
+  GAMEOVER: 3,
+  INTRO: 4
 };
 
 class Game {
   constructor() {
-    this.gameState = GAMESTATE.MENU;
+    this.gameState = GAMESTATE.INTRO;
     this.gameStats = new GameStats();
+    this.playerAdapter = new PlayersAdapter();
     this.bindingsAndEventListener();
     this.text = new ScreenMessages();
     this.defenders = [];
@@ -29,15 +31,19 @@ class Game {
     this.gameWidth = this.canvas.width;
     this.gameHeight = this.canvas.height;
     this.inputForm_div = document.getElementById("new-name-form");
-    this.nameInput = document.getElementById("player-name");
+    // this.nameInput = document.getElementById("player-name");
     this.ratingInput = document.getElementById("game-rating");
     this.resetBtn = document.getElementById("reset-button");
+    this.nameForm = document.getElementById("greeting-form");
+    this.nameInput = document.getElementById("player-name");
+    this.startButton = document.getElementById("start-button");
     this.gainPoints = new Sound("./assets/sounds/points-gained-sound.wav");
     this.refWhistle = new Sound("./assets/sounds/referee-whistle.wav");
     this.impactGrunt = new Sound("./assets/sounds/impact-grunt.wav");
 
     this.inputForm_div.addEventListener("submit", event => this.saveGame(event));
     this.resetBtn.addEventListener("click", this.resetGame.bind(this));
+    this.startButton.addEventListener("click", this.saveName.bind(this));
   }
 
   // for use in input class, called by clicking with the game screen event listener
@@ -65,7 +71,8 @@ class Game {
     if (
       this.gameState === GAMESTATE.PAUSED ||
       this.gameState === GAMESTATE.MENU ||
-      this.gameState === GAMESTATE.GAMEOVER
+      this.gameState === GAMESTATE.GAMEOVER ||
+      this.gameState === GAMESTATE.INTRO
     )
       return;
 
@@ -106,6 +113,7 @@ class Game {
 
   // draws each object on the game canvas
   draw(ctx) {
+    console.log(this.gameState);
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
       for (let d of opponents) {
@@ -116,6 +124,7 @@ class Game {
       this.text.showPausedMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.MENU) {
+      console.log(this.player);
       this.text.showMainMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
@@ -123,11 +132,18 @@ class Game {
       this.resetBtn.style.display = "inline";
       this.text.showGameOver(ctx, this);
     } else {
-      this.inputForm_div.style.display = "none";
       this.resetBtn.style.display = "none";
+      this.inputForm_div.style.display = "none";
     }
-    if (this.gameState !== GAMESTATE.MENU) {
+    if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.INTRO) {
       this.text.showScoreAndFouls(ctx, this, this.score, this.fouls);
+    }
+    if (this.gameState === GAMESTATE.INTRO) {
+      // this.startButton.style.display = "inline";
+      this.nameForm.style.display = "inline";
+      this.text.showIntro(ctx, this);
+    } else {
+      this.nameForm.style.display = "none";
     }
   }
 
@@ -148,6 +164,14 @@ class Game {
     await this.gameStats.adapter.saveGame(name, score, rating);
     this.gameStats.clearAllDivs();
     this.gameStats.fetchAndLoadGameStats();
+  }
+
+  // saves the player and changes gameState to menu
+  async saveName() {
+    this.player = this.nameInput.value;
+    await this.playerAdapter.savePlayer(this.player);
+    this.gameState = GAMESTATE.MENU;
+    this.draw(this.ctx);
   }
 
   // resets the score and fouls and clears object off game canvas when player clicks "Play Again button"

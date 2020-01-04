@@ -1,10 +1,10 @@
 class Api::V1::PlayersController < ApplicationController
 
-  # def index
-  #   @players = Player.all
+  def index
+    @players = Player.all
 
-  #   render json: @players, status: 200
-  # end
+    render json: @players, status: 200
+  end
 
   # def show
   #   @player = Player.find(params[:id])
@@ -22,7 +22,9 @@ class Api::V1::PlayersController < ApplicationController
   # end
 
   def create
-    player = Player.create(name: params[:name])
+
+    player = Player.find_or_create_by(name: params[:name])
+    # byebug
   end
   # def update
   #   @player = Player.find(params[:id])

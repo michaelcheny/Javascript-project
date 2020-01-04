@@ -1,6 +1,16 @@
 class ScreenMessages {
   constructor() {}
 
+  showIntro(ctx, game) {
+    ctx.rect(0, 0, game.gameWidth, game.gameHeight);
+    ctx.fillStyle = "rgba(0,0,0,1";
+    ctx.fill();
+    ctx.font = "60px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText("Enter Your Name", game.gameWidth / 2, game.gameHeight / 2);
+  }
+
   showMainMenu(ctx, game) {
     ctx.rect(0, 0, game.gameWidth, game.gameHeight);
     ctx.fillStyle = "rgba(0,0,0,1)";
@@ -8,7 +18,7 @@ class ScreenMessages {
     ctx.font = "60px Arial";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText("Click Screen to Start", game.gameWidth / 2, game.gameHeight / 2);
+    ctx.fillText(`Hi, ${game.player}`, game.gameWidth / 2, game.gameHeight / 2);
   }
 
   showPausedMenu(ctx, game) {
