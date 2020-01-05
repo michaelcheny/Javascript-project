@@ -43,14 +43,19 @@ class Game {
     // this.inputForm_div.addEventListener("submit", event => this.saveGame(event));
     let ratings = document.getElementsByClassName("stars");
     for (let rating of ratings) {
-      rating.addEventListener("click", e => "use e.target.dataset.id to save rating");
+      rating.addEventListener("click", e => {
+        console.log(e.target.dataset.id);
+        // let score = e.target.dataset.id;
+        // this.gameStats.adapter.saveRating(score);
+        this.saveRating(e);
+      });
     }
     // this.ratings.addEventListener("click", e => this.saveGame(e));
 
     // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
     const observer = new MutationObserver(() => {
       if (this.ratings.style.display == "inline") {
-        console.log("game save triggered");
+        // console.log("game save triggered");
         this.saveGame();
       }
     });
@@ -126,7 +131,7 @@ class Game {
 
   // draws each object on the game canvas
   draw(ctx) {
-    console.log(this.gameState);
+    // console.log(this.gameState);
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
       for (let d of opponents) {
@@ -172,9 +177,8 @@ class Game {
     const name = this.nameInput.value;
     const score = this.score;
     // const rating = e.target.dataset.id;
-    let thing = await this.gameStats.adapter.saveGame(name, score);
-    console.log(thing);
-    this.gameStats.clearAllDivs();
+    this.game = await this.gameStats.adapter.saveGame(name, score);
+
     this.gameStats.fetchAndLoadGameStats();
   }
 
@@ -188,7 +192,10 @@ class Game {
 
   async saveRating(event) {
     const rating = event.target.dataset.id;
-    await this.gameStats.adapter.saveRating(rating);
+    const id = this.game.id;
+    await this.gameStats.adapter.saveRating(rating, id);
+
+    this.gameStats.fetchAndLoadGameStats();
   }
 
   // resets the score and fouls and clears object off game canvas when player clicks "Play Again button"

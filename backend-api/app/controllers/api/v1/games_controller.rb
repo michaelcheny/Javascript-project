@@ -32,6 +32,10 @@ class Api::V1::GamesController < ApplicationController
     end
   end
 
+  def update
+    game = Game.find(params[:id])
+    game.update(rating: params[:rating])
+  end
 
   # private
 

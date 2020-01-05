@@ -34,20 +34,18 @@ class GamesAdapter {
     }
   }
 
-  async saveRating(stars) {
+  async saveRating(stars, gameId) {
     const ratings = {
       rating: stars
     };
     try {
-      let res = await fetch(this.baseUrl, {
+      return await fetch(this.baseUrl + `/${gameId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(ratings)
       });
-      let data = await res.json();
-      return data;
     } catch (error) {
       console.log(error.message);
     }

@@ -13,6 +13,7 @@ class GameStats {
   }
 
   async fetchAndLoadGameStats() {
+    this.clearAllDivs();
     try {
       let games = await this.adapter.getGames();
       for (let game of games.games) {

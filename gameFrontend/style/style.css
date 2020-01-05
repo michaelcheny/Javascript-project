@@ -126,6 +126,7 @@ h2 {
   margin: 0 0 8px;
   font-size: 16px;
   overflow: hidden;
+  display: list-item;
 }
 
 .hug-left {
