@@ -30,7 +30,7 @@ class InputHandler {
       if (game.gameState == GAMESTATE.MENU) game.start();
     });
 
-    // press enter while in intro state to save name
+    // press enter while in intro state to save name / press escape to reset game at gameover screen
     document.addEventListener("keydown", e => {
       // console.log(e.keyCode);
       if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) game.saveName();

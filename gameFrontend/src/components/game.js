@@ -47,6 +47,12 @@ class Game {
     }
     // this.ratings.addEventListener("click", e => this.saveGame(e));
 
+    const observer = new MutationObserver(() => {
+      if (this.ratings.style.display != "none") console.log("game save triggered");
+    });
+
+    observer.observe(this.ratings, { attributes: true });
+
     // if (this.gameState == GAMESTATE.GAMEOVER) {
     // }
 
