@@ -36,25 +36,25 @@ class Game {
     this.nameForm = document.getElementById("greeting-form");
     this.nameInput = document.getElementById("player-name");
     this.ratings = document.getElementById("ratings");
-    this.gainPoints = new Sound("./assets/sounds/points-gained-sound.wav");
-    this.refWhistle = new Sound("./assets/sounds/referee-whistle.wav");
-    this.impactGrunt = new Sound("./assets/sounds/impact-grunt.wav");
+    this.gainPointSound = new Sound("./assets/sounds/points-gained-sound.wav");
+    this.refWhistleSound = new Sound("./assets/sounds/referee-whistle.wav");
+    this.impactGruntSound = new Sound("./assets/sounds/impact-grunt.wav");
 
     // this.inputForm_div.addEventListener("submit", event => this.saveGame(event));
     let ratings = document.getElementsByClassName("stars");
     for (let rating of ratings) {
-      rating.addEventListener("click", e => this.saveGame(e));
+      rating.addEventListener("click", e => "use e.target.dataset.id to save rating");
     }
     // this.ratings.addEventListener("click", e => this.saveGame(e));
 
+    // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
     const observer = new MutationObserver(() => {
-      if (this.ratings.style.display != "none") console.log("game save triggered");
+      if (this.ratings.style.display == "inline") {
+        console.log("game save triggered");
+        this.saveGame();
+      }
     });
-
     observer.observe(this.ratings, { attributes: true });
-
-    // if (this.gameState == GAMESTATE.GAMEOVER) {
-    // }
 
     this.resetBtn.addEventListener("click", this.resetGame.bind(this));
   }
@@ -96,7 +96,7 @@ class Game {
       const collision = new Collision(defender, this.head);
       if (collision.overlapped()) {
         this.score += 100;
-        this.gainPoints.play();
+        this.gainPointSound.play();
         defender.collided = true;
       }
     }
@@ -106,7 +106,7 @@ class Game {
       const collision = new Collision(charge, this.head);
       if (collision.overlapped()) {
         this.fouls--;
-        this.impactGrunt.play();
+        this.impactGruntSound.play();
         charge.collided = true;
       }
     }
@@ -117,7 +117,7 @@ class Game {
       if (collision.overlapped()) {
         this.fouls++;
         this.score += 500;
-        this.refWhistle.play();
+        this.refWhistleSound.play();
         ref.collided = true;
         if (this.fouls > 2) this.fouls = 2;
       }
@@ -167,12 +167,13 @@ class Game {
   }
 
   // saves the game when user hits submit button
-  async saveGame(e) {
+  async saveGame() {
     // event.preventDefault();
     const name = this.nameInput.value;
     const score = this.score;
-    const rating = e.target.dataset.id;
-    await this.gameStats.adapter.saveGame(name, score, rating);
+    // const rating = e.target.dataset.id;
+    let thing = await this.gameStats.adapter.saveGame(name, score);
+    console.log(thing);
     this.gameStats.clearAllDivs();
     this.gameStats.fetchAndLoadGameStats();
   }

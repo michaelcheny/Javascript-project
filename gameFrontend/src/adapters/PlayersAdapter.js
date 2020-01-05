@@ -19,7 +19,7 @@ class PlayersAdapter {
     } catch (error) {
       // document.getElementById("highscores-list").innerHTML +=
       //   "<h2>Check to see if your server is running.<h2>";
-      console.log(error.message);
+      // console.log(error.message);
     }
   }
 }

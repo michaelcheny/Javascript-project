@@ -6,23 +6,23 @@ class GameStats {
   }
 
   bindingsAndEventListeners() {
-    this.recentScores_div = document.getElementById("recent-scores");
-    this.top5AllTime_div = document.getElementById("top-5-all-time");
-    this.top5Today_div = document.getElementById("top-5-today");
-    this.averageRating_div = document.getElementById("average-rating");
+    this.recentScores_ul = document.getElementById("recent-scores");
+    this.top5AllTime_ul = document.getElementById("top-5-all-time");
+    this.top5Today_ul = document.getElementById("top-5-today");
+    this.averageRating_ul = document.getElementById("average-rating");
   }
 
   async fetchAndLoadGameStats() {
     try {
       let games = await this.adapter.getGames();
       for (let game of games.games) {
-        this.renderScores(game, this.recentScores_div);
+        this.renderScores(game, this.recentScores_ul);
       }
       for (let game of games.top_5) {
-        this.renderScores(game, this.top5AllTime_div);
+        this.renderScores(game, this.top5AllTime_ul);
       }
       for (let game of games.top_5_today) {
-        this.renderScores(game, this.top5Today_div);
+        this.renderScores(game, this.top5Today_ul);
       }
       this.renderAverageRating(games.average_rating);
     } catch (error) {
@@ -32,25 +32,25 @@ class GameStats {
   }
 
   clearAllDivs() {
-    this.recentScores_div.innerHTML = `<h2>Highscores List</h2>`;
-    this.top5AllTime_div.innerHTML = `<h2>Top 5 Scores All Time</h2>`;
-    this.top5Today_div.innerHTML = `<h2>Top 5 Scores Today</h2>`;
-    this.averageRating_div.innerHTML = `<h2>Average Rating</h2>`;
+    this.recentScores_ul.innerHTML = "";
+    this.top5AllTime_ul.innerHTML = "";
+    this.top5Today_ul.innerHTML = "";
+    this.averageRating_ul.innerHTML = "";
   }
 
   renderScores(game, container) {
     container.innerHTML += `
-    <div class="score-for-user">
-      <p><span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span></p>
-    </div>
+    <li>
+      <span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span>
+    </li>
     `;
   }
 
   renderAverageRating(gameRating) {
-    this.averageRating_div.innerHTML += `
-      <div class="score-for-user">
+    this.averageRating_ul.innerHTML += `
+      <li>
         <p>${parseFloat(gameRating).toFixed(2)} / 5</p>
-      </div>
+      </li>
     `;
   }
 }

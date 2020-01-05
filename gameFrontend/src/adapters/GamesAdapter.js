@@ -14,11 +14,10 @@ class GamesAdapter {
     }
   }
 
-  async saveGame(name, score, rating) {
+  async saveGame(name, score) {
     const game = {
       name: name,
-      score: score,
-      rating: rating
+      score: score
     };
     try {
       let res = await fetch(this.baseUrl, {

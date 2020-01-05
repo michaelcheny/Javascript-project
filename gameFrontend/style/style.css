@@ -17,6 +17,14 @@ header {
   color: #767676;
 }
 
+h2 {
+  display: block;
+  font-size: 18px;
+  margin: 0, 0, 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
 #game-container {
   padding-left: 0;
   padding-right: 0;
@@ -25,9 +33,6 @@ header {
   display: block;
   z-index: 2;
   background: url("../assets/images/court-background.jpg");
-  /* width: 1000;
-  height: 900; */
-  /* position: absolute; */
 }
 
 .img {
@@ -92,6 +97,14 @@ header {
   /* background: transparent; */
 }
 
+.wrapper {
+  text-align: center;
+  width: auto;
+  /* max-width: 1300px; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .score-for-user {
   list-style: none;
 }
@@ -101,18 +114,35 @@ header {
   margin-bottom: 18px;
   display: inline-block;
   vertical-align: top;
-  max-width: 400px;
+  max-width: 300px;
   padding: 30px;
+}
+.scores-list ul {
+  width: 230px;
+  margin: 0 auto;
+  padding: 0;
+}
+.scores-list ul li {
+  margin: 0 0 8px;
+  font-size: 16px;
+  overflow: hidden;
 }
 
 .hug-left {
   float: left;
-  max-width: 400px;
+  max-width: 200px;
   /* padding: 15px; */
-  padding: 5px 15px 5px 15px;
+  /* padding: 5px 45px 5px 15px; */
 }
 .hug-right {
   float: right;
   /* padding: 15px; */
-  padding: 5px 15px 5px 15px;
+  /* padding: 5px 15px 5px 15px; */
+}
+
+#name-container {
+  width: 230px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
 }
