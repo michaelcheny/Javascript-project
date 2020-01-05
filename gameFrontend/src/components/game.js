@@ -41,7 +41,19 @@ class Game {
 
     let ratings = document.getElementsByClassName("stars");
     for (let rating of ratings) {
-      rating.addEventListener("click", e => this.saveRating(e));
+      rating.addEventListener("click", e => {
+        this.saveRating(e);
+        for (let r of ratings) {
+          //     if (r.dataset.id <= e.target.dataset.id) {
+          //       r.style.color = "rgba(255, 255, 255, 0.75)";
+          //     } else {
+          //       r.style.color = "rgba(255, 255, 255, 0.4)";
+          //     }
+          r.dataset.id <= e.target.dataset.id
+            ? (r.style.color = "rgba(255, 255, 255, 0.75)")
+            : (r.style.color = "rgba(255, 255, 255, 0.4)");
+        }
+      });
     }
     // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
     const observer = new MutationObserver(() => {
