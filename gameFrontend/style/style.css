@@ -1,3 +1,9 @@
+@font-face {
+  font-family: Yoster Island;
+  src: url("../assets/fonts/ARCADECLASSIC.TTF");
+  /* src: url("../assets/fonts/yoster-island.regular.ttf"); */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -23,6 +29,7 @@ h2 {
   font-weight: bold;
   padding-bottom: 10px;
   text-align: center;
+  font-family: Yoster Island;
 }
 
 #game-container {
@@ -61,6 +68,7 @@ h2 {
   font-size: 30px;
   color: white;
   text-align: center;
+  font-family: Yoster Island;
   /* padding-left: 400px; */
   /* position: relative; */
   /* top: 59%; */
