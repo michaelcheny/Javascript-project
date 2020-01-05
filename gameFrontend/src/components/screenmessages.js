@@ -32,6 +32,13 @@ class ScreenMessages {
     ctx.drawImage(ref, game.gameWidth / 1.3 - 75, game.gameHeight / 2, 150, 150);
     ctx.fillText("+1 foul", game.gameWidth / 1.3, game.gameHeight / 2 - 50);
     ctx.fillText("+500 points", game.gameWidth / 1.3, game.gameHeight / 2 - 20);
+
+    ctx.font = "20px Arial";
+    ctx.fillText(
+      "This is not a knock on Harden, press `enter` or `click` on screen to play",
+      game.gameWidth / 2,
+      0 + 750
+    );
   }
 
   showPausedMenu(ctx, game) {
@@ -45,7 +52,7 @@ class ScreenMessages {
   }
 
   showGameOver(ctx, game) {
-    ctx.rect(0, 0, game.gameWidth, game.gameHeight);
+    // ctx.rect(0, 0, game.gameWidth, game.gameHeight);
     ctx.fillStyle = "rgba(0,0,0,1)";
     ctx.fill();
     ctx.font = "100px Arial";

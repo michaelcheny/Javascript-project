@@ -44,14 +44,9 @@ class Game {
       rating.addEventListener("click", e => {
         this.saveRating(e);
         for (let r of ratings) {
-          //     if (r.dataset.id <= e.target.dataset.id) {
-          //       r.style.color = "rgba(255, 255, 255, 0.75)";
-          //     } else {
-          //       r.style.color = "rgba(255, 255, 255, 0.4)";
-          //     }
           r.dataset.id <= e.target.dataset.id
             ? (r.style.color = "rgba(255, 255, 255, 0.75)")
-            : (r.style.color = "rgba(255, 255, 255, 0.4)");
+            : (r.style.color = "rgba(255, 255, 255, 0.5)");
         }
       });
     }
@@ -191,7 +186,9 @@ class Game {
     const rating = event.target.dataset.id;
     const id = this.game.id;
     await this.gameStats.adapter.saveRating(rating, id);
-    this.gameStats.fetchAndLoadGameStats();
+    this.gameStats.renderAverageRating();
+    let ratingText = document.getElementById("rating-text");
+    ratingText.innerText = "Thanks, press ESCAPE to retry.";
   }
 
   // resets the score and fouls and clears object off game canvas when player clicks "Play Again button"

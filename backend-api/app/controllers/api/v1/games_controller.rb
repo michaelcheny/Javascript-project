@@ -16,15 +16,12 @@ class Api::V1::GamesController < ApplicationController
 
   def show 
     @game = Game.find(params[:id])
-
     render json: @game, include: [:player], status: 200
-
   end
 
   def create
     player = Player.find_or_create_by(name: params[:name])
     game = Game.new(player: player, score: params[:score], rating: params[:rating])
-    # byebug
     if game.save
       render json: game, include: [:player], status: 200
     else
@@ -37,10 +34,4 @@ class Api::V1::GamesController < ApplicationController
     game.update(rating: params[:rating])
   end
 
-  # private
-
-  # def game_params
-  #   params.require(:games).permit(:score, :rating, :player_id)
-  # end
-  
 end

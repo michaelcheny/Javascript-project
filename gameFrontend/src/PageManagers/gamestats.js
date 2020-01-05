@@ -47,10 +47,12 @@ class GameStats {
     `;
   }
 
-  renderAverageRating(gameRating) {
+  async renderAverageRating() {
+    this.averageRating_ul.innerHTML = "";
+    let games = await this.adapter.getGames();
     this.averageRating_ul.innerHTML += `
       <li>
-        <p>${parseFloat(gameRating).toFixed(2)} / 5</p>
+        <p>${parseFloat(games.average_rating).toFixed(2)} / 5</p>
       </li>
     `;
   }
