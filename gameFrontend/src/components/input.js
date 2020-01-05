@@ -34,6 +34,11 @@ class InputHandler {
     document.addEventListener("keydown", e => {
       // console.log(e.keyCode);
       if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) game.saveName();
+      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
+      if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
+        game.draw(game.ctx);
+        game.start();
+      }
     });
   }
 }

@@ -120,7 +120,7 @@ class Game {
 
   // draws each object on the game canvas
   draw(ctx) {
-    // console.log(this.gameState);
+    console.log(this.gameState);
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
       for (let d of opponents) {
