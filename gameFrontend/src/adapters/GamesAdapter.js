@@ -10,7 +10,7 @@ class GamesAdapter {
       return data;
     } catch (error) {
       console.log(error.message);
-      return "Check if your is running.";
+      return "Check if your server is running.";
     }
   }
 

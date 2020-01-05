@@ -30,7 +30,6 @@ class Game {
     this.ctx = this.canvas.getContext("2d");
     this.gameWidth = this.canvas.width;
     this.gameHeight = this.canvas.height;
-    this.inputForm_div = document.getElementById("new-name-form");
     this.ratingInput = document.getElementById("game-rating");
     this.resetBtn = document.getElementById("reset-button");
     this.nameForm = document.getElementById("greeting-form");
@@ -40,28 +39,17 @@ class Game {
     this.refWhistleSound = new Sound("./assets/sounds/referee-whistle.wav");
     this.impactGruntSound = new Sound("./assets/sounds/impact-grunt.wav");
 
-    // this.inputForm_div.addEventListener("submit", event => this.saveGame(event));
     let ratings = document.getElementsByClassName("stars");
     for (let rating of ratings) {
-      rating.addEventListener("click", e => {
-        console.log(e.target.dataset.id);
-        // let score = e.target.dataset.id;
-        // this.gameStats.adapter.saveRating(score);
-        this.saveRating(e);
-      });
+      rating.addEventListener("click", e => this.saveRating(e));
     }
-    // this.ratings.addEventListener("click", e => this.saveGame(e));
-
     // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
     const observer = new MutationObserver(() => {
       if (this.ratings.style.display == "inline") {
-        // console.log("game save triggered");
         this.saveGame();
       }
     });
     observer.observe(this.ratings, { attributes: true });
-
-    this.resetBtn.addEventListener("click", this.resetGame.bind(this));
   }
 
   // for use in input class, called by clicking with the game screen event listener
@@ -145,11 +133,9 @@ class Game {
       this.text.showMainMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
-      this.resetBtn.style.display = "inline";
       this.ratings.style.display = "inline";
       this.text.showGameOver(ctx, this);
     } else {
-      this.resetBtn.style.display = "none";
       this.ratings.style.display = "none";
     }
     if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.INTRO) {
@@ -173,10 +159,8 @@ class Game {
 
   // saves the game when user hits submit button
   async saveGame() {
-    // event.preventDefault();
     const name = this.nameInput.value;
     const score = this.score;
-    // const rating = e.target.dataset.id;
     this.game = await this.gameStats.adapter.saveGame(name, score);
 
     this.gameStats.fetchAndLoadGameStats();
@@ -190,11 +174,11 @@ class Game {
     this.draw(this.ctx);
   }
 
+  // patch request to the game controller to update rating when clicked on star
   async saveRating(event) {
     const rating = event.target.dataset.id;
     const id = this.game.id;
     await this.gameStats.adapter.saveRating(rating, id);
-
     this.gameStats.fetchAndLoadGameStats();
   }
 
@@ -235,10 +219,8 @@ class Game {
     this.changeInTime = timestamp - this.lastTime;
     this.lastTime = timestamp;
     this.ctx.clearRect(0, 0, this.gameWidth, this.gameHeight);
-
     this.update(this.changeInTime);
     this.draw(this.ctx);
-
     requestAnimationFrame(this.gameloop.bind(this));
   }
 }

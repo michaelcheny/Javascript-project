@@ -39,16 +39,6 @@ h2 {
   display: none;
 }
 
-#reset-button {
-  display: none;
-  padding: 10px 20px;
-  font-size: 15px;
-  z-index: 1;
-  position: absolute;
-  top: 64%;
-  left: 46%;
-}
-
 #ratings {
   display: none;
   color: white;
