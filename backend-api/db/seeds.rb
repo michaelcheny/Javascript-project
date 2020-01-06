@@ -13,7 +13,7 @@ Player.create([
   { name: 'Donald Duck' },
   { name: 'Rick Sanchez' },
   { name: 'Toby the Yellow Labrador' },
-  { name: 'Balthromaw' },
+  { name: 'Cheater' },
   { name: 'Slippy the Snake' }
 ])
 
@@ -22,7 +22,7 @@ Game.create([
   {player_id: 2, score: 2019, rating: 3},
   {player_id: 3, score: 7000, rating: 5},
   {player_id: 4, score: 7000, rating: 5},
-  {player_id: 5, score: 12000, rating: 4},
+  {player_id: 5, score: 99999999, rating: 5},
   {player_id: 6, score: 22000, rating: 5}
 ])
 

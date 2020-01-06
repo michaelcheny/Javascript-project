@@ -11,7 +11,7 @@ class Api::V1::GamesController < ApplicationController
       top_5: @top_5,
       top_5_today: @top_5_today,
       average_rating: @average
-      }, include: [:player], status: 200
+      }, include: [:player => {only: [:name]}], except: [:created_at, :updated_at], status: 200
   end
 
   def show 
