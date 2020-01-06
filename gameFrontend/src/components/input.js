@@ -75,7 +75,7 @@ class InputHandler {
       } else {
         document.body.style.backgroundColor = "rgb(33, 33, 33)";
         document.body.style.color = "#bdbdbd";
-        this.lightToggle.innerText = "🕯️";
+        this.lightToggle.innerText = "💡";
         this.light = "off";
       }
     });
@@ -86,9 +86,17 @@ class InputHandler {
     for (let thing of clickables) {
       thing.addEventListener("mouseover", () => {
         document.body.style.cursor = "alias";
-        setTimeout(() => {
-          document.body.style.cursor = "";
-        }, 1000);
+        if (thing.innerText == "💡" || thing.innerText == "🙈") {
+          thing.style.fontSize = "30px";
+          thing.style.top = "81%";
+        } else {
+          thing.style.fontSize = "40px";
+        }
+      });
+      thing.addEventListener("mouseout", () => {
+        document.body.style.cursor = "";
+        thing.style.top = "";
+        thing.style.fontSize = "";
       });
     }
   }
