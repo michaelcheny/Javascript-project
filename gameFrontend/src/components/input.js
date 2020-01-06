@@ -87,7 +87,7 @@ class InputHandler {
         document.body.style.cursor = "pointer";
         if (thing.innerText == "💡" || thing.innerText == "🙈") {
           thing.style.fontSize = "30px";
-          thing.style.top = "81%";
+          thing.style.top = "72%";
         } else {
           thing.style.fontSize = "35px";
         }
