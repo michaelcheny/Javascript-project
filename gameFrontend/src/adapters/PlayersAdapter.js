@@ -7,7 +7,7 @@ class PlayersAdapter {
   async savePlayer(name) {
     const player = { name: name };
     try {
-      let res = await fetch(this.baseUrl, {
+      return await fetch(this.baseUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -12,6 +12,7 @@
 
 body {
   background-color: #282a36;
+  font-family: Arcade;
 }
 
 header {
@@ -29,7 +30,6 @@ h2 {
   font-weight: bold;
   padding-bottom: 10px;
   text-align: center;
-  font-family: Arcade;
 }
 
 #game-container {
@@ -68,7 +68,6 @@ h2 {
   font-size: 30px;
   color: white;
   text-align: center;
-  font-family: Arcade;
   /* padding-left: 400px; */
   /* position: relative; */
   /* top: 59%; */

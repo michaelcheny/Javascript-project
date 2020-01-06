@@ -34,29 +34,24 @@ class Game {
     this.resetBtn = document.getElementById("reset-button");
     this.nameForm = document.getElementById("greeting-form");
     this.nameInput = document.getElementById("player-name");
-    this.ratings = document.getElementById("ratings");
+    this.ratings_Div = document.getElementById("ratings");
+    this.ratings = document.getElementsByClassName("stars");
     this.gainPointSound = new Sound("./assets/sounds/points-gained-sound.wav");
     this.refWhistleSound = new Sound("./assets/sounds/referee-whistle.wav");
     this.impactGruntSound = new Sound("./assets/sounds/impact-grunt.wav");
 
-    let ratings = document.getElementsByClassName("stars");
-    for (let rating of ratings) {
-      rating.addEventListener("click", e => {
-        this.saveRating(e);
-        for (let r of ratings) {
-          r.dataset.id <= e.target.dataset.id
-            ? (r.style.color = "rgba(255, 255, 255, 0.75)")
-            : (r.style.color = "rgba(255, 255, 255, 0.5)");
-        }
+    for (let rating of this.ratings) {
+      rating.addEventListener("click", event => {
+        this.saveRating(event, this.ratings);
       });
     }
     // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
     const observer = new MutationObserver(() => {
-      if (this.ratings.style.display == "inline") {
+      if (this.ratings_Div.style.display == "inline") {
         this.saveGame();
       }
     });
-    observer.observe(this.ratings, { attributes: true });
+    observer.observe(this.ratings_Div, { attributes: true });
   }
 
   // for use in input class, called by clicking with the game screen event listener
@@ -140,10 +135,10 @@ class Game {
       this.text.showMainMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
-      this.ratings.style.display = "inline";
+      this.ratings_Div.style.display = "inline";
       this.text.showGameOver(ctx, this);
     } else {
-      this.ratings.style.display = "none";
+      this.ratings_Div.style.display = "none";
     }
     if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.INTRO) {
       this.text.showScoreAndFouls(ctx, this, this.score, this.fouls);
@@ -169,7 +164,6 @@ class Game {
     const name = this.nameInput.value;
     const score = this.score;
     this.game = await this.gameStats.adapter.saveGame(name, score);
-
     this.gameStats.fetchAndLoadGameStats();
   }
 
@@ -182,13 +176,18 @@ class Game {
   }
 
   // patch request to the game controller to update rating when clicked on star
-  async saveRating(event) {
+  async saveRating(event, ratings) {
     const rating = event.target.dataset.id;
     const id = this.game.id;
     await this.gameStats.adapter.saveRating(rating, id);
     this.gameStats.renderAverageRating();
-    let ratingText = document.getElementById("rating-text");
-    ratingText.innerText = "Thanks, press ESCAPE to retry.";
+    this.stars = document.getElementById("rating-text");
+    this.stars.innerText = "Thanks, press ESCAPE to retry.";
+    for (const r of ratings) {
+      r.dataset.id <= event.target.dataset.id
+        ? (r.style.color = "rgba(255, 255, 255, 0.75)")
+        : (r.style.color = "rgba(255, 255, 255, 0.5)");
+    }
   }
 
   // resets the score and fouls and clears object off game canvas when player clicks "Play Again button"
@@ -200,6 +199,10 @@ class Game {
     this.defenders = [];
     this.allCharge = [];
     this.refs = [];
+    this.stars.innerHTML = "Leave a rating:";
+    for (const rating of this.ratings) {
+      rating.style.color = "rgba(255, 255, 255, 0.5)";
+    }
   }
 
   // chance of spawning object falling down every 500 Millisecond
