@@ -3,6 +3,10 @@
   src: url("../assets/fonts/ARCADECLASSIC.TTF");
   /* src: url("../assets/fonts/yoster-island.regular.ttf"); */
 }
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+}
 
 * {
   margin: 0;
@@ -12,15 +16,15 @@
 
 body {
   background-color: #282a36;
-  font-family: Arcade;
+  font-family: "Arcade";
+  /* color: #767676; */
+  color: #bdbdbd;
 }
 
 header {
-  background-color: #282a36;
   margin: auto;
   text-align: center;
   padding: 15px;
-  color: #767676;
 }
 
 h2 {
@@ -92,7 +96,7 @@ h2 {
 }
 
 .scores-list {
-  color: #767676;
+  /* color: #767676; */
   margin-bottom: 18px;
   display: inline-block;
   vertical-align: top;

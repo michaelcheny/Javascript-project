@@ -40,5 +40,31 @@ class InputHandler {
         game.start();
       }
     });
+
+    this.bindingsAndEventListeners();
+    this.changeFont();
+  }
+
+  bindingsAndEventListeners() {
+    this.font = document.body.style.fontFamily;
+    this.font = "Arcade";
+  }
+
+  changeFont() {
+    let title = document.getElementById("title");
+    title.addEventListener("click", () => {
+      console.log(document.body.style.color);
+      if (this.font === "Arcade") {
+        document.body.style.fontFamily = "Roboto";
+        document.body.style.backgroundColor = "rgba(140, 140, 140, 0)";
+        document.body.style.color = "black";
+        this.font = "Roboto";
+      } else {
+        document.body.style.fontFamily = "Arcade";
+        document.body.style.backgroundColor = "#282a36";
+        document.body.style.color = "#bdbdbd";
+        this.font = "Arcade";
+      }
+    });
   }
 }
