@@ -15,7 +15,8 @@
 }
 
 body {
-  background-color: #282a36;
+  background-color: rgb(33, 33, 33);
+  /* background-color: #282a36; */
   font-family: "Arcade";
   /* color: #767676; */
   color: #bdbdbd;
@@ -48,6 +49,13 @@ h2 {
 
 .img {
   display: none;
+}
+
+#light-toggle {
+  z-index: 1;
+  position: absolute;
+  top: 82%;
+  right: 11%;
 }
 
 #ratings {

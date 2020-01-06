@@ -37,7 +37,7 @@ class ScreenMessages {
     ctx.fillText(
       "This is not a knock on Harden, press `enter` or `click` on screen to play",
       game.gameWidth / 2,
-      0 + 750
+      750
     );
   }
 

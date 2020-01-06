@@ -7,10 +7,7 @@ class InputHandler {
         } else if (e.keyCode === 39 || e.keyCode === 68) {
           head.dashRight();
         } else if (e.keyCode === 87) {
-          console.log("x left: " + head.position.x);
-          console.log("y top: " + head.position.y);
-          console.log("x right: " + (head.position.x + 86.4));
-          console.log("y bottom: " + (head.position.y + 164));
+          console.log("x position: " + (head.position.x - head.size.x / 2));
         } else if (e.keyCode === 83) {
           game.togglePause();
         }
@@ -43,28 +40,56 @@ class InputHandler {
 
     this.bindingsAndEventListeners();
     this.changeFont();
+    this.changeBackgroundColor();
+    this.hoverClickables();
   }
 
   bindingsAndEventListeners() {
     this.font = document.body.style.fontFamily;
     this.font = "Arcade";
+    this.light = "off";
   }
 
   changeFont() {
-    let title = document.getElementById("title");
-    title.addEventListener("click", () => {
+    this.title = document.getElementById("title");
+    this.title.addEventListener("click", () => {
       console.log(document.body.style.color);
       if (this.font === "Arcade") {
         document.body.style.fontFamily = "Roboto";
-        document.body.style.backgroundColor = "rgba(140, 140, 140, 0)";
-        document.body.style.color = "black";
         this.font = "Roboto";
       } else {
         document.body.style.fontFamily = "Arcade";
-        document.body.style.backgroundColor = "#282a36";
-        document.body.style.color = "#bdbdbd";
         this.font = "Arcade";
       }
     });
+  }
+
+  changeBackgroundColor() {
+    this.lightToggle = document.getElementById("light-toggle");
+    this.lightToggle.addEventListener("click", () => {
+      if (this.light === "off") {
+        document.body.style.backgroundColor = "rgba(140, 140, 140, 0)";
+        document.body.style.color = "black";
+        this.lightToggle.innerText = "🙈";
+        this.light = "on";
+      } else {
+        document.body.style.backgroundColor = "rgb(33, 33, 33)";
+        document.body.style.color = "#bdbdbd";
+        this.lightToggle.innerText = "🕯️";
+        this.light = "off";
+      }
+    });
+  }
+
+  hoverClickables() {
+    let clickables = [this.title, this.lightToggle];
+    for (let thing of clickables) {
+      thing.addEventListener("mouseover", () => {
+        document.body.style.cursor = "alias";
+        setTimeout(() => {
+          document.body.style.cursor = "";
+        }, 1000);
+      });
+    }
   }
 }
