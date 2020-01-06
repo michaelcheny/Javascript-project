@@ -85,12 +85,12 @@ class InputHandler {
     let clickables = [this.title, this.lightToggle];
     for (let thing of clickables) {
       thing.addEventListener("mouseover", () => {
-        document.body.style.cursor = "alias";
+        document.body.style.cursor = "pointer";
         if (thing.innerText == "💡" || thing.innerText == "🙈") {
           thing.style.fontSize = "30px";
           thing.style.top = "81%";
         } else {
-          thing.style.fontSize = "40px";
+          thing.style.fontSize = "35px";
         }
       });
       thing.addEventListener("mouseout", () => {

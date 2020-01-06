@@ -121,7 +121,6 @@ class Game {
 
   // draws each object on the game canvas
   draw(ctx) {
-    // console.log(this.gameState);
     this.head.draw(ctx);
     this.gameObjects.forEach(opponents => {
       for (let d of opponents) {
@@ -193,6 +192,7 @@ class Game {
   // resets the score and fouls and clears object off game canvas when player clicks "Play Again button"
   resetGame() {
     this.head.position.x = this.gameWidth / 2 - this.head.size.x / 2;
+    this.head.speed = 0;
     this.score = 0;
     this.fouls = 2;
     this.gameState = GAMESTATE.MENU;
