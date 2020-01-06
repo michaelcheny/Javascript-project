@@ -32,3 +32,7 @@ Rails as an API as the backend.
 # Credits
 
 Inspiration came from a game that took a fun spin on a classic "snake" game [Easy Money Snake](http://easymoneysnake.com/). [Flappy Bird](https://flappybird.io/) also inspired me as well.
+
+# License
+
+[Mit License](https://github.com/michaelcheny/Javascript-project/blob/master/LICENSE)
