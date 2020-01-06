@@ -53,7 +53,6 @@ class InputHandler {
   changeFont() {
     this.title = document.getElementById("title");
     this.title.addEventListener("click", () => {
-      console.log(document.body.style.color);
       if (this.font === "Arcade") {
         document.body.style.fontFamily = "Roboto";
         this.font = "Roboto";
