@@ -124,7 +124,7 @@ class InputHandler {
         if (sound.volume != 0) {
           sound.volume = 0;
           this.muteToggle.innerText = "🔇";
-        } else if (sound.src.includes("childsnightmare")) {
+        } else if (sound.src.includes("solvethepuzzle")) {
           sound.volume = 0.1;
           this.muteToggle.innerText = "🔊";
         } else {
