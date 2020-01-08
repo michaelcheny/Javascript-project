@@ -42,6 +42,7 @@ class InputHandler {
     this.changeFont();
     this.changeBackgroundColor();
     this.hoverClickables();
+    this.toggleMute();
   }
 
   bindingsAndEventListeners() {
@@ -96,6 +97,21 @@ class InputHandler {
         document.body.style.cursor = "";
         thing.style.top = "";
         thing.style.fontSize = "";
+      });
+    }
+  }
+
+  toggleMute() {
+    let sounds = document.querySelectorAll("audio");
+    for (const sound of sounds) {
+      document.addEventListener("keydown", e => {
+        if (e.keyCode === 77 && sound.volume != 0) {
+          console.log(sound.volume);
+          sound.volume = 0;
+        } else if (e.keyCode === 77) {
+          sound.volume = 0.5;
+          console.log(sound.volume);
+        }
       });
     }
   }
