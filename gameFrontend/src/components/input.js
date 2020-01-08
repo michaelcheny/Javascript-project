@@ -38,23 +38,24 @@ class InputHandler {
     });
 
     this.bindingsAndEventListeners();
-    this.changeFont();
-    this.changeBackgroundColor();
-    this.hoverClickables();
-    this.toggleMute();
   }
 
   bindingsAndEventListeners() {
-    this.font = document.body.style.fontFamily;
+    this.font = "Arcade";
+    this.light = "off";
     this.title = document.getElementById("title");
     this.sounds = document.querySelectorAll("audio");
     this.lightToggle = document.getElementById("light-toggle");
     this.muteToggle = document.getElementById("mute-toggle");
+    this.hoverClickables();
+    this.toggleMute();
+    this.changeFont();
+    this.changeBackgroundColor();
+    // this.title.addEventListener("click", this.changeFont.bind(this));
+    // this.lightToggle.addEventListener("click", this.changeBackgroundColor.bind(this));
   }
 
   changeFont() {
-    console.log(this.font);
-
     this.title.addEventListener("click", () => {
       if (this.font === "Arcade") {
         document.body.style.fontFamily = "Roboto";
@@ -109,15 +110,13 @@ class InputHandler {
 
   toggleMute() {
     for (const sound of this.sounds) {
-      document.addEventListener("keydown", e => {
-        if (e.keyCode === 77 && sound.volume != 0) {
+      this.muteToggle.addEventListener("click", () => {
+        if (sound.volume != 0) {
           sound.volume = 0;
           this.muteToggle.innerText = "🔇";
-          // console.log(sound.volume);
-        } else if (e.keyCode === 77) {
+        } else {
           sound.volume = 0.5;
           this.muteToggle.innerText = "🔊";
-          // console.log(sound.volume);
         }
       });
     }
