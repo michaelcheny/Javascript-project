@@ -41,7 +41,7 @@ class Game {
     this.impactGruntSound = new Sound("./assets/sounds/impact-grunt.wav");
     this.gameMusic = new Sound("./assets/sounds/childsnightmare.ogg");
     this.gameMusic.sound.loop = true;
-    this.gameMusic.sound.volume = 0.1;
+    this.gameMusic.sound.volume = 0.05;
 
     for (let rating of this.ratings) {
       rating.addEventListener("click", event => {

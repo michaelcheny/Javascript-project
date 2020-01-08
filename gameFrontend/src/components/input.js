@@ -12,6 +12,16 @@ class InputHandler {
           game.togglePause();
         }
       }
+      // press enter while in intro state to save name / press escape to reset game at gameover screen
+      if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) {
+        game.gameMusic.play();
+        game.saveName();
+      }
+      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
+      if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
+        game.draw(game.ctx);
+        game.start();
+      }
     });
 
     document.addEventListener("keyup", e => {
@@ -27,16 +37,17 @@ class InputHandler {
       if (game.gameState == GAMESTATE.MENU) game.start();
     });
 
-    // press enter while in intro state to save name / press escape to reset game at gameover screen
-    document.addEventListener("keydown", e => {
-      if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) game.saveName();
-      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
-      if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
-        game.draw(game.ctx);
-        game.gameMusic.play();
-        game.start();
-      }
-    });
+    // document.addEventListener("keydown", e => {
+    // if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) {
+    //   game.gameMusic.play();
+    //   game.saveName();
+    // }
+    // if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
+    // if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
+    //   game.draw(game.ctx);
+    //   game.start();
+    // }
+    // });
 
     this.bindingsAndEventListeners();
   }
@@ -52,8 +63,6 @@ class InputHandler {
     this.toggleMute();
     this.changeFont();
     this.changeBackgroundColor();
-    // this.title.addEventListener("click", this.changeFont.bind(this));
-    // this.lightToggle.addEventListener("click", this.changeBackgroundColor.bind(this));
   }
 
   changeFont() {
