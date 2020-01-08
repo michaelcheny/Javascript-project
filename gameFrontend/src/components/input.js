@@ -33,7 +33,7 @@ class InputHandler {
       if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
       if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
         game.draw(game.ctx);
-        // game.gameMusic.play();
+        game.gameMusic.play();
         game.start();
       }
     });
@@ -115,6 +115,9 @@ class InputHandler {
         if (sound.volume != 0) {
           sound.volume = 0;
           this.muteToggle.innerText = "🔇";
+        } else if (sound.src.includes("childsnightmare")) {
+          sound.volume = 0.1;
+          this.muteToggle.innerText = "🔊";
         } else {
           sound.volume = 0.5;
           this.muteToggle.innerText = "🔊";
