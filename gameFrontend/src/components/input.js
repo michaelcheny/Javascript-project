@@ -33,6 +33,7 @@ class InputHandler {
       if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
       if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
         game.draw(game.ctx);
+        // game.gameMusic.play();
         game.start();
       }
     });

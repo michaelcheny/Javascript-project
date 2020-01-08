@@ -1,11 +1,9 @@
 @font-face {
   font-family: "Arcade";
   src: url("../assets/fonts/ARCADECLASSIC.TTF");
-  /* src: url("../assets/fonts/yoster-island.regular.ttf"); */
 }
 @font-face {
   font-family: "Roboto";
-  /* src: url("https://fonts.googleapis.com/css?family=Roboto&display=swap"); */
   src: url("../assets/fonts/Roboto-Regular.ttf");
 }
 
@@ -88,9 +86,6 @@ h2 {
   font-size: 30px;
   color: white;
   text-align: center;
-  /* padding-left: 400px; */
-  /* position: relative; */
-  /* top: 59%; */
 }
 
 #greeting-form {
@@ -100,19 +95,16 @@ h2 {
   top: 53%;
   left: 38%;
   text-align: center;
-  /* background: transparent; */
 }
 
 .wrapper {
   text-align: center;
   width: auto;
-  /* max-width: 1300px; */
   margin-left: auto;
   margin-right: auto;
 }
 
 .scores-list {
-  /* color: #767676; */
   margin-bottom: 18px;
   display: inline-block;
   vertical-align: top;
@@ -134,13 +126,9 @@ h2 {
 .hug-left {
   float: left;
   max-width: 200px;
-  /* padding: 15px; */
-  /* padding: 5px 45px 5px 15px; */
 }
 .hug-right {
   float: right;
-  /* padding: 15px; */
-  /* padding: 5px 15px 5px 15px; */
 }
 
 #name-container {

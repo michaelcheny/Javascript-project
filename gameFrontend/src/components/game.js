@@ -39,6 +39,9 @@ class Game {
     this.gainPointSound = new Sound("./assets/sounds/points-gained-sound.wav");
     this.refWhistleSound = new Sound("./assets/sounds/referee-whistle.wav");
     this.impactGruntSound = new Sound("./assets/sounds/impact-grunt.wav");
+    this.gameMusic = new Sound("./assets/sounds/childsnightmare.ogg");
+    this.gameMusic.loop = true;
+    this.gameMusic.volume = 0.1;
 
     for (let rating of this.ratings) {
       rating.addEventListener("click", event => {
@@ -199,7 +202,7 @@ class Game {
     this.defenders = [];
     this.allCharge = [];
     this.refs = [];
-    this.stars.innerHTML = "Leave a rating:";
+    if (this.stars) this.stars.innerHTML = "Leave a rating:";
     for (const rating of this.ratings) {
       rating.style.color = "rgba(255, 255, 255, 0.5)";
     }
