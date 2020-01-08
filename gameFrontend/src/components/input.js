@@ -29,7 +29,6 @@ class InputHandler {
 
     // press enter while in intro state to save name / press escape to reset game at gameover screen
     document.addEventListener("keydown", e => {
-      // console.log(e.keyCode);
       if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) game.saveName();
       if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
       if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
@@ -47,12 +46,15 @@ class InputHandler {
 
   bindingsAndEventListeners() {
     this.font = document.body.style.fontFamily;
-    this.font = "Arcade";
-    this.light = "off";
+    this.title = document.getElementById("title");
+    this.sounds = document.querySelectorAll("audio");
+    this.lightToggle = document.getElementById("light-toggle");
+    this.muteToggle = document.getElementById("mute-toggle");
   }
 
   changeFont() {
-    this.title = document.getElementById("title");
+    console.log(this.font);
+
     this.title.addEventListener("click", () => {
       if (this.font === "Arcade") {
         document.body.style.fontFamily = "Roboto";
@@ -65,7 +67,6 @@ class InputHandler {
   }
 
   changeBackgroundColor() {
-    this.lightToggle = document.getElementById("light-toggle");
     this.lightToggle.addEventListener("click", () => {
       if (this.light === "off") {
         document.body.style.backgroundColor = "rgba(140, 140, 140, 0)";
@@ -82,11 +83,16 @@ class InputHandler {
   }
 
   hoverClickables() {
-    let clickables = [this.title, this.lightToggle];
+    let clickables = [this.title, this.lightToggle, this.muteToggle];
     for (let thing of clickables) {
       thing.addEventListener("mouseover", () => {
         document.body.style.cursor = "pointer";
-        if (thing.innerText == "💡" || thing.innerText == "🙈") {
+        if (
+          thing.innerText == "💡" ||
+          thing.innerText == "🙈" ||
+          thing.innerText == "🔊" ||
+          thing.innerText == "🔇"
+        ) {
           thing.style.fontSize = "30px";
           thing.style.top = "72%";
         } else {
@@ -102,15 +108,16 @@ class InputHandler {
   }
 
   toggleMute() {
-    let sounds = document.querySelectorAll("audio");
-    for (const sound of sounds) {
+    for (const sound of this.sounds) {
       document.addEventListener("keydown", e => {
         if (e.keyCode === 77 && sound.volume != 0) {
-          console.log(sound.volume);
           sound.volume = 0;
+          this.muteToggle.innerText = "🔇";
+          // console.log(sound.volume);
         } else if (e.keyCode === 77) {
           sound.volume = 0.5;
-          console.log(sound.volume);
+          this.muteToggle.innerText = "🔊";
+          // console.log(sound.volume);
         }
       });
     }
