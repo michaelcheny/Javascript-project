@@ -39,6 +39,7 @@ class Game {
     this.gainPointSound = new Sound("./assets/sounds/points-gained-sound.wav");
     this.refWhistleSound = new Sound("./assets/sounds/referee-whistle.wav");
     this.impactGruntSound = new Sound("./assets/sounds/impact-grunt.wav");
+
     this.gameMusic = new Sound("./assets/sounds/solvethepuzzle.ogg");
     this.gameMusic.sound.loop = true;
     this.gameMusic.sound.volume = 0.05;
@@ -226,7 +227,7 @@ class Game {
           this.refs.push(ref);
         }
       }
-    }, 500);
+    }, 400);
   }
 
   // uses requestAnimationFrame to get changeInTime

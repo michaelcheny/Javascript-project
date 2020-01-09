@@ -37,18 +37,6 @@ class InputHandler {
       if (game.gameState == GAMESTATE.MENU) game.start();
     });
 
-    // document.addEventListener("keydown", e => {
-    // if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) {
-    //   game.gameMusic.play();
-    //   game.saveName();
-    // }
-    // if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
-    // if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
-    //   game.draw(game.ctx);
-    //   game.start();
-    // }
-    // });
-
     this.bindingsAndEventListeners();
   }
 
@@ -125,7 +113,7 @@ class InputHandler {
           sound.volume = 0;
           this.muteToggle.innerText = "🔇";
         } else if (sound.src.includes("solvethepuzzle")) {
-          sound.volume = 0.1;
+          sound.volume = 0.05;
           this.muteToggle.innerText = "🔊";
         } else {
           sound.volume = 0.5;
