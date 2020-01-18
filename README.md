@@ -33,6 +33,8 @@ Rails as an API as the backend.
 
 Inspiration came from a game that took a fun spin on a classic "snake" game [Easy Money Snake](http://easymoneysnake.com/). [Flappy Bird](https://flappybird.io/) also inspired me as well.
 
+The png of Harden's head came from Bleacher Report's Game of Zones.
+
 Game music by [Patrick de Arteaga](patrickdearteaga.com).
 
 # License

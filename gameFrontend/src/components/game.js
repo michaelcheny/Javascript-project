@@ -51,9 +51,7 @@ class Game {
     }
     // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
     const observer = new MutationObserver(() => {
-      if (this.ratings_Div.style.display == "inline") {
-        this.saveGame();
-      }
+      if (this.ratings_Div.style.display == "inline") this.saveGame();
     });
     observer.observe(this.ratings_Div, { attributes: true });
   }
@@ -143,7 +141,10 @@ class Game {
     } else {
       this.ratings_Div.style.display = "none";
     }
-    if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.INTRO) {
+    if (
+      this.gameState !== GAMESTATE.MENU ||
+      this.gameState !== GAMESTATE.INTRO
+    ) {
       this.text.showScoreAndFouls(ctx, this, this.score, this.fouls);
     }
     if (this.gameState === GAMESTATE.INTRO) {
