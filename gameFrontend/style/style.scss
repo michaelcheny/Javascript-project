@@ -1,14 +1,24 @@
-@import url(/home/michael/Development/projects/Floppy-Drop-Javascript-game/gameFrontend/node_modules/nes.css/css/nes.css);
+@import "../node_modules/nes.css/css/nes.css";
+
+// @font-face {
+//   font-family: "Arcade";
+//   src: url("../assets/fonts/ARCADECLASSIC.TTF");
+// }
+// @font-face {
+//   font-family: "Roboto";
+//   src: url("../assets/fonts/Roboto-Regular.ttf");
+// }
+
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #212121;
+  background-color: rgb(33, 33, 33);
   /* background-color: #282a36; */
+  // font-family: "Arcade";
   /* color: #767676; */
   color: #bdbdbd;
 }
@@ -103,13 +113,11 @@ h2 {
   max-width: 300px;
   padding: 30px;
 }
-
 .scores-list ul {
   width: 230px;
   margin: 0 auto;
   padding: 0;
 }
-
 .scores-list ul li {
   margin: 0 0 8px;
   font-size: 16px;
@@ -121,7 +129,6 @@ h2 {
   float: left;
   max-width: 200px;
 }
-
 .hug-right {
   float: right;
 }
@@ -132,4 +139,3 @@ h2 {
   padding: 0;
   list-style: none;
 }
-/*# sourceMappingURL=style.css.map */

@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Floppy Drop</title>
   </head>
@@ -21,8 +26,10 @@
     <div id="ratings">
       <h2 id="rating-text">Leave a rating:</h2>
       <h1>
-        <span data-id="1" class="stars">⭐</span><span data-id="2" class="stars">⭐</span
-        ><span data-id="3" class="stars">⭐</span><span data-id="4" class="stars">⭐</span
+        <span data-id="1" class="stars">⭐</span
+        ><span data-id="2" class="stars">⭐</span
+        ><span data-id="3" class="stars">⭐</span
+        ><span data-id="4" class="stars">⭐</span
         ><span data-id="5" class="stars">⭐</span>
       </h1>
     </div>
@@ -53,15 +60,23 @@
         <ul class="name-container" id="average-rating"></ul>
       </div>
     </div>
-    <img class="img" id="harden-face" src="assets/images/james-harden-face-cropped.gif" />
+    <img
+      class="img"
+      id="harden-face"
+      src="assets/images/james-harden-face-cropped.gif"
+    />
     <img class="img" id="draymond-defence" src="assets/images/Draymond.png" />
-    <img class="img" id="steven-adams-charge" src="assets/images/steven_adams.png" />
+    <img
+      class="img"
+      id="steven-adams-charge"
+      src="assets/images/steven_adams.png"
+    />
     <img class="img" id="ref" src="assets/images/scottfoster.png" />
     <img class="img" id="lives" src="assets/images/harden-head.png" />
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script type="text/javascript">
-      $(function() {
+      $(function () {
         let move = 0;
         setInterval(() => {
           move += 1;
