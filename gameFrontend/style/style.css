@@ -37,14 +37,14 @@ h2 {
   padding-right: 0;
   margin-left: auto;
   margin-right: auto;
-  border: 3px red solid;
-  position: relative;
+  position: absolute;
   z-index: 0;
   background: url("../assets/images/court-background.jpg");
 }
 
 .container {
-  border: 4px green solid;
+  position: relative;
+  background-color: black;
   height: 900px;
   width: 1000px;
   display: -webkit-box;
@@ -56,22 +56,21 @@ h2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 1;
+  padding: 1rem;
 }
 
 .container #greeting-form {
   display: none;
-  z-index: 1;
   position: absolute;
-  text-align: center;
+  background: none;
+  width: 70%;
 }
 
 .container #greeting-form #player-name {
   width: 100%;
-  height: 50px;
-  background: none;
-  font-size: 30px;
-  color: white;
   text-align: center;
+  background: none;
 }
 
 .img {
