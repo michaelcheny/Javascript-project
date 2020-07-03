@@ -1,7 +1,10 @@
 class InputHandler {
   constructor(head, game) {
-    document.addEventListener("keydown", e => {
-      if (game.gameState == GAMESTATE.RUNNING || game.gameState == GAMESTATE.PAUSED) {
+    document.addEventListener("keydown", (e) => {
+      if (
+        game.gameState == GAMESTATE.RUNNING ||
+        game.gameState == GAMESTATE.PAUSED
+      ) {
         if (e.keyCode === 37 || e.keyCode === 65) {
           head.dashLeft();
         } else if (e.keyCode === 39 || e.keyCode === 68) {
@@ -17,14 +20,15 @@ class InputHandler {
         game.gameMusic.play();
         game.saveName();
       }
-      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
+      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27)
+        game.resetGame();
       if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
         game.draw(game.ctx);
         game.start();
       }
     });
 
-    document.addEventListener("keyup", e => {
+    document.addEventListener("keyup", (e) => {
       if (game.gameState != GAMESTATE.RUNNING) return;
       if (e.keyCode === 37 || e.keyCode === 65) {
         if (head.speed < 0) head.stop();
@@ -33,7 +37,7 @@ class InputHandler {
       }
     });
 
-    document.getElementById("game-container").addEventListener("click", e => {
+    document.getElementById("game-container").addEventListener("click", (e) => {
       if (game.gameState == GAMESTATE.MENU) game.start();
     });
 
@@ -41,7 +45,7 @@ class InputHandler {
   }
 
   bindingsAndEventListeners() {
-    this.font = "Arcade";
+    // this.font = "Arcade";
     this.light = "off";
     this.title = document.getElementById("title");
     this.sounds = document.querySelectorAll("audio");
@@ -49,21 +53,21 @@ class InputHandler {
     this.muteToggle = document.getElementById("mute-toggle");
     this.hoverClickables();
     this.toggleMute();
-    this.changeFont();
+    // this.changeFont();
     this.changeBackgroundColor();
   }
 
-  changeFont() {
-    this.title.addEventListener("click", () => {
-      if (this.font === "Arcade") {
-        document.body.style.fontFamily = "Roboto";
-        this.font = "Roboto";
-      } else {
-        document.body.style.fontFamily = "Arcade";
-        this.font = "Arcade";
-      }
-    });
-  }
+  // changeFont() {
+  //   this.title.addEventListener("click", () => {
+  //     if (this.font === "Arcade") {
+  //       document.body.style.fontFamily = "Roboto";
+  //       this.font = "Roboto";
+  //     } else {
+  //       document.body.style.fontFamily = "Arcade";
+  //       this.font = "Arcade";
+  //     }
+  //   });
+  // }
 
   changeBackgroundColor() {
     this.lightToggle.addEventListener("click", () => {

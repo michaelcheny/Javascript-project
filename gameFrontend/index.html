@@ -15,65 +15,66 @@
   </head>
 
   <body>
-    <header>
+    <div class="main-container">
       <h1 id="title">Floppy Drop</h1>
-    </header>
 
-    <div id="greeting-form">
-      <input type="text" placeholder="Name or Initials" id="player-name" />
+      <div id="greeting-form">
+        <input type="text" placeholder="Name or Initials" id="player-name" />
+      </div>
+
+      <div id="ratings">
+        <h2 id="rating-text">Leave a rating:</h2>
+        <h1>
+          <span data-id="1" class="stars">⭐</span
+          ><span data-id="2" class="stars">⭐</span
+          ><span data-id="3" class="stars">⭐</span
+          ><span data-id="4" class="stars">⭐</span
+          ><span data-id="5" class="stars">⭐</span>
+        </h1>
+      </div>
+
+      <div id="light-toggle">💡</div>
+      <div id="mute-toggle">🔊</div>
+
+      <!-- <div class="container"> -->
+      <canvas id="game-container" width="1000" height="900"></canvas>
+      <!-- </div> -->
+
+      <div class="wrapper">
+        <div class="scores-list">
+          <h2>Highscores List</h2>
+          <ul class="name-container" id="recent-scores"></ul>
+        </div>
+
+        <div class="scores-list">
+          <h2>Top 5 Scores All Time</h2>
+          <ul class="name-container" id="top-5-all-time"></ul>
+        </div>
+
+        <div class="scores-list">
+          <h2>Top 5 Scores Today</h2>
+          <ul class="name-container" id="top-5-today"></ul>
+        </div>
+
+        <div class="scores-list">
+          <h2>Average Rating</h2>
+          <ul class="name-container" id="average-rating"></ul>
+        </div>
+      </div>
+      <img
+        class="img"
+        id="harden-face"
+        src="assets/images/james-harden-face-cropped.gif"
+      />
+      <img class="img" id="draymond-defence" src="assets/images/Draymond.png" />
+      <img
+        class="img"
+        id="steven-adams-charge"
+        src="assets/images/steven_adams.png"
+      />
+      <img class="img" id="ref" src="assets/images/scottfoster.png" />
+      <img class="img" id="lives" src="assets/images/harden-head.png" />
     </div>
-
-    <div id="ratings">
-      <h2 id="rating-text">Leave a rating:</h2>
-      <h1>
-        <span data-id="1" class="stars">⭐</span
-        ><span data-id="2" class="stars">⭐</span
-        ><span data-id="3" class="stars">⭐</span
-        ><span data-id="4" class="stars">⭐</span
-        ><span data-id="5" class="stars">⭐</span>
-      </h1>
-    </div>
-
-    <div id="light-toggle">💡</div>
-    <div id="mute-toggle">🔊</div>
-
-    <canvas id="game-container" width="1000" height="900"></canvas>
-
-    <div class="wrapper">
-      <div class="scores-list">
-        <h2>Highscores List</h2>
-        <ul class="name-container" id="recent-scores"></ul>
-      </div>
-
-      <div class="scores-list">
-        <h2>Top 5 Scores All Time</h2>
-        <ul class="name-container" id="top-5-all-time"></ul>
-      </div>
-
-      <div class="scores-list">
-        <h2>Top 5 Scores Today</h2>
-        <ul class="name-container" id="top-5-today"></ul>
-      </div>
-
-      <div class="scores-list">
-        <h2>Average Rating</h2>
-        <ul class="name-container" id="average-rating"></ul>
-      </div>
-    </div>
-    <img
-      class="img"
-      id="harden-face"
-      src="assets/images/james-harden-face-cropped.gif"
-    />
-    <img class="img" id="draymond-defence" src="assets/images/Draymond.png" />
-    <img
-      class="img"
-      id="steven-adams-charge"
-      src="assets/images/steven_adams.png"
-    />
-    <img class="img" id="ref" src="assets/images/scottfoster.png" />
-    <img class="img" id="lives" src="assets/images/harden-head.png" />
-
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script type="text/javascript">
       $(function () {
