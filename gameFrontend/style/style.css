@@ -6,13 +6,6 @@
           box-sizing: border-box;
 }
 
-body {
-  background-color: darkolivegreen;
-  /* background-color: #282a36; */
-  /* color: #767676; */
-  color: #bdbdbd;
-}
-
 .main-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,9 +37,41 @@ h2 {
   padding-right: 0;
   margin-left: auto;
   margin-right: auto;
+  border: 3px red solid;
   position: relative;
   z-index: 0;
   background: url("../assets/images/court-background.jpg");
+}
+
+.container {
+  border: 4px green solid;
+  height: 900px;
+  width: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container #greeting-form {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  text-align: center;
+}
+
+.container #greeting-form #player-name {
+  width: 100%;
+  height: 50px;
+  background: none;
+  font-size: 30px;
+  color: white;
+  text-align: center;
 }
 
 .img {
@@ -80,24 +105,6 @@ h2 {
 
 .stars {
   color: rgba(255, 255, 255, 0.4);
-}
-
-#player-name {
-  width: 300px;
-  height: 50px;
-  background: none;
-  font-size: 30px;
-  color: white;
-  text-align: center;
-}
-
-#greeting-form {
-  display: none;
-  z-index: 1;
-  position: absolute;
-  top: 53%;
-  left: 38%;
-  text-align: center;
 }
 
 .wrapper {

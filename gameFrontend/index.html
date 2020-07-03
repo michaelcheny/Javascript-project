@@ -18,10 +18,6 @@
     <div class="main-container">
       <h1 id="title">Floppy Drop</h1>
 
-      <div id="greeting-form">
-        <input type="text" placeholder="Name or Initials" id="player-name" />
-      </div>
-
       <div id="ratings">
         <h2 id="rating-text">Leave a rating:</h2>
         <h1>
@@ -36,9 +32,18 @@
       <div id="light-toggle">💡</div>
       <div id="mute-toggle">🔊</div>
 
-      <!-- <div class="container"> -->
-      <canvas id="game-container" width="1000" height="900"></canvas>
-      <!-- </div> -->
+      <div class="container">
+        <canvas id="game-container" width="1000" height="900"></canvas>
+        <!-- shown on greeting -->
+        <div id="greeting-form" class="nes-field">
+          <input
+            type="text"
+            placeholder="Name or Initials"
+            id="player-name"
+            class="nes-input"
+          />
+        </div>
+      </div>
 
       <div class="wrapper">
         <div class="scores-list">
