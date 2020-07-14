@@ -6,10 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 
     <title>Floppy Drop</title>
   </head>
@@ -21,29 +18,23 @@
       <div id="ratings">
         <h2 id="rating-text">Leave a rating:</h2>
         <h1>
-          <span data-id="1" class="stars">⭐</span
-          ><span data-id="2" class="stars">⭐</span
-          ><span data-id="3" class="stars">⭐</span
-          ><span data-id="4" class="stars">⭐</span
+          <span data-id="1" class="stars">⭐</span><span data-id="2" class="stars">⭐</span
+          ><span data-id="3" class="stars">⭐</span><span data-id="4" class="stars">⭐</span
           ><span data-id="5" class="stars">⭐</span>
         </h1>
       </div>
-
-      <div id="light-toggle">💡</div>
-      <div id="mute-toggle">🔊</div>
 
       <div class="container">
         <canvas id="game-container" width="1000" height="900"></canvas>
         <!-- shown on greeting -->
         <div id="greeting-form" class="nes-container is-dark with-title">
           <p class="title">Enter your name</p>
-          <input
-            type="text"
-            placeholder="Name or Initials"
-            id="player-name"
-            class="nes-input is-dark"
-          />
+          <input type="text" placeholder="Name or Initials" id="player-name" class="nes-input is-dark" />
         </div>
+        <span id="toggles">
+          <div id="light-toggle">💡</div>
+          <div id="mute-toggle">🔊</div>
+        </span>
       </div>
 
       <div class="wrapper">
@@ -67,17 +58,9 @@
           <ul class="name-container" id="average-rating"></ul>
         </div>
       </div>
-      <img
-        class="img"
-        id="harden-face"
-        src="assets/images/james-harden-face-cropped.gif"
-      />
+      <img class="img" id="harden-face" src="assets/images/james-harden-face-cropped.gif" />
       <img class="img" id="draymond-defence" src="assets/images/Draymond.png" />
-      <img
-        class="img"
-        id="steven-adams-charge"
-        src="assets/images/steven_adams.png"
-      />
+      <img class="img" id="steven-adams-charge" src="assets/images/steven_adams.png" />
       <img class="img" id="ref" src="assets/images/scottfoster.png" />
       <img class="img" id="lives" src="assets/images/harden-head.png" />
     </div>

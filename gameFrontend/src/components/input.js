@@ -1,10 +1,7 @@
 class InputHandler {
   constructor(head, game) {
     document.addEventListener("keydown", (e) => {
-      if (
-        game.gameState == GAMESTATE.RUNNING ||
-        game.gameState == GAMESTATE.PAUSED
-      ) {
+      if (game.gameState == GAMESTATE.RUNNING || game.gameState == GAMESTATE.PAUSED) {
         if (e.keyCode === 37 || e.keyCode === 65) {
           head.dashLeft();
         } else if (e.keyCode === 39 || e.keyCode === 68) {
@@ -20,8 +17,7 @@ class InputHandler {
         game.gameMusic.play();
         game.saveName();
       }
-      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27)
-        game.resetGame();
+      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
       if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
         game.draw(game.ctx);
         game.start();
@@ -96,8 +92,8 @@ class InputHandler {
           thing.innerText == "🔊" ||
           thing.innerText == "🔇"
         ) {
-          thing.style.fontSize = "30px";
-          thing.style.top = "72%";
+          // thing.style.fontSize = "30px";
+          // thing.style.top = "72%";
         } else {
           thing.style.fontSize = "35px";
         }

@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: darkorchid;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -53,13 +57,25 @@ h2 {
     display: none;
     position: absolute;
     background: none;
-    width: 70%;
+    width: 50%;
 
     #player-name {
       width: 100%;
       text-align: center;
       background: none;
     }
+  }
+
+  #toggles {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    // width: 50px;
+    // height: 60px;
+    // display: none;
+    // float: right;
+    // border: 1px red solid;
   }
 }
 
@@ -68,17 +84,15 @@ h2 {
 }
 
 #light-toggle {
-  z-index: 1;
-  position: absolute;
-  top: 73%;
-  right: 11%;
+  &:hover {
+    transform: scale(1.5);
+  }
 }
 
 #mute-toggle {
-  z-index: 1;
-  position: absolute;
-  top: 73%;
-  right: 13%;
+  &:hover {
+    transform: scale(1.5);
+  }
 }
 
 #ratings {
