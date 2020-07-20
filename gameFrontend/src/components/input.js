@@ -13,10 +13,10 @@ class InputHandler {
         }
       }
       // press enter while in intro state to save name / press escape to reset game at gameover screen
-      if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) {
-        // game.gameMusic.play();
-        game.saveName();
-      }
+      // if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) {
+      // game.gameMusic.play();
+      //   game.saveName();
+      // }
       if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
       if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
         game.draw(game.ctx);
@@ -33,11 +33,11 @@ class InputHandler {
       }
     });
 
-    document.getElementById("game-container").addEventListener("click", (e) => {
+    document.getElementById("game-container").addEventListener("click", () => {
       if (game.gameState == GAMESTATE.MENU) game.start();
     });
 
-    this.bindingsAndEventListeners(game);
+    this.bindingsAndEventListeners();
   }
 
   bindingsAndEventListeners() {

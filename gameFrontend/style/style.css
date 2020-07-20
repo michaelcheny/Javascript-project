@@ -70,6 +70,7 @@ h2 {
 }
 
 .container #greeting-form {
+  margin-top: 8rem;
   display: none;
   position: absolute;
   background: none;
@@ -80,6 +81,11 @@ h2 {
   width: 100%;
   text-align: center;
   background: none;
+}
+
+.container #greeting-form h3 {
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .container #greeting-form #character-selection {

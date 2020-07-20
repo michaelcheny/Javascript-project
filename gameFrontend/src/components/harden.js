@@ -32,9 +32,7 @@ class Harden {
 
   draw(ctx) {
     let harden = document.getElementById("harden-face");
-    let dog = document.getElementById("dog-face");
-
-    console.log(this.flop);
+    let dog = document.getElementById("andy-face");
     ctx.drawImage(this.flop ? harden : dog, this.position.x, this.position.y, this.size.x, this.size.y);
   }
 

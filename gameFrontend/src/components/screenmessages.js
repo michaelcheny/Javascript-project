@@ -45,7 +45,7 @@ class ScreenMessages {
     ctx.fillStyle = "rgba(25,25,25,0.5)";
     ctx.fill();
     ctx.font = "100px";
-    ctx.fillStyle = "yellow";
+    // ctx.fillStyle = "yellow";
     ctx.textAlign = "center";
     ctx.fillText("Time Out", game.gameWidth / 2, game.gameHeight / 2);
   }

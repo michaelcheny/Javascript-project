@@ -60,10 +60,10 @@ h2 {
   color: floralwhite;
 
   #greeting-form {
+    margin-top: 8rem;
     display: none;
     position: absolute;
     background: none;
-
     width: 50%;
 
     #player-name {
@@ -71,7 +71,10 @@ h2 {
       text-align: center;
       background: none;
     }
-
+    h3 {
+      margin-top: 2rem;
+      text-align: center;
+    }
     #character-selection {
       align-self: center;
       justify-self: center;
