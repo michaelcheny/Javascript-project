@@ -9,7 +9,7 @@ class GameStats {
     this.recentScores_ul = document.getElementById("recent-scores");
     this.top5AllTime_ul = document.getElementById("top-5-all-time");
     this.top5Today_ul = document.getElementById("top-5-today");
-    this.averageRating_ul = document.getElementById("average-rating");
+    // this.averageRating_ul = document.getElementById("average-rating");
   }
 
   async fetchAndLoadGameStats() {
@@ -25,7 +25,7 @@ class GameStats {
       for (let game of games.top_5_today) {
         this.renderScores(game, this.top5Today_ul);
       }
-      this.renderAverageRating(games.average_rating);
+      // this.renderAverageRating(games.average_rating);
     } catch (error) {
       console.log(error.message);
       return "Check to see if your server is up and running.";
@@ -36,7 +36,7 @@ class GameStats {
     this.recentScores_ul.innerHTML = "";
     this.top5AllTime_ul.innerHTML = "";
     this.top5Today_ul.innerHTML = "";
-    this.averageRating_ul.innerHTML = "";
+    // this.averageRating_ul.innerHTML = "";
   }
 
   renderScores(game, container) {
@@ -47,13 +47,13 @@ class GameStats {
     `;
   }
 
-  async renderAverageRating() {
-    this.averageRating_ul.innerHTML = "";
-    let games = await this.adapter.getGames();
-    this.averageRating_ul.innerHTML += `
-      <li>
-        <p>${parseFloat(games.average_rating).toFixed(2)} / 5</p>
-      </li>
-    `;
-  }
+  // async renderAverageRating() {
+  //   this.averageRating_ul.innerHTML = "";
+  //   let games = await this.adapter.getGames();
+  //   this.averageRating_ul.innerHTML += `
+  //     <li>
+  //       <p>${parseFloat(games.average_rating).toFixed(2)} / 5</p>
+  //     </li>
+  //   `;
+  // }
 }

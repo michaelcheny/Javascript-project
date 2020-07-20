@@ -3,7 +3,7 @@ const GAMESTATE = {
   RUNNING: 1,
   MENU: 2,
   GAMEOVER: 3,
-  INTRO: 4
+  INTRO: 4,
 };
 
 class Game {
@@ -45,7 +45,7 @@ class Game {
     this.gameMusic.sound.volume = 0.05;
 
     for (let rating of this.ratings) {
-      rating.addEventListener("click", event => {
+      rating.addEventListener("click", (event) => {
         this.saveRating(event, this.ratings);
       });
     }
@@ -66,14 +66,14 @@ class Game {
   // used in gameloop to update each object
   update(changeInTime) {
     // filters out the objects that collides with player
-    this.defenders = this.defenders.filter(d => !d.collided);
-    this.allCharge = this.allCharge.filter(d => !d.collided);
-    this.refs = this.refs.filter(d => !d.collided);
+    this.defenders = this.defenders.filter((d) => !d.collided);
+    this.allCharge = this.allCharge.filter((d) => !d.collided);
+    this.refs = this.refs.filter((d) => !d.collided);
 
     // updates the falling objects, filters out of screen objects
-    this.defenders = this.defenders.filter(o => o.position.y < 900);
-    this.allCharge = this.allCharge.filter(o => o.position.y < 900);
-    this.refs = this.refs.filter(o => o.position.y < 900);
+    this.defenders = this.defenders.filter((o) => o.position.y < 900);
+    this.allCharge = this.allCharge.filter((o) => o.position.y < 900);
+    this.refs = this.refs.filter((o) => o.position.y < 900);
 
     this.gameObjects = [this.defenders, this.allCharge, this.refs];
 
@@ -124,7 +124,7 @@ class Game {
   // draws each object on the game canvas
   draw(ctx) {
     this.head.draw(ctx);
-    this.gameObjects.forEach(opponents => {
+    this.gameObjects.forEach((opponents) => {
       for (let d of opponents) {
         d.draw(ctx);
       }
@@ -141,10 +141,7 @@ class Game {
     } else {
       this.ratings_Div.style.display = "none";
     }
-    if (
-      this.gameState !== GAMESTATE.MENU ||
-      this.gameState !== GAMESTATE.INTRO
-    ) {
+    if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.INTRO) {
       this.text.showScoreAndFouls(ctx, this, this.score, this.fouls);
     }
     if (this.gameState === GAMESTATE.INTRO) {
@@ -184,7 +181,7 @@ class Game {
     const rating = event.target.dataset.id;
     const id = this.game.id;
     await this.gameStats.adapter.saveRating(rating, id);
-    this.gameStats.renderAverageRating();
+    // this.gameStats.renderAverageRating();
     this.stars = document.getElementById("rating-text");
     this.stars.innerText = "Thanks, press ESCAPE to retry.";
     for (const r of ratings) {

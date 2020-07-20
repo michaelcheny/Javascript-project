@@ -1,5 +1,10 @@
 @import "../node_modules/nes.css/css/nes.css";
 
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -28,6 +33,7 @@ h2 {
 }
 
 #game-container {
+  font-family: "game";
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
@@ -126,17 +132,16 @@ h2 {
 
 .wrapper {
   text-align: center;
-  width: auto;
+  // width: auto;
   margin-left: auto;
   margin-right: auto;
-  font-size: 12px;
 }
 
 .scores-list {
   margin-bottom: 18px;
   display: inline-block;
   vertical-align: top;
-  max-width: 300px;
+  max-width: 400px;
   padding: 30px;
 }
 .scores-list ul {
@@ -145,8 +150,9 @@ h2 {
   padding: 0;
 }
 .scores-list ul li {
+  font-family: "Press Start 2P";
   margin: 0 0 8px;
-  font-size: 16px;
+  font-size: 12px;
   overflow: hidden;
   display: list-item;
 }
