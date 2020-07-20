@@ -36,13 +36,15 @@ class Game {
     this.nameInput = document.getElementById("player-name");
     this.ratings_Div = document.getElementById("ratings");
     this.ratings = document.getElementsByClassName("stars");
+    this.gameoverDiv = document.getElementById("gameover");
+    this.gameoverScore = document.getElementById("end-score");
     this.gainPointSound = new Sound("./assets/sounds/points-gained-sound.wav");
     this.refWhistleSound = new Sound("./assets/sounds/referee-whistle.wav");
     this.impactGruntSound = new Sound("./assets/sounds/impact-grunt.wav");
 
-    this.gameMusic = new Sound("./assets/sounds/solvethepuzzle.ogg");
-    this.gameMusic.sound.loop = true;
-    this.gameMusic.sound.volume = 0.05;
+    // this.gameMusic = new Sound("./assets/sounds/solvethepuzzle.ogg");
+    // this.gameMusic.sound.loop = true;
+    // this.gameMusic.sound.volume = 0.05;
 
     for (let rating of this.ratings) {
       rating.addEventListener("click", (event) => {
@@ -51,9 +53,11 @@ class Game {
     }
     // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
     const observer = new MutationObserver(() => {
-      if (this.ratings_Div.style.display == "inline") this.saveGame();
+      if (this.gameoverDiv.style.display == "inline") this.saveGame();
+      // if (this.ratings_Div.style.display == "inline") this.saveGame();
     });
-    observer.observe(this.ratings_Div, { attributes: true });
+    observer.observe(this.gameoverDiv, { attributes: true });
+    // observer.observe(this.ratings_Div, { attributes: true });
   }
 
   // for use in input class, called by clicking with the game screen event listener
@@ -136,10 +140,13 @@ class Game {
       this.text.showMainMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
-      this.ratings_Div.style.display = "inline";
+      this.gameoverDiv.style.display = "inline";
+      // this.ratings_Div.style.display = "inline";
+      this.gameoverScore.innerText = this.score;
       this.text.showGameOver(ctx, this);
     } else {
-      this.ratings_Div.style.display = "none";
+      this.gameoverDiv.style.display = "none";
+      // this.ratings_Div.style.display = "none";
     }
     if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.INTRO) {
       this.text.showScoreAndFouls(ctx, this, this.score, this.fouls);

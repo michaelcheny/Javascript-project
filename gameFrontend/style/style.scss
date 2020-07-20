@@ -33,7 +33,7 @@ h2 {
 }
 
 #game-container {
-  font-family: "game";
+  // font-family: "game";
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
@@ -49,7 +49,6 @@ h2 {
 
 .container {
   position: relative;
-  // border: 4px green solid;
   background-color: black;
   height: 900px;
   width: 1000px;
@@ -72,17 +71,30 @@ h2 {
     }
   }
 
+  #gameover {
+    display: none;
+    color: floralwhite;
+    position: absolute;
+    z-index: 5;
+    h1 {
+      text-align: center;
+    }
+
+    h3 {
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+    p {
+      text-align: center;
+    }
+  }
+
   #toggles {
     position: absolute;
     right: 0;
     bottom: 0;
     padding: 10px;
     background-color: transparent;
-    // width: 50px;
-    // height: 60px;
-    // display: none;
-    // float: right;
-    // border: 1px red solid;
   }
 }
 

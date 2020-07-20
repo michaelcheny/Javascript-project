@@ -13,7 +13,7 @@
 
   <body>
     <div class="main-container">
-      <h1 id="title">Floppy Drop</h1>
+      <h1 id="title">FLOPPY DROP</h1>
 
       <div id="ratings">
         <h2 id="rating-text">Leave a rating:</h2>
@@ -25,12 +25,23 @@
       </div>
 
       <div class="container">
+        <!-- the game -->
         <canvas id="game-container" width="1000" height="900"></canvas>
         <!-- shown on greeting -->
         <div id="greeting-form" class="nes-container is-dark with-title">
           <p class="title">Enter your name</p>
           <input type="text" placeholder="Name or Initials" id="player-name" class="nes-input is-dark" />
         </div>
+        <!-- shown on main menu -->
+        <div id=""></div>
+        <!-- shown on game over -->
+        <div id="gameover">
+          <h1>GAMEOVER</h1>
+          <h3>YOUR SCORE: <span id="end-score"></span></h3>
+          <h1>Thanks for playing</h1>
+          <p>Press escape to play again</p>
+        </div>
+        <!-- toggles on bottom right -->
         <span id="toggles">
           <div id="light-toggle">💡</div>
           <div id="mute-toggle">🔊</div>

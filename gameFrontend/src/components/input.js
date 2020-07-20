@@ -14,7 +14,7 @@ class InputHandler {
       }
       // press enter while in intro state to save name / press escape to reset game at gameover screen
       if (game.gameState == GAMESTATE.INTRO && e.keyCode == 13) {
-        game.gameMusic.play();
+        // game.gameMusic.play();
         game.saveName();
       }
       if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();

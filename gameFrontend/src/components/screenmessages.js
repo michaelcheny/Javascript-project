@@ -57,15 +57,15 @@ class ScreenMessages {
   showGameOver(ctx, game) {
     ctx.fillStyle = "rgba(25,25,25,1)";
     ctx.fill();
-    ctx.font = "100px";
-    ctx.fillStyle = "red";
-    ctx.textAlign = "center";
-    ctx.fillText("Game Over", game.gameWidth / 2, game.gameHeight / 2);
+    // ctx.font = "100px";
+    // ctx.fillStyle = "red";
+    // ctx.textAlign = "center";
+    // ctx.fillText("Game Over", game.gameWidth / 2, game.gameHeight / 2);
   }
 
   showScoreAndFouls(ctx, game, score, fouls) {
-    ctx.font = "10px 'Press Start 2P'";
-    ctx.textAlign = "center";
+    ctx.font = "12px 'Press Start 2P'";
+    // ctx.textAlign = "center";
     ctx.fillText("Score: " + score, 100, 40);
     ctx.fillText("Fouls Remaining: " + fouls, game.gameWidth - 140, 40);
   }

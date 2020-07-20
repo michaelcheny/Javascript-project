@@ -41,7 +41,6 @@ h2 {
 }
 
 #game-container {
-  font-family: "game";
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
@@ -80,6 +79,26 @@ h2 {
   width: 100%;
   text-align: center;
   background: none;
+}
+
+.container #gameover {
+  display: none;
+  color: floralwhite;
+  position: absolute;
+  z-index: 5;
+}
+
+.container #gameover h1 {
+  text-align: center;
+}
+
+.container #gameover h3 {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.container #gameover p {
+  text-align: center;
 }
 
 .container #toggles {
