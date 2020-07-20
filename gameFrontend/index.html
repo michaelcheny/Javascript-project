@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <div class="overlay"></div>
     <div class="main-container">
       <h1 id="title">FLOPPY DROP</h1>
 
@@ -29,15 +30,6 @@
         <canvas id="game-container" width="1000" height="900"></canvas>
         <!-- shown on greeting -->
         <div id="greeting-form">
-          <div class="nes-container is-dark with-title">
-            <p class="title">Enter your name</p>
-            <input
-              type="text"
-              placeholder="Name or Initials"
-              id="player-name"
-              class="nes-input is-dark"
-            />
-          </div>
           <h3>PICK YOUR CHARACTER</h3>
           <div id="character-selection">
             <button class="button" id="dog">
@@ -49,16 +41,26 @@
           </div>
         </div>
 
-        <!-- TODO: -->
-        <!-- REMOVE OBSERVATION OBSERVER AND MAKE USER ENTER NAME AT THE ENDDDDDD!!!!!!! -->
         <!-- shown on main menu -->
         <div id=""></div>
         <!-- shown on game over -->
         <div id="gameover">
           <h1>GAMEOVER</h1>
           <h3>YOUR SCORE: <span id="end-score"></span></h3>
-          <h1>Thanks for playing</h1>
-          <p>Press escape to play again</p>
+
+          <div id="thanks-div">
+            <h1>Thanks for playing</h1>
+            <p>Press escape to play again</p>
+          </div>
+          <div id="name-form">
+            <label for="player-name">Enter your name</label>
+            <input
+              type="text"
+              placeholder="Name or Initials"
+              id="player-name"
+              class="nes-input is-dark"
+            />
+          </div>
         </div>
         <!-- toggles on bottom right -->
         <span id="toggles">

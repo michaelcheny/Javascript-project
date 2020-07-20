@@ -34,7 +34,7 @@ class Game {
     this.gameHeight = this.canvas.height;
     this.ratingInput = document.getElementById("game-rating");
     this.resetBtn = document.getElementById("reset-button");
-    this.nameForm = document.getElementById("greeting-form");
+    this.introDiv = document.getElementById("greeting-form");
     this.nameInput = document.getElementById("player-name");
     this.playerDog = document.getElementById("dog");
     this.playerHardem = document.getElementById("harden");
@@ -42,6 +42,8 @@ class Game {
     this.ratings = document.getElementsByClassName("stars");
     this.gameoverDiv = document.getElementById("gameover");
     this.gameoverScore = document.getElementById("end-score");
+    this.nameForm = document.getElementById("name-form");
+    this.resetDiv = document.getElementById("thanks-div");
     this.gainPointSound = new Sound("./assets/sounds/points-gained-sound.wav");
     this.refWhistleSound = new Sound("./assets/sounds/referee-whistle.wav");
     this.impactGruntSound = new Sound("./assets/sounds/impact-grunt.wav");
@@ -54,14 +56,14 @@ class Game {
       this.flopMode = false;
       this.head = new Harden(this.gameWidth, this.gameHeight, this.flopMode);
       this.inputHandler = new InputHandler(this.head, this);
-      this.saveName();
+      this.selectCharacter();
     });
 
     this.playerHardem.addEventListener("click", () => {
       this.flopMode = true;
       this.head = new Harden(this.gameWidth, this.gameHeight, this.flopMode);
       this.inputHandler = new InputHandler(this.head, this);
-      this.saveName();
+      this.selectCharacter();
     });
 
     for (let rating of this.ratings) {
@@ -70,11 +72,11 @@ class Game {
       });
     }
     // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
-    const observer = new MutationObserver(() => {
-      if (this.gameoverDiv.style.display == "inline") this.saveGame();
-      // if (this.ratings_Div.style.display == "inline") this.saveGame();
-    });
-    observer.observe(this.gameoverDiv, { attributes: true });
+    // const observer = new MutationObserver(() => {
+    // if (this.gameoverDiv.style.display == "inline") this.saveGame();
+    // if (this.ratings_Div.style.display == "inline") this.saveGame();
+    // });
+    // observer.observe(this.gameoverDiv, { attributes: true });
     // observer.observe(this.ratings_Div, { attributes: true });
   }
 
@@ -159,7 +161,7 @@ class Game {
       this.text.showMainMenu(ctx, this);
     }
     if (this.gameState === GAMESTATE.GAMEOVER) {
-      this.gameoverDiv.style.display = "inline";
+      this.gameoverDiv.style.display = "flex";
       // this.ratings_Div.style.display = "inline";
       this.gameoverScore.innerText = this.score;
       this.text.showGameOver(ctx, this);
@@ -171,10 +173,10 @@ class Game {
       this.text.showScoreAndFouls(ctx, this, this.score, this.fouls);
     }
     if (this.gameState === GAMESTATE.INTRO) {
-      this.nameForm.style.display = "inline";
+      this.introDiv.style.display = "inline";
       this.text.showIntro(ctx, this);
     } else {
-      this.nameForm.style.display = "none";
+      this.introDiv.style.display = "none";
     }
   }
 
@@ -195,9 +197,9 @@ class Game {
   }
 
   // saves the player and changes gameState to menu
-  async saveName() {
-    this.player = this.nameInput.value;
-    await this.playerAdapter.savePlayer(this.player);
+  selectCharacter() {
+    // this.player = this.nameInput.value;
+    // await this.playerAdapter.savePlayer(this.player);
     this.gameState = GAMESTATE.MENU;
     this.draw(this.ctx);
   }

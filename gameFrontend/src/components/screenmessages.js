@@ -5,10 +5,6 @@ class ScreenMessages {
     ctx.rect(0, 0, game.gameWidth, game.gameHeight);
     ctx.fillStyle = "rgba(25,25,25,1)";
     ctx.fill();
-    // ctx.font = "60px Arcade";
-    // ctx.fillStyle = "white";
-    // ctx.textAlign = "center";
-    // ctx.fillText("Enter Your Name", game.gameWidth / 2, game.gameHeight / 2);
   }
 
   showMainMenu(ctx, game) {
@@ -18,7 +14,6 @@ class ScreenMessages {
     ctx.font = "30px";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText(`Hi, ${game.player}`, game.gameWidth / 2, 0 + 150);
 
     const defender = document.getElementById("draymond-defence");
     ctx.drawImage(defender, game.gameWidth / 2 - 75, game.gameHeight / 2 - 50, 150, 150);
@@ -53,15 +48,10 @@ class ScreenMessages {
   showGameOver(ctx, game) {
     ctx.fillStyle = "rgba(25,25,25,1)";
     ctx.fill();
-    // ctx.font = "100px";
-    // ctx.fillStyle = "red";
-    // ctx.textAlign = "center";
-    // ctx.fillText("Game Over", game.gameWidth / 2, game.gameHeight / 2);
   }
 
   showScoreAndFouls(ctx, game, score, fouls) {
     ctx.font = "12px 'Press Start 2P'";
-    // ctx.textAlign = "center";
     ctx.fillText("Score: " + score, 100, 40);
     ctx.fillText("Fouls Remaining: " + fouls, game.gameWidth - 140, 40);
   }

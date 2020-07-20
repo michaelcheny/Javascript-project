@@ -12,7 +12,21 @@
 }
 
 body {
-  background-color: darkslategrey;
+  background-image: url("../assets/images/basketball.jpg");
+  background-attachment: fixed;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+body .overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: -1;
+  opacity: 0.9;
 }
 
 .main-container {
@@ -70,21 +84,14 @@ h2 {
 }
 
 .container #greeting-form {
-  margin-top: 8rem;
   display: none;
   position: absolute;
   background: none;
   width: 50%;
 }
 
-.container #greeting-form #player-name {
-  width: 100%;
-  text-align: center;
-  background: none;
-}
-
 .container #greeting-form h3 {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   text-align: center;
 }
 
@@ -103,6 +110,7 @@ h2 {
 .container #greeting-form .button {
   width: 150px;
   height: 200px;
+  border-radius: 5px;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
@@ -120,7 +128,38 @@ h2 {
   display: none;
   color: floralwhite;
   position: absolute;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   z-index: 5;
+}
+
+.container #gameover #thanks-div {
+  display: none;
+}
+
+.container #gameover div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container #gameover div #player-name {
+  width: 420px;
+  text-align: center;
+  background: none;
+  margin-bottom: 4rem;
 }
 
 .container #gameover h1 {
@@ -129,7 +168,7 @@ h2 {
 
 .container #gameover h3 {
   text-align: center;
-  padding-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .container #gameover p {

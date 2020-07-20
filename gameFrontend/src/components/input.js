@@ -17,7 +17,15 @@ class InputHandler {
       // game.gameMusic.play();
       //   game.saveName();
       // }
-      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) game.resetGame();
+      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) {
+        if (game.nameInput.value !== "") game.resetGame();
+        game.saveGame();
+      }
+      if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 13) {
+        if (game.nameInput.value !== "") game.saveGame();
+        game.nameForm.style.display = "none";
+        game.resetDiv.style.display = "flex";
+      }
       if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
         game.draw(game.ctx);
         game.start();
