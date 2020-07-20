@@ -83,6 +83,7 @@ class InputHandler {
 
   hoverClickables() {
     let clickables = [this.title, this.lightToggle, this.muteToggle];
+
     for (let thing of clickables) {
       thing.addEventListener("mouseover", () => {
         document.body.style.cursor = "pointer";
