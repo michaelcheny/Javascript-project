@@ -37,11 +37,7 @@ class ScreenMessages {
     ctx.fillText("Players taking charges = BAD (HARD to sell a flop)", game.gameWidth / 2, 670);
     ctx.fillText("Players playing defence = GOOD (EASY to sell a flop)", game.gameWidth / 2, 695);
     ctx.fillText("Referees = BEST (they help you the most)", game.gameWidth / 2, 720);
-    ctx.fillText(
-      "This is not a knock on Harden, press `enter` or `click` on screen to play",
-      game.gameWidth / 2,
-      745
-    );
+    ctx.fillText("Press `enter` or `click` on screen to play", game.gameWidth / 2, 745);
   }
 
   showPausedMenu(ctx, game) {

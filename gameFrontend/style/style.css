@@ -66,6 +66,7 @@ h2 {
           align-items: center;
   z-index: 1;
   padding: 1rem;
+  color: floralwhite;
 }
 
 .container #greeting-form {
@@ -79,6 +80,34 @@ h2 {
   width: 100%;
   text-align: center;
   background: none;
+}
+
+.container #greeting-form #character-selection {
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.container #greeting-form .button {
+  width: 150px;
+  height: 200px;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.container #greeting-form .button img {
+  height: 100%;
+  width: auto;
+}
+
+.container #greeting-form .button:hover {
+  background-color: goldenrod;
 }
 
 .container #gameover {

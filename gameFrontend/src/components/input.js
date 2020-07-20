@@ -37,11 +37,10 @@ class InputHandler {
       if (game.gameState == GAMESTATE.MENU) game.start();
     });
 
-    this.bindingsAndEventListeners();
+    this.bindingsAndEventListeners(game);
   }
 
   bindingsAndEventListeners() {
-    // this.font = "Arcade";
     this.light = "off";
     this.title = document.getElementById("title");
     this.sounds = document.querySelectorAll("audio");
@@ -49,21 +48,8 @@ class InputHandler {
     this.muteToggle = document.getElementById("mute-toggle");
     this.hoverClickables();
     this.toggleMute();
-    // this.changeFont();
     this.changeBackgroundColor();
   }
-
-  // changeFont() {
-  //   this.title.addEventListener("click", () => {
-  //     if (this.font === "Arcade") {
-  //       document.body.style.fontFamily = "Roboto";
-  //       this.font = "Roboto";
-  //     } else {
-  //       document.body.style.fontFamily = "Arcade";
-  //       this.font = "Arcade";
-  //     }
-  //   });
-  // }
 
   changeBackgroundColor() {
     this.lightToggle.addEventListener("click", () => {

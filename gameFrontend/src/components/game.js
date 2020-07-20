@@ -16,11 +16,13 @@ class Game {
     this.defenders = [];
     this.allCharge = [];
     this.gameObjects = [];
+    this.flopMode = true;
     this.refs = [];
     this.fouls = 2;
     this.score = 0;
-    this.head = new Harden(this.gameWidth, this.gameHeight);
-    this.inputHandler = new InputHandler(this.head, this);
+    // this.head = new Harden(this.gameWidth, this.gameHeight, this.playerDog);
+    // this.inputHandler = new InputHandler(this.head, this);
+    // this.head = document.getElementById("dog");
     this.spawnFallingObjects();
     this.draw(this.ctx);
   }
@@ -34,6 +36,8 @@ class Game {
     this.resetBtn = document.getElementById("reset-button");
     this.nameForm = document.getElementById("greeting-form");
     this.nameInput = document.getElementById("player-name");
+    this.playerDog = document.getElementById("dog");
+    this.playerHardem = document.getElementById("harden");
     this.ratings_Div = document.getElementById("ratings");
     this.ratings = document.getElementsByClassName("stars");
     this.gameoverDiv = document.getElementById("gameover");
@@ -45,6 +49,20 @@ class Game {
     // this.gameMusic = new Sound("./assets/sounds/solvethepuzzle.ogg");
     // this.gameMusic.sound.loop = true;
     // this.gameMusic.sound.volume = 0.05;
+
+    this.playerDog.addEventListener("click", () => {
+      this.flopMode = false;
+      this.head = new Harden(this.gameWidth, this.gameHeight, this.flopMode);
+      this.inputHandler = new InputHandler(this.head, this);
+      this.saveName();
+    });
+
+    this.playerHardem.addEventListener("click", () => {
+      this.flopMode = true;
+      this.head = new Harden(this.gameWidth, this.gameHeight, this.flopMode);
+      this.inputHandler = new InputHandler(this.head, this);
+      this.saveName();
+    });
 
     for (let rating of this.ratings) {
       rating.addEventListener("click", (event) => {
@@ -127,7 +145,8 @@ class Game {
 
   // draws each object on the game canvas
   draw(ctx) {
-    this.head.draw(ctx);
+    if (this.head) this.head.draw(ctx, this.playerDog);
+    console.log(this.flopMode);
     this.gameObjects.forEach((opponents) => {
       for (let d of opponents) {
         d.draw(ctx);
