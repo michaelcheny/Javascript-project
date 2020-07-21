@@ -13,13 +13,13 @@ class InputHandler {
         }
       }
       if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 27) {
-        // if (game.nameInput.value !== "")
-        // game.saveGame();
+        // if (game.nameInput.value !== "") game.saveGame();
         game.resetGame();
       }
       if (game.gameState == GAMESTATE.GAMEOVER && e.keyCode == 13) {
         if (game.nameInput.value !== "") game.saveGame();
-        game.nameForm.style.display = "none";
+        game.nameForm.style.visibility = "hidden";
+        // game.nameForm.style.display = "none";
         game.resetDiv.style.display = "flex";
       }
     });

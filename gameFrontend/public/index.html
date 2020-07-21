@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style/style.css" />
+    >
+    <!-- font and nes package -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+
+    <title>Floppy Drop</title>
+  </head>
+
+  <body>
+    <div class="overlay"></div>
+    <div class="main-container">
+      <!-- GAME -->
+      <div class="container">
+        <!-- the game -->
+        <canvas id="game-container" width="1000" height="900"></canvas>
+
+        <!-- shown on greeting -->
+        <div id="greeting-form">
+          <h1>FLOPPY DROP</h1>
+          <p id="instructions">Flopping is an art!</p>
+          <h3>SELECT YOUR CHARACTER</h3>
+          <div id="character-selection">
+            <button class="button" id="dog">
+              <img src="assets/images/andyFlop.png" alt="dog" />
+            </button>
+            <button class="button" id="harden">
+              <img src="assets/images/james-harden-face-cropped.gif" />
+            </button>
+          </div>
+          <p>MOVE LEFT = A, MOVE RIGHT = D, PAUSE = S</p>
+        </div>
+
+        <!-- shown on game over -->
+        <div id="gameover">
+          <h1>GAMEOVER</h1>
+          <h3>YOUR SCORE: <span id="end-score"></span></h3>
+
+          <div id="thanks-div">
+            <h2>Thanks for playing</h2>
+            <p>Press escape to play again</p>
+          </div>
+          <div id="name-form">
+            <label for="player-name">Enter your name</label>
+            <input
+              type="text"
+              placeholder="Name or Initials"
+              id="player-name"
+              class="nes-input is-dark"
+            />
+          </div>
+        </div>
+        <!-- toggles on bottom right -->
+        <span id="toggles">
+          <div id="mute-toggle">🔊</div>
+        </span>
+      </div>
+
+      <!-- GAME END -->
+
+      <!-- SCORES -->
+      <div class="score-wrapper">
+        <div class="scores-list">
+          <h2>Highscores List</h2>
+          <ul class="name-container" id="recent-scores"></ul>
+        </div>
+
+        <div class="scores-list">
+          <h2>Top 5 Scores All Time</h2>
+          <ul class="name-container" id="top-5-all-time"></ul>
+        </div>
+
+        <div class="scores-list">
+          <h2>Top 5 Scores Today</h2>
+          <ul class="name-container" id="top-5-today"></ul>
+        </div>
+      </div>
+
+      <!-- IMAGES FOR GAME -->
+      <img class="img" id="andy-face" src="assets/images/andyFlop.png" />
+      <img class="img" id="harden-face" src="assets/images/james-harden-face-cropped.gif" />
+      <img class="img" id="draymond-defence" src="assets/images/Draymond.png" />
+      <img class="img" id="steven-adams-charge" src="assets/images/steven_adams.png" />
+      <img class="img" id="ref" src="assets/images/scottfoster.png" />
+      <img class="img" id="lives" src="assets/images/harden-head.png" />
+    </div>
+
+    <!-- SCROLLING GAME BACKGROUND -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        let move = 0;
+        setInterval(() => {
+          move += 1;
+          $("canvas").css("background-position-y", move + "px");
+        });
+      });
+    </script>
+
+    <!-- SCRIPTS -->
+    <script src="src/components/fallingobject.js"></script>
+    <script src="src/components/sounds.js"></script>
+    <script src="src/components/lives.js"></script>
+    <script src="src/components/screenmessages.js"></script>
+    <script src="src/components/game.js"></script>
+    <script src="src/components/collision.js"></script>
+    <script src="src/components/defence.js"></script>
+    <script src="src/components/charge.js"></script>
+    <script src="src/components/harden.js"></script>
+    <script src="src/components/input.js"></script>
+    <script src="src/adapters/PlayersAdapter.js"></script>
+    <script src="src/PageManagers/gamestats.js"></script>
+    <script src="src/adapters/GamesAdapter.js"></script>
+    <script src="src/index.js"></script>
+  </body>
+</html>
