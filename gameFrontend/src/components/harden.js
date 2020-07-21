@@ -7,7 +7,7 @@ class Harden {
 
     this.size = {
       x: 85,
-      y: 164,
+      y: 140,
     };
 
     this.position = {
@@ -32,8 +32,8 @@ class Harden {
 
   draw(ctx) {
     let harden = document.getElementById("harden-face");
-    let dog = document.getElementById("andy-face");
-    ctx.drawImage(this.flop ? harden : dog, this.position.x, this.position.y, this.size.x, this.size.y);
+    let andy = document.getElementById("andy-face");
+    ctx.drawImage(this.flop ? harden : andy, this.position.x, this.position.y, this.size.x, this.size.y);
   }
 
   update(changeInTime) {

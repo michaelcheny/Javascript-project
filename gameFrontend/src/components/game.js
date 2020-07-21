@@ -150,7 +150,6 @@ class Game {
   // draws each object on the game canvas
   draw(ctx) {
     if (this.head) this.head.draw(ctx, this.playerDog);
-    console.log(this.flopMode);
     this.gameObjects.forEach((opponents) => {
       for (let d of opponents) {
         d.draw(ctx);
@@ -189,6 +188,7 @@ class Game {
   // saves the game when user hits submit button
   async saveGame() {
     const name = this.nameInput.value;
+    // console.log(name);
     const score = this.score;
     this.game = await this.gameStats.adapter.saveGame(name, score);
     this.gameStats.fetchAndLoadGameStats();

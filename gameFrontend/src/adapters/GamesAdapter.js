@@ -15,17 +15,19 @@ class GamesAdapter {
   }
 
   async saveGame(name, score) {
+    const filteredName = name.replace(/[^a-z0-9\ ]/gi, "");
+    console.log(filteredName);
     const game = {
-      name: name,
-      score: score
+      name: filteredName,
+      score: score,
     };
     try {
       let res = await fetch(this.baseUrl, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(game)
+        body: JSON.stringify(game),
       });
       let data = await res.json();
       return data;
@@ -36,15 +38,15 @@ class GamesAdapter {
 
   async saveRating(stars, gameId) {
     const ratings = {
-      rating: stars
+      rating: stars,
     };
     try {
       return await fetch(this.baseUrl + `/${gameId}`, {
         method: "PATCH",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(ratings)
+        body: JSON.stringify(ratings),
       });
     } catch (error) {
       console.log(error.message);

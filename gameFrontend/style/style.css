@@ -215,46 +215,20 @@ h2 {
   display: none;
 }
 
-#light-toggle {
-  background-color: transparent;
-}
-
-#light-toggle:hover {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
-}
-
 #mute-toggle {
   background-color: transparent;
 }
 
 #mute-toggle:hover {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
 }
 
-#ratings {
-  display: none;
-  color: rgba(255, 255, 255, 0.75);
-  z-index: 1;
-  position: absolute;
-  top: 65%;
-  left: 39%;
-  font-size: 30px;
-  text-align: center;
+.score-wrapper {
+  padding-top: 3rem;
 }
 
-.stars {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.wrapper {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.scores-list {
+.score-wrapper .scores-list {
   margin-bottom: 18px;
   display: inline-block;
   vertical-align: top;
@@ -262,31 +236,28 @@ h2 {
   padding: 30px;
 }
 
-.scores-list ul {
-  width: 230px;
+.score-wrapper .scores-list ul {
+  width: 240px;
   margin: 0 auto;
   padding: 0;
 }
 
-.scores-list ul li {
-  font-family: "Press Start 2P";
+.score-wrapper .scores-list ul li {
   margin: 0 0 8px;
   font-size: 12px;
   overflow: hidden;
-  display: list-item;
 }
 
-.hug-left {
+.score-wrapper .hug-left {
   float: left;
-  max-width: 200px;
 }
 
-.hug-right {
+.score-wrapper .hug-right {
   float: right;
 }
 
-#name-container {
-  width: 230px;
+.score-wrapper #name-container {
+  width: 240px;
   margin: 0 auto;
   padding: 0;
   list-style: none;

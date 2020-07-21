@@ -14,19 +14,11 @@
   <body>
     <div class="overlay"></div>
     <div class="main-container">
-      <!-- <div id="ratings">
-        <h2 id="rating-text">Leave a rating:</h2>
-        <h1>
-          <span data-id="1" class="stars">⭐</span><span data-id="2" class="stars">⭐</span
-          ><span data-id="3" class="stars">⭐</span><span data-id="4" class="stars">⭐</span
-            ><span data-id="5" class="stars">⭐</span>
-          </h1>
-        </div> -->
-
       <!-- GAME -->
       <div class="container">
         <!-- the game -->
         <canvas id="game-container" width="1000" height="900"></canvas>
+
         <!-- shown on greeting -->
         <div id="greeting-form">
           <h1>FLOPPY DROP</h1>
@@ -43,8 +35,6 @@
           <p>MOVE LEFT = A, MOVE RIGHT = D, PAUSE = S</p>
         </div>
 
-        <!-- shown on main menu -->
-        <div id=""></div>
         <!-- shown on game over -->
         <div id="gameover">
           <h1>GAMEOVER</h1>
@@ -66,7 +56,6 @@
         </div>
         <!-- toggles on bottom right -->
         <span id="toggles">
-          <!-- <div id="light-toggle">💡</div> -->
           <div id="mute-toggle">🔊</div>
         </span>
       </div>
@@ -74,7 +63,7 @@
       <!-- GAME END -->
 
       <!-- SCORES -->
-      <div class="wrapper">
+      <div class="score-wrapper">
         <div class="scores-list">
           <h2>Highscores List</h2>
           <ul class="name-container" id="recent-scores"></ul>
@@ -90,11 +79,6 @@
           <ul class="name-container" id="top-5-today"></ul>
         </div>
       </div>
-
-      <!-- <div class="scores-list">
-          <h2>Average Rating</h2>
-          <ul class="name-container" id="average-rating"></ul>
-        </div> -->
 
       <!-- IMAGES FOR GAME -->
       <img class="img" id="andy-face" src="assets/images/andyFlop.png" />
