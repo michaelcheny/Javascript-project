@@ -12,9 +12,9 @@ Player.create([
   { name: 'Michael' },
   { name: 'Donald Duck' },
   { name: 'Rick Sanchez' },
-  { name: 'Toby the Yellow Labrador' },
+  { name: 'Toby the lab' },
   { name: 'Cheater' },
-  { name: 'Slippy the Snake' }
+  { name: 'KDsnek35' }
 ])
 
 Game.create([

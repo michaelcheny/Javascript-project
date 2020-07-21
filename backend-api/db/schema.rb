@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2019_12_11_221206) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "games", force: :cascade do |t|
-    t.integer "player_id", null: false
+    t.bigint "player_id", null: false
     t.integer "score", default: 0
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
