@@ -1,9 +1,8 @@
 const GAMESTATE = {
   PAUSED: 0,
   RUNNING: 1,
-  MENU: 2,
-  GAMEOVER: 3,
-  INTRO: 4,
+  GAMEOVER: 2,
+  INTRO: 3,
 };
 
 class Game {
@@ -20,9 +19,6 @@ class Game {
     this.refs = [];
     this.fouls = 2;
     this.score = 0;
-    // this.head = new Harden(this.gameWidth, this.gameHeight, this.playerDog);
-    // this.inputHandler = new InputHandler(this.head, this);
-    // this.head = document.getElementById("dog");
     this.changeInstruction();
     this.spawnFallingObjects();
     this.draw(this.ctx);
@@ -33,14 +29,11 @@ class Game {
     this.ctx = this.canvas.getContext("2d");
     this.gameWidth = this.canvas.width;
     this.gameHeight = this.canvas.height;
-    // this.ratingInput = document.getElementById("game-rating");
     this.resetBtn = document.getElementById("reset-button");
     this.introDiv = document.getElementById("greeting-form");
     this.nameInput = document.getElementById("player-name");
     this.playerDog = document.getElementById("dog");
     this.playerHardem = document.getElementById("harden");
-    // this.ratings_Div = document.getElementById("ratings");
-    // this.ratings = document.getElementsByClassName("stars");
     this.gameoverDiv = document.getElementById("gameover");
     this.gameoverScore = document.getElementById("end-score");
     this.nameForm = document.getElementById("name-form");
@@ -67,20 +60,6 @@ class Game {
       this.inputHandler = new InputHandler(this.head, this);
       this.selectCharacter();
     });
-
-    // for (let rating of this.ratings) {
-    //   rating.addEventListener("click", (event) => {
-    //     this.saveRating(event, this.ratings);
-    //   });
-    // }
-
-    // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
-    // const observer = new MutationObserver(() => {
-    // if (this.gameoverDiv.style.display == "inline") this.saveGame();
-    // if (this.ratings_Div.style.display == "inline") this.saveGame();
-    // });
-    // observer.observe(this.gameoverDiv, { attributes: true });
-    // observer.observe(this.ratings_Div, { attributes: true });
   }
 
   // Changes the intro message
@@ -128,7 +107,6 @@ class Game {
     if (this.fouls === 0) this.gameState = GAMESTATE.GAMEOVER;
     if (
       this.gameState === GAMESTATE.PAUSED ||
-      this.gameState === GAMESTATE.MENU ||
       this.gameState === GAMESTATE.GAMEOVER ||
       this.gameState === GAMESTATE.INTRO
     )
@@ -181,19 +159,15 @@ class Game {
     if (this.gameState === GAMESTATE.PAUSED) {
       this.text.showPausedMenu(ctx, this);
     }
-    if (this.gameState === GAMESTATE.MENU) {
-      this.text.showMainMenu(ctx, this);
-    }
+
     if (this.gameState === GAMESTATE.GAMEOVER) {
       this.gameoverDiv.style.display = "flex";
-      // this.ratings_Div.style.display = "inline";
       this.gameoverScore.innerText = this.score;
       this.text.showGameOver(ctx, this);
     } else {
       this.gameoverDiv.style.display = "none";
-      // this.ratings_Div.style.display = "none";
     }
-    if (this.gameState !== GAMESTATE.MENU || this.gameState !== GAMESTATE.INTRO) {
+    if (this.gameState !== GAMESTATE.INTRO) {
       this.text.showScoreAndFouls(ctx, this, this.score, this.fouls);
     }
     if (this.gameState === GAMESTATE.INTRO) {
@@ -222,26 +196,10 @@ class Game {
 
   // saves the player and changes gameState to menu
   selectCharacter() {
-    // this.player = this.nameInput.value;
-    // await this.playerAdapter.savePlayer(this.player);
-    this.gameState = GAMESTATE.MENU;
+    this.gameState = GAMESTATE.RUNNING;
     this.draw(this.ctx);
+    this.start();
   }
-
-  // patch request to the game controller to update rating when clicked on star
-  // async saveRating(event, ratings) {
-  //   const rating = event.target.dataset.id;
-  //   const id = this.game.id;
-  //   await this.gameStats.adapter.saveRating(rating, id);
-  //   // this.gameStats.renderAverageRating();
-  //   this.stars = document.getElementById("rating-text");
-  //   this.stars.innerText = "Thanks, press ESCAPE to retry.";
-  //   for (const r of ratings) {
-  //     r.dataset.id <= event.target.dataset.id
-  //       ? (r.style.color = "rgba(255, 255, 255, 0.75)")
-  //       : (r.style.color = "rgba(255, 255, 255, 0.5)");
-  //   }
-  // }
 
   // resets the score and fouls and clears object off game canvas when player clicks "Play Again button"
   resetGame() {
@@ -249,14 +207,10 @@ class Game {
     this.head.speed = 0;
     this.score = 0;
     this.fouls = 2;
-    this.gameState = GAMESTATE.MENU;
+    this.gameState = GAMESTATE.INTRO;
     this.defenders = [];
     this.allCharge = [];
     this.refs = [];
-    // if (this.stars) this.stars.innerHTML = "Leave a rating:";
-    // for (const rating of this.ratings) {
-    //   rating.style.color = "rgba(255, 255, 255, 0.5)";
-    // }
   }
 
   // chance of spawning object falling down every 500 Millisecond

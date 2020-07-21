@@ -26,10 +26,10 @@ class InputHandler {
         game.nameForm.style.display = "none";
         game.resetDiv.style.display = "flex";
       }
-      if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
-        game.draw(game.ctx);
-        game.start();
-      }
+      // if (game.gameState == GAMESTATE.MENU && e.keyCode == 13) {
+      //   game.draw(game.ctx);
+      //   game.start();
+      // }
     });
 
     document.addEventListener("keyup", (e) => {
@@ -41,22 +41,21 @@ class InputHandler {
       }
     });
 
-    document.getElementById("game-container").addEventListener("click", () => {
-      if (game.gameState == GAMESTATE.MENU) game.start();
-    });
+    // document.getElementById("game-container").addEventListener("click", () => {
+    //   if (game.gameState == GAMESTATE.MENU) game.start();
+    // });
 
     this.bindingsAndEventListeners();
   }
 
   bindingsAndEventListeners() {
-    this.light = "off";
-    // this.title = document.getElementById("title");
+    // this.light = "off";
     this.sounds = document.querySelectorAll("audio");
-    this.lightToggle = document.getElementById("light-toggle");
+    // this.lightToggle = document.getElementById("light-toggle");
     this.muteToggle = document.getElementById("mute-toggle");
-    this.hoverClickables();
+    // this.hoverClickables();
     this.toggleMute();
-    this.changeBackgroundColor();
+    // this.changeBackgroundColor();
   }
 
   changeBackgroundColor() {
