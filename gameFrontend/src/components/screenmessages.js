@@ -5,6 +5,9 @@ class ScreenMessages {
     ctx.rect(0, 0, game.gameWidth, game.gameHeight);
     ctx.fillStyle = "rgba(25,25,25,1)";
     ctx.fill();
+    // const instruction = document.getElementById("instructions");
+    // instruction
+    // setInterval((instruction.innerText = "woogyboogy"), 10000);
   }
 
   showMainMenu(ctx, game) {

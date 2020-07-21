@@ -23,6 +23,7 @@ class Game {
     // this.head = new Harden(this.gameWidth, this.gameHeight, this.playerDog);
     // this.inputHandler = new InputHandler(this.head, this);
     // this.head = document.getElementById("dog");
+    this.changeInstruction();
     this.spawnFallingObjects();
     this.draw(this.ctx);
   }
@@ -44,6 +45,7 @@ class Game {
     this.gameoverScore = document.getElementById("end-score");
     this.nameForm = document.getElementById("name-form");
     this.resetDiv = document.getElementById("thanks-div");
+    this.instructions = document.getElementById("instructions");
     this.gainPointSound = new Sound("./assets/sounds/points-gained-sound.wav");
     this.refWhistleSound = new Sound("./assets/sounds/referee-whistle.wav");
     this.impactGruntSound = new Sound("./assets/sounds/impact-grunt.wav");
@@ -71,6 +73,7 @@ class Game {
         this.saveRating(event, this.ratings);
       });
     }
+
     // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
     // const observer = new MutationObserver(() => {
     // if (this.gameoverDiv.style.display == "inline") this.saveGame();
@@ -78,6 +81,27 @@ class Game {
     // });
     // observer.observe(this.gameoverDiv, { attributes: true });
     // observer.observe(this.ratings_Div, { attributes: true });
+  }
+
+  // Changes the intro message
+  changeInstruction() {
+    const instructions = [
+      "Players playing actual defence = EASY FLOP",
+      "Players taking charges = HARD TO FLOP",
+      "Take advantage of referees!",
+      "They help you the most!",
+      "a = left, d = right, s = pause",
+      "Flopping is an art",
+    ];
+    let instructionIndex = -1;
+    function changeMsg() {
+      ++instructionIndex;
+      if (instructionIndex >= instructions.length) {
+        instructionIndex = 0;
+      }
+      this.instructions.innerText = instructions[instructionIndex];
+    }
+    setInterval(changeMsg, 2000);
   }
 
   // for use in input class, called by clicking with the game screen event listener

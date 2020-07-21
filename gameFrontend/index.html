@@ -14,22 +14,24 @@
   <body>
     <div class="overlay"></div>
     <div class="main-container">
-      <h1 id="title">FLOPPY DROP</h1>
-
-      <div id="ratings">
+      <!-- <div id="ratings">
         <h2 id="rating-text">Leave a rating:</h2>
         <h1>
           <span data-id="1" class="stars">⭐</span><span data-id="2" class="stars">⭐</span
           ><span data-id="3" class="stars">⭐</span><span data-id="4" class="stars">⭐</span
-          ><span data-id="5" class="stars">⭐</span>
-        </h1>
-      </div>
+            ><span data-id="5" class="stars">⭐</span>
+          </h1>
+        </div> -->
+
+      <!-- GAME -->
 
       <div class="container">
         <!-- the game -->
         <canvas id="game-container" width="1000" height="900"></canvas>
         <!-- shown on greeting -->
         <div id="greeting-form">
+          <h1>FLOPPY DROP</h1>
+          <p id="instructions">Flopping is an art</p>
           <h3>PICK YOUR CHARACTER</h3>
           <div id="character-selection">
             <button class="button" id="dog">
@@ -69,6 +71,9 @@
         </span>
       </div>
 
+      <!-- GAME END -->
+
+      <!-- SCORES -->
       <div class="wrapper">
         <div class="scores-list">
           <h2>Highscores List</h2>
@@ -84,12 +89,14 @@
           <h2>Top 5 Scores Today</h2>
           <ul class="name-container" id="top-5-today"></ul>
         </div>
+      </div>
 
-        <!-- <div class="scores-list">
+      <!-- <div class="scores-list">
           <h2>Average Rating</h2>
           <ul class="name-container" id="average-rating"></ul>
         </div> -->
-      </div>
+
+      <!-- IMAGES FOR GAME -->
       <img class="img" id="andy-face" src="assets/images/andyFlop.png" />
       <img class="img" id="harden-face" src="assets/images/james-harden-face-cropped.gif" />
       <img class="img" id="draymond-defence" src="assets/images/Draymond.png" />
@@ -97,6 +104,8 @@
       <img class="img" id="ref" src="assets/images/scottfoster.png" />
       <img class="img" id="lives" src="assets/images/harden-head.png" />
     </div>
+
+    <!-- SCROLLING GAME BACKGROUND -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script type="text/javascript">
       $(function () {
@@ -107,6 +116,8 @@
         });
       });
     </script>
+
+    <!-- SCRIPTS -->
     <script src="src/components/fallingobject.js"></script>
     <script src="src/components/sounds.js"></script>
     <script src="src/components/lives.js"></script>

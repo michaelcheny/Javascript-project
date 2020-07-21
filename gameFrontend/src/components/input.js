@@ -50,7 +50,7 @@ class InputHandler {
 
   bindingsAndEventListeners() {
     this.light = "off";
-    this.title = document.getElementById("title");
+    // this.title = document.getElementById("title");
     this.sounds = document.querySelectorAll("audio");
     this.lightToggle = document.getElementById("light-toggle");
     this.muteToggle = document.getElementById("mute-toggle");
@@ -76,7 +76,7 @@ class InputHandler {
   }
 
   hoverClickables() {
-    let clickables = [this.title, this.lightToggle, this.muteToggle];
+    let clickables = [this.lightToggle, this.muteToggle];
 
     for (let thing of clickables) {
       thing.addEventListener("mouseover", () => {
