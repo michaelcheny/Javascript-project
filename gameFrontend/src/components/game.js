@@ -33,14 +33,14 @@ class Game {
     this.ctx = this.canvas.getContext("2d");
     this.gameWidth = this.canvas.width;
     this.gameHeight = this.canvas.height;
-    this.ratingInput = document.getElementById("game-rating");
+    // this.ratingInput = document.getElementById("game-rating");
     this.resetBtn = document.getElementById("reset-button");
     this.introDiv = document.getElementById("greeting-form");
     this.nameInput = document.getElementById("player-name");
     this.playerDog = document.getElementById("dog");
     this.playerHardem = document.getElementById("harden");
-    this.ratings_Div = document.getElementById("ratings");
-    this.ratings = document.getElementsByClassName("stars");
+    // this.ratings_Div = document.getElementById("ratings");
+    // this.ratings = document.getElementsByClassName("stars");
     this.gameoverDiv = document.getElementById("gameover");
     this.gameoverScore = document.getElementById("end-score");
     this.nameForm = document.getElementById("name-form");
@@ -68,11 +68,11 @@ class Game {
       this.selectCharacter();
     });
 
-    for (let rating of this.ratings) {
-      rating.addEventListener("click", (event) => {
-        this.saveRating(event, this.ratings);
-      });
-    }
+    // for (let rating of this.ratings) {
+    //   rating.addEventListener("click", (event) => {
+    //     this.saveRating(event, this.ratings);
+    //   });
+    // }
 
     // have to use observer to set eventlistener for saving game because draw() and update() gets called every frame
     // const observer = new MutationObserver(() => {
@@ -86,12 +86,12 @@ class Game {
   // Changes the intro message
   changeInstruction() {
     const instructions = [
-      "Players playing actual defence = EASY FLOP",
-      "Players taking charges = HARD TO FLOP",
+      "Choose wisely who you come in contact with!",
+      "Players playing actual defence = EASY FLOP!",
+      "Players taking charges = HARD TO FLOP!",
       "Take advantage of referees!",
       "They help you the most!",
-      "a = left, d = right, s = pause",
-      "Flopping is an art",
+      "Flopping is an art!",
     ];
     let instructionIndex = -1;
     function changeMsg() {
@@ -229,19 +229,19 @@ class Game {
   }
 
   // patch request to the game controller to update rating when clicked on star
-  async saveRating(event, ratings) {
-    const rating = event.target.dataset.id;
-    const id = this.game.id;
-    await this.gameStats.adapter.saveRating(rating, id);
-    // this.gameStats.renderAverageRating();
-    this.stars = document.getElementById("rating-text");
-    this.stars.innerText = "Thanks, press ESCAPE to retry.";
-    for (const r of ratings) {
-      r.dataset.id <= event.target.dataset.id
-        ? (r.style.color = "rgba(255, 255, 255, 0.75)")
-        : (r.style.color = "rgba(255, 255, 255, 0.5)");
-    }
-  }
+  // async saveRating(event, ratings) {
+  //   const rating = event.target.dataset.id;
+  //   const id = this.game.id;
+  //   await this.gameStats.adapter.saveRating(rating, id);
+  //   // this.gameStats.renderAverageRating();
+  //   this.stars = document.getElementById("rating-text");
+  //   this.stars.innerText = "Thanks, press ESCAPE to retry.";
+  //   for (const r of ratings) {
+  //     r.dataset.id <= event.target.dataset.id
+  //       ? (r.style.color = "rgba(255, 255, 255, 0.75)")
+  //       : (r.style.color = "rgba(255, 255, 255, 0.5)");
+  //   }
+  // }
 
   // resets the score and fouls and clears object off game canvas when player clicks "Play Again button"
   resetGame() {
@@ -253,10 +253,10 @@ class Game {
     this.defenders = [];
     this.allCharge = [];
     this.refs = [];
-    if (this.stars) this.stars.innerHTML = "Leave a rating:";
-    for (const rating of this.ratings) {
-      rating.style.color = "rgba(255, 255, 255, 0.5)";
-    }
+    // if (this.stars) this.stars.innerHTML = "Leave a rating:";
+    // for (const rating of this.ratings) {
+    //   rating.style.color = "rgba(255, 255, 255, 0.5)";
+    // }
   }
 
   // chance of spawning object falling down every 500 Millisecond
