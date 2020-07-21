@@ -12,22 +12,24 @@ Rails as an API as the backend.
 # Features
 
 - Has a High Scores list, with the most recent score showing up top, has a top 5 scores all time, and a top 5 score for today list as well.
-- Easter Eggs include, clicking on the title to change font, or clicking on lightbulb to toggle dark mode.
 
 # Installation
 
 1. Clone directory from [my github](https://github.com/michaelcheny/Javascript-project)
-2. cd into `backend-api`, run `rails s` to start the server.
-3. open a new terminal, cd into `gameFrontend`, and open `index.html`.
+2. cd into `backend-api`
+3. run `bundle install`
+4. run `rails db:migrate` and `rails db:seed'
+5. run `rails s` to start the server.
+6. open a new terminal, cd into `gameFrontend`, and open `index.html`.
 
-# How to use?
+# How to play?
 
-1. Game will ask for your name, enter name and press `enter` to continue to the `main menu`.
-2. Read the instruction on the `main menu`, press `enter` or `click` on game screen to start game.
-3. Use `arrow left` and `arrow right` or `a` and `d` to move left or right. Press `s` to pause game.
-4. Game automatically saves it's record when game over screen appears.
-5. Optional: click on a star to leave a rating for the game.
-6. Press `escape` to play again.
+1. Read the instructions and choose your character.
+2. Use `arrow left` and `arrow right` or `a` and `d` to move left or right. Press `s` to pause game.
+3. Collide with defenders with hands up to flop for points.
+4. Collide with defenders taking a charge to lose a foul.
+5. Collide with referees to get bonus points and recover a life.
+6. Game ends when you foul out.
 
 # Credits
 
