@@ -1,6 +1,7 @@
 class GamesAdapter {
   constructor() {
-    this.baseUrl = "https://floppy-drop-api.herokuapp.com/api/v1/games";
+    // this.baseUrl = "https://floppy-drop-api.herokuapp.com/api/v1/games";
+    this.baseUrl = "http://localhost:3000/api/v1/games";
   }
 
   async getGames() {

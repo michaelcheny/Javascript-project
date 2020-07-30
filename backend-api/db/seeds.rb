@@ -8,21 +8,12 @@
 
 
 
-Player.create([
-  { name: 'Michael' },
-  { name: 'Donald Duck' },
-  { name: 'Rick Sanchez' },
-  { name: 'Toby the lab' },
-  { name: 'Cheater' },
-  { name: 'KDsnek35' }
-])
-
 Game.create([
-  {player_id: 1, score: 3000, rating: 4},
-  {player_id: 2, score: 2019, rating: 3},
-  {player_id: 3, score: 7000, rating: 5},
-  {player_id: 4, score: 7000, rating: 5},
-  {player_id: 5, score: 99999999, rating: 5},
-  {player_id: 6, score: 22000, rating: 5}
+  {score: 3000, player_name: "GOT S8 suck"},
+  {score: 2019, player_name: "Donald Duck"},
+  {score: 7000, player_name: "Michael"},
+  {score: 7000, player_name: "Toby the lab"},
+  {score: 95000, player_name: "primeddn"},
+  {score: 22000, player_name: "KDsnek35"}
 ])
 

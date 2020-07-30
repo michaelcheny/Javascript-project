@@ -16,19 +16,10 @@ ActiveRecord::Schema.define(version: 2019_12_11_221206) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.bigint "player_id", null: false
     t.integer "score", default: 0
-    t.integer "rating"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["player_id"], name: "index_games_on_player_id"
-  end
-
-  create_table "players", force: :cascade do |t|
-    t.string "name"
+    t.string "player_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "games", "players"
 end
