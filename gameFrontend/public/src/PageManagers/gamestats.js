@@ -42,7 +42,7 @@ class GameStats {
   renderScores(game, container) {
     container.innerHTML += `
     <li>
-      <span class="hug-left">${game.player.name}</span> <span class="hug-right">${game.score}</span>
+      <span class="hug-left">${game.player_name}</span> <span class="hug-right">${game.score}</span>
     </li>
     `;
   }

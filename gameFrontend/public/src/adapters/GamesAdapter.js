@@ -8,6 +8,7 @@ class GamesAdapter {
     try {
       const res = await fetch(this.baseUrl);
       const data = await res.json();
+      // console.log(data);
       return data;
     } catch (error) {
       console.log(error.message);
@@ -16,8 +17,9 @@ class GamesAdapter {
   }
 
   async saveGame(name, score) {
+    // debugger;
     const filteredName = name.replace(/[^a-z0-9\ ]/gi, "");
-    // console.log(filteredName);
+    console.log(`${filteredName}: ${score}`);
     const game = {
       name: filteredName,
       score: score,
@@ -37,20 +39,20 @@ class GamesAdapter {
     }
   }
 
-  async saveRating(stars, gameId) {
-    const ratings = {
-      rating: stars,
-    };
-    try {
-      return await fetch(this.baseUrl + `/${gameId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(ratings),
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
+  // async saveRating(stars, gameId) {
+  //   const ratings = {
+  //     rating: stars,
+  //   };
+  //   try {
+  //     return await fetch(this.baseUrl + `/${gameId}`, {
+  //       method: "PATCH",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(ratings),
+  //     });
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
 }

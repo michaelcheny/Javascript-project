@@ -9,7 +9,7 @@ class Game {
   constructor() {
     this.gameState = GAMESTATE.INTRO;
     this.gameStats = new GameStats();
-    this.playerAdapter = new PlayersAdapter();
+    // this.playerAdapter = new PlayersAdapter();
     this.bindingsAndEventListener();
     this.text = new ScreenMessages();
     this.defenders = [];
@@ -25,6 +25,7 @@ class Game {
   }
 
   bindingsAndEventListener() {
+    this.input = new InputHandler(this);
     this.canvas = document.getElementById("game-container");
     this.ctx = this.canvas.getContext("2d");
     this.gameWidth = this.canvas.width;
@@ -50,14 +51,14 @@ class Game {
     this.playerDog.addEventListener("click", () => {
       this.flopMode = false;
       this.head = new Harden(this.gameWidth, this.gameHeight, this.flopMode);
-      this.inputHandler = new InputHandler(this.head, this);
+      new PlayerInputHandler(this.head, this);
       this.selectCharacter();
     });
 
     this.playerHardem.addEventListener("click", () => {
       this.flopMode = true;
       this.head = new Harden(this.gameWidth, this.gameHeight, this.flopMode);
-      this.inputHandler = new InputHandler(this.head, this);
+      new PlayerInputHandler(this.head, this);
       this.selectCharacter();
     });
   }
@@ -188,11 +189,7 @@ class Game {
 
   // saves the game when user hits submit button
   async saveGame() {
-    // const name = this.nameInput.value;
-    // console.log(name);
-    // this.player = this.nameInput.value
-    const score = this.score;
-    this.game = await this.gameStats.adapter.saveGame(this.nameInput.value, score);
+    await this.gameStats.adapter.saveGame(this.nameInput.value, this.score);
     this.gameStats.fetchAndLoadGameStats();
   }
 
@@ -213,6 +210,7 @@ class Game {
     this.defenders = [];
     this.allCharge = [];
     this.refs = [];
+    this.nameInput.value = "";
     this.nameForm.style.visibility = "visible";
     this.resetDiv.style.display = "none";
   }

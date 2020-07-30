@@ -1,20 +1,20 @@
 class Api::V1::GamesController < ApplicationController
 
   def index
-    @games = Game.all.order(created_at: :desc)
-    @top_5 = Game.top_5_highest_scores
-    @top_5_today = Game.top_5_scores_today
+    games = Game.all.order(created_at: :desc)
+    top_5 = Game.top_5_highest_scores
+    top_5_today = Game.top_5_scores_today
 
     render json: {
-      games: @games,
-      top_5: @top_5,
-      top_5_today: @top_5_today,
-      average_rating: @average
+      # games: @games,
+      games: games,
+      top_5: top_5,
+      top_5_today: top_5_today,
       }, status: 200
   end
 
   def create
-    game = Game.new(player_name: params[:name], score: params[:score])
+    game = Game.find_or_create_by(player_name: params[:name], score: params[:score])
     if game.save
       render json: game, status: 200
     else
