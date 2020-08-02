@@ -11,7 +11,10 @@ class GamesAdapter {
       return data;
     } catch (error) {
       console.log(error.message);
-      return "Check if your server is running.";
+      alert(
+        "If you are seeing this alert, it means the Heroku server is napping. Give it few seconds and refresh the page. :)"
+      );
+      console.log("Check if your server is running.");
     }
   }
 
